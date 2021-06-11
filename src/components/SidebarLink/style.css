@@ -1,0 +1,21 @@
+.sidebarLink {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  align-items: stretch;
+  padding: 10px 0;
+}
+.sidebarLink .text-link {
+  color: white;
+  text-decoration: inherit;
+  padding-left: 5px;
+}
+.sidebarLink .dot {
+  width: 2.5px;
+  background-color: white;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.sidebarLink .dot.empty {
+  background-color: transparent;
+}

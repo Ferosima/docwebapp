@@ -1,13 +1,51 @@
+html {
+  height: 100%;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  overflow-x: hidden;
+  height: 100%;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+p,
+button {
+  margin: 0;
+  padding: 0;
+  background-color: unset;
+  border: unset;
+  outline: none;
+}
+button {
+  cursor: pointer;
+}
+/* button:active {
+  background-color: #e4edff;
+  border-radius: 10px;
+} */
+#root {
+  display: flex;
+  flex: 1;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: local('nunito'), url(./assets//fonts/Nunito-Regular.ttf) format('truetype');
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Nunito-Light';
+  src: local('nunito'), url(./assets//fonts/Nunito-Light.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Nunito-SemiBold';
+  src: local('nunito'), url(./assets//fonts/Nunito-SemiBold.ttf) format('truetype');
 }

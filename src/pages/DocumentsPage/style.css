@@ -1,0 +1,40 @@
+.documentsPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: scroll;
+  padding: 30px 20px;
+}
+.documentsPage h2 {
+  margin: 0;
+}
+.documentsPage .subtitle {
+  font-family: Nunito-Light;
+  font-size: 14px;
+  color: #7682a1;
+}
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 10px;
+}
+.listItem {
+  padding: 0 15px 25px 0;
+}
+.createDocumentButton {
+  /* padding: 5px 10px; */
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background: white;
+  -webkit-box-shadow: 0px 4px 8px -3px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 4px 8px -3px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 4px 8px -3px rgba(34, 60, 80, 0.2);
+  border-radius: 2%;
+  overflow: hidden;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

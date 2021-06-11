@@ -1,0 +1,18 @@
+.sidebar {
+  background-color: #3d41d8;
+  padding: 20px 50px 0px 10px;
+  display: block;
+  /* background-color: white;
+  -webkit-box-shadow: 8px 0px 13px -6px rgba(0,0,0,0.2); 
+  box-shadow: 8px 0px 13px -6px rgba(0,0,0,0.2); */
+}
+h3 {
+  margin: 0;
+}
+.logoTitle {
+  font-family: Nunito-Light;
+  font-size: 24px;
+  padding-left: 13px;
+  color: white;
+  padding-bottom: 20px;
+}
