@@ -14,9 +14,9 @@ body {
   height: 100%;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
+} */
 p,
 button {
   margin: 0;
@@ -24,28 +24,31 @@ button {
   background-color: unset;
   border: unset;
   outline: none;
+  font-family:'Mulish'
 }
 button {
   cursor: pointer;
 }
-/* button:active {
-  background-color: #e4edff;
-  border-radius: 10px;
-} */
+
 #root {
   display: flex;
   flex: 1;
 }
 @font-face {
-  font-family: 'Nunito';
-  src: local('nunito'), url(./assets//fonts/Nunito-Regular.ttf) format('truetype');
+  font-family: 'Mulish';
+  src: local('mulish'), url(./assets//fonts/Mulish-Regular.ttf) format('opentype');
   font-weight: normal;
 }
 @font-face {
-  font-family: 'Nunito-Light';
-  src: local('nunito'), url(./assets//fonts/Nunito-Light.ttf) format('truetype');
+  font-family: 'Mulish-Light';
+  src: local('mulish'), url(./assets//fonts/Mulish-Light.ttf) format('opentype');
 }
 @font-face {
-  font-family: 'Nunito-SemiBold';
-  src: local('nunito'), url(./assets//fonts/Nunito-SemiBold.ttf) format('truetype');
+  font-family: 'Mulish-SemiBold';
+  src: local('mulish'), url(./assets//fonts/Mulish-SemiBold.ttf) format('opentype');
 }
+@font-face {
+  font-family: 'Mulish-Black';
+  src: local('mulish'), url(./assets//fonts/Mulish-Black.ttf) format('opentype');
+}
+

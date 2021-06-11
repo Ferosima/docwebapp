@@ -10,7 +10,7 @@ export default class DocumentsListItem extends React.Component {
         <div className="document" />
         <div className="infoContainer">
           <p className="title">{title}</p>
-          <p className="title">{created_at}</p>
+          <p className="subtitle">{created_at}</p>
         </div>
       </div>
     );

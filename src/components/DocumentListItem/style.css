@@ -20,4 +20,12 @@
 .documentsListItem:hover { /* Убираем подчеркивание */ /* Цвет ссылки при наведении на нее курсора мыши */  
   background: #3d41d8; /* Цвет фона */
   color:white
- }
+}
+
+.documentsListItem .title{
+  font-family:Mulish-Black
+}
+.documentsListItem .subtitle{
+  font-family:Mulish
+}
+
