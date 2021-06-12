@@ -14,6 +14,7 @@ npm run start
 
 - [React](https://uk.reactjs.org/)
 - [React-Redux](https://react-redux.js.org/)
+- [React-Router](https://reactrouter.com/)
 - [Redux](https://redux.js.org/)
 - [Redux-Saga](https://redux-saga.js.org/)
 - [Redux-Persist](https://www.npmjs.com/package/redux-persist)
