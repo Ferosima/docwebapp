@@ -10,7 +10,7 @@ npm install
 npm run start
 ```
 
-## Used Library
+## Used Libraries
 
 - [React](https://uk.reactjs.org/)
 - [React-Redux](https://react-redux.js.org/)
