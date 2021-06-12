@@ -1,29 +1,31 @@
 import React from "react";
-import { IconContext } from "react-icons";
-import { FiMenu } from "react-icons/fi";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import assetsData from "../../assets/assetsData";
 import { setSidebarState } from "../../store/actions/app";
 import { getSidebarState } from "../../store/selectors/app";
-import SidebarLink from "../SidebarLink";
+import Icon from "../Icon";
+import SidebarMenuItem from "../SidebarMenuitem";
 import "./style.css";
-
 class Sidebar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.wrapperRef = React.createRef();
+  }
+
+  handleClick = () => {
+    const wrapper = this.wrapperRef.current;
+    wrapper.classList.toggle("is-sidebar-small");
+  };
+
   renderSidebarHeader() {
     const { setSidebarState, isSidebarOpen } = this.props;
     return (
       <div className="header">
+        <div className="image">
+          <img style={{ width: "100%", height: "100%" }} src={assetsData.images.Logo} alt="Docs" />
+        </div>
         <h3 className="title">Docwebapp</h3>
-        <IconContext.Provider
-          value={{
-            className: "icon_menu",
-            size: "20px",
-          }}
-        >
-          {/* <div onClick={() => setSidebarState(!isSidebarOpen)}>
-            <FiMenu />
-          </div> */}
-        </IconContext.Provider>
       </div>
     );
   }
@@ -31,11 +33,23 @@ class Sidebar extends React.Component {
   render() {
     const { isSidebarOpen, routers } = this.props;
     return (
-      <div className={`sidebar${isSidebarOpen ? "" : " hide"}`}>
+      <div className={`sidebar${isSidebarOpen ? "" : " hide"}`} ref={this.wrapperRef}>
         {this.renderSidebarHeader()}
+        <Icon
+          name="arrowLeft"
+          size="20px"
+          color="#4D5F68"
+          className="icon"
+          onClick={() => this.handleClick()}
+        />
         <div className="menu">
           {routers.map((route) => (
-            <SidebarLink activeOnlyWhenExact={route.exact} to={route.path} label={route.name} />
+            <SidebarMenuItem
+              activeOnlyWhenExact={route.exact}
+              to={route.path}
+              label={route.name}
+              icon={route.icon}
+            />
           ))}
         </div>
       </div>
