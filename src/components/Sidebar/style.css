@@ -1,18 +1,36 @@
 .sidebar {
   background-color: #3d41d8;
-  padding: 20px 50px 0px 10px;
-  display: block;
-  /* background-color: white;
-  -webkit-box-shadow: 8px 0px 13px -6px rgba(0,0,0,0.2); 
-  box-shadow: 8px 0px 13px -6px rgba(0,0,0,0.2); */
+  -webkit-transition-duration: 0.8s;
+  transform-origin: left;
 }
-h3 {
+.sidebar h3 {
   margin: 0;
 }
-.logoTitle {
+.sidebar > .header {
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+  align-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px 0 10px;
+}
+.sidebar > .header > .title {
   font-family: Mulish-Light;
-  font-size: 24px;
-  padding-left: 13px;
+  font-size: 17px;
   color: white;
-  padding-bottom: 20px;
+  /* padding: 0 20px 0 20px; */
+}
+.sidebar > .header > .icon_menu {
+  /* padding-right: 25px; */
+  cursor: pointer;
+}
+.sidebar > .menu {
+  padding: 10px 70px 0px 0;
+}
+
+.sidebar.hide {
+  width: 0;
+  overflow: hidden;
+  background-color: blueviolet;
 }
