@@ -20,3 +20,4 @@ npm run start
 - [Redux-Persist](https://www.npmjs.com/package/redux-persist)
 - [Redux-Actions](https://redux-actions.js.org/)
 - [React-Icons](https://react-icons.github.io/react-icons/)
+- [Styled-Components](https://styled-components.com/)
