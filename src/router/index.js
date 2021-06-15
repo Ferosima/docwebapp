@@ -2,12 +2,13 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Documents from "../pages/DocumentsPage";
+import Signatures from "../pages/SignaturesPage";
 
 const sidebar_routers = [
   {
     name: "Documents",
     icon: "documents", // name must be from ./components/Icon/icons.js
-    path: "/",
+    path: "/documents",
     exact: true, // path must be '/' for exact:true
     main: () => <Documents />,
   },
@@ -15,7 +16,7 @@ const sidebar_routers = [
     name: "Signatures",
     icon: "signatures",
     path: "/signatures",
-    main: () => <h2>Signatures</h2>,
+    main: () => <Signatures />,
   },
 ];
 

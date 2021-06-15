@@ -12,12 +12,14 @@ import {
   HiOutlineArrowCircleRight,
 } from "react-icons/hi";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
+import { FaFileSignature } from "react-icons/fa";
 
 export const icons = {
   documents: <IoDocumentsSharp />,
   documentsOutline: <IoDocumentsOutline />,
   pen: <HiPencil />,
   penOutline: <HiOutlinePencil />,
+  signatures: <FaFileSignature />,
   settings: <IoSettingsOutline />,
   settingsOutline: <IoSettingsOutline />,
   arrowLeft: <HiOutlineArrowCircleLeft />,

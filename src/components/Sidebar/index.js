@@ -1,58 +1,53 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 import { compose } from "redux";
 import assetsData from "../../assets/assetsData";
 import { setSidebarState } from "../../store/actions/app";
 import { getSidebarState } from "../../store/selectors/app";
 import Icon from "../Icon";
-import SidebarMenuItem from "../SidebarMenuitem";
-import "./style.css";
-class Sidebar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.wrapperRef = React.createRef();
-  }
+import { Arrow, Header, Item, SidebarWrapper } from "./style";
 
-  handleClick = () => {
-    const wrapper = this.wrapperRef.current;
-    wrapper.classList.toggle("is-sidebar-small");
+class Sidebar extends React.Component {
+  state = {
+    isOpen: true,
   };
 
-  renderSidebarHeader() {
-    const { setSidebarState, isSidebarOpen } = this.props;
+  handleClick = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
+
+  isMatch = (path) => this.props.location.pathname.includes(path);
+
+  renderItem = ({ path, icon, name }) => {
+    const { isOpen } = this.state;
+    const isMatch = this.isMatch(path);
     return (
-      <div className="header">
-        <div className="image">
-          <img style={{ width: "100%", height: "100%" }} src={assetsData.images.Logo} alt="Docs" />
-        </div>
-        <h3 className="title">Docwebapp</h3>
-      </div>
+      <Item to={path} isActive={isMatch} isOpen={isOpen}>
+        <Icon name={icon} color={isMatch ? "#3751FF" : null} size="1em" />
+        <p>{name}</p>
+        <div />
+      </Item>
     );
-  }
+  };
 
   render() {
-    const { isSidebarOpen, routers } = this.props;
+    const { isOpen } = this.state;
     return (
-      <div className={`sidebar${isSidebarOpen ? "" : " hide"}`} ref={this.wrapperRef}>
-        {this.renderSidebarHeader()}
-        <Icon
+      <SidebarWrapper isOpen={isOpen}>
+        <Header isOpen={isOpen}>
+          <img src={assetsData.images.Logo} alt="Logo" />
+          <p>Docwebapp</p>
+        </Header>
+        <Arrow
           name="arrowLeft"
           size="20px"
           color="#4D5F68"
-          className="icon"
           onClick={() => this.handleClick()}
+          isOpen={isOpen}
         />
-        <div className="menu">
-          {routers.map((route) => (
-            <SidebarMenuItem
-              activeOnlyWhenExact={route.exact}
-              to={route.path}
-              label={route.name}
-              icon={route.icon}
-            />
-          ))}
-        </div>
-      </div>
+        {this.props.routers.map(this.renderItem)}
+      </SidebarWrapper>
     );
   }
 }
@@ -66,4 +61,4 @@ const mapDispatchToProps = {
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-export default compose(withConnect)(Sidebar);
+export default compose(withRouter, withConnect)(Sidebar);

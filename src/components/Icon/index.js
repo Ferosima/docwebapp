@@ -1,5 +1,6 @@
 import React from "react";
 import { IconContext } from "react-icons";
+import styled from "styled-components";
 import { icons } from "./icons";
 
 export default class Icon extends React.Component {
@@ -16,10 +17,16 @@ export default class Icon extends React.Component {
         }}
       >
         {/* If you wanna add new icon add it to icons.js */}
-        <div className={className} onClick={onClick}>
+        <Wrapper className={`wrapper ${className}`} onClick={onClick}>
           {icons[name] ? icons[name] : icons.undefined}
-        </div>
+        </Wrapper>
       </IconContext.Provider>
     );
   }
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+`;
