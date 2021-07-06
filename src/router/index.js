@@ -1,26 +1,22 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
-import Documents from "../pages/DocumentsPage";
-import Signatures from "../pages/SignaturesPage";
+import Sidebar from "./sidebar";
+import Auth from "../pages/AuthPage";
 
-const sidebar_routers = [
+const app_routers = [
   {
-    name: "Documents",
-    icon: "documents", // name must be from ./components/Icon/icons.js
-    path: "/documents",
-    exact: true, // path must be '/' for exact:true
-    main: () => <Documents />,
+    path: "/auth",
+    exact: false,
+    main: () => <Auth />,
   },
   {
-    name: "Signatures",
-    icon: "signatures",
-    path: "/signatures",
-    main: () => <Signatures />,
+    path: "/app",
+    exact: false,
+    main: () => <Sidebar />,
   },
 ];
 
-export default function SidebarExample() {
+export default function AppRouter() {
   return (
     <Router>
       <div
@@ -32,11 +28,8 @@ export default function SidebarExample() {
           overflow: "hidden",
         }}
       >
-        <Sidebar routers={sidebar_routers} />
-
-        {/* Router */}
         <Switch>
-          {sidebar_routers.map((route, index) => (
+          {app_routers.map((route, index) => (
             <Route key={index} path={route.path} exact={route.exact} children={<route.main />} />
           ))}
         </Switch>
