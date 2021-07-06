@@ -23,6 +23,13 @@ export const Wrapper = styled.div`
     margin: 0;
     padding: 0 0 60px 0;
   }
+  
+  @media (max-width: 680px) {
+    h1{
+      padding: 30px 0;
+    }
+   }
+  
 
   form {
     display: flex;
@@ -102,6 +109,7 @@ export const Wrapper = styled.div`
       transform: none;
       opacity: 0.8;
     }
+    
   }
 
   a,

@@ -24,6 +24,12 @@ export const Wrapper = styled.div`
     padding: 0 0 60px 0;
   }
 
+  @media (max-width: 680px) {
+    h1{
+      padding: 30px 0;
+    }
+   }
+   
   form {
     display: flex;
     flex-direction: column;

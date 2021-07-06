@@ -13,6 +13,7 @@ class AuthPage extends React.Component {
     const { path, url } = this.props.match;
     return (
       <Wrapper>
+        <Rectangle isEmpty />
         <FormWrapper>
           <Logo>
             <img src={assetsData.images.Logo} alt="Logo" />
