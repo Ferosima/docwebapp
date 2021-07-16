@@ -10,7 +10,7 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 22;
-  padding: 40px;
+  padding: 50px;
   align-items: center;
 
   @media (max-width: 680px) {
@@ -37,10 +37,10 @@ export const Logo = styled.div`
 `;
 
 export const Rectangle = styled.div`
-  flex: ${({ isEmpty }) => (isEmpty ? "0" : "11")};
+  flex: ${({ isEmpty }) => (isEmpty ? "0" : "16")};
   background: linear-gradient(157.42deg, #5369ff -7.47%, #1732a0 122.2%);
 
-  @media (max-width: 680px) {
+  @media (max-width: 1024px) {
     flex: 1;
     background: ${({ isEmpty }) => (isEmpty ? "transparent" : "linear-gradient(157.42deg, #5369ff -7.47%, #1732a0 122.2%)")};
   }

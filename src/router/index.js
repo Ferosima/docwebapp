@@ -2,11 +2,12 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Sidebar from "./sidebar";
 import Auth from "../pages/AuthPage";
+import NoMatch from "../pages/NoMatch";
 
 const app_routers = [
   {
-    path: "/auth",
-    exact: false,
+    path: "/auth/*",
+    exact: true,
     main: () => <Auth />,
   },
   {
@@ -32,6 +33,10 @@ export default function AppRouter() {
           {app_routers.map((route, index) => (
             <Route key={index} path={route.path} exact={route.exact} children={<route.main />} />
           ))}
+          <Route path="*">
+            <NoMatch />
+            {/* <h1>404</h1> */}
+          </Route>
         </Switch>
       </div>
     </Router>

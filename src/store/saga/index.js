@@ -1,4 +1,8 @@
-import { all, takeLatest } from 'redux-saga/effects';
+import { all, takeLatest } from "redux-saga/effects";
+
+import * as auth from "../actions/auth";
+
+import { login } from "./auth";
 
 // For example
 // import * as user from '../actions/auth';
@@ -14,23 +18,13 @@ import { all, takeLatest } from 'redux-saga/effects';
 //   yield takeLatest(user.createUser, createUser);
 // }
 
+function* loginSaga() {
+  yield takeLatest(auth.login, login);
+}
+
 export default function* rootSaga() {
   yield all([
-    // For example
-    // // AUTH
-    // fetchLoginSaga(),
-    // createUserSaga(),
-    // sendPasswordResetEmailSaga(),
-    // // USER
-    // fetchUserSaga(),
-    // // EVENT
-    // createEventSaga(),
-    // fetchEventsSaga(),
-    // deleteEventSaga(),
-    // // CALENDAR
-    // fetchCalendarSaga(),
-    // fetchIntersectingEventsSaga(),
-    // addEventToCalendarSaga(),
-    // deleteEventFromCalendarSaga(),
+    // AUTH
+    loginSaga(),
   ]);
 }

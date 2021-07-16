@@ -34,6 +34,8 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: -webkit-fill-available;
+    /* justify-content: center; */
+    /* align-content: center; */
 
     .input_wrapper{
       flex:1;
@@ -96,6 +98,8 @@ export const Wrapper = styled.div`
     input:focus {
       border: 1px solid #2339c3;
     }
+    input[type="submit"]:focus{
+      border: 0}
 
     a:active,
     button[type="submit"]:active,
@@ -113,10 +117,6 @@ export const Wrapper = styled.div`
     font-size: 13px;
   }
 
-  p {
-    color: #455a64;
-    padding-right: 5px;
-  }
 
   a {
     font-family: Mulish-SemiBold;
@@ -128,4 +128,11 @@ export const Wrapper = styled.div`
     opacity: 0.8;
   }
 }
+`;
+export const ErrorText = styled.p`
+  padding: 5px 0 15px 0;
+  font-family: Mulish-SemiBold;
+  font-size: 13px;
+  color: #d80404;
+  align-self: self-end;
 `;

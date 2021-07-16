@@ -1,16 +1,27 @@
 import React from "react";
 import { withRouter } from "react-router";
 import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import { compose } from "redux";
 import assetsData from "../../assets/assetsData";
 import {
   FormWrapper, Logo, Rectangle, Wrapper,
 } from "./style";
 import LoginForm from "../../components/LoginForm";
 import RegistrationForm from "../../components/RegistrationForm";
+import { login, authClearError } from "../../store/actions/auth";
+import { getAuthState } from "../../store/selectors/auth";
 
 class AuthPage extends React.Component {
+  componentDidMount() {
+    this.props.authClearError();
+  }
+
   render() {
-    const { path, url } = this.props.match;
+    const { login, auth, match } = this.props;
+    const { path, url } = match;
+    console.log("MATCH", path, url);
+    console.log("AUTH", auth);
     return (
       <Wrapper>
         <Rectangle isEmpty />
@@ -20,10 +31,10 @@ class AuthPage extends React.Component {
             <p>Docwebapp</p>
           </Logo>
           <Switch>
-            <Route exact path={`${url}/login`}>
-              <LoginForm />
+            <Route exact path={`/auth/login`}>
+              <LoginForm action={login} error={auth.error} panding={auth.panding} />
             </Route>
-            <Route path={`${url}/registration`}>
+            <Route exact path={`/auth/registration`}>
               <RegistrationForm />
             </Route>
           </Switch>
@@ -34,4 +45,16 @@ class AuthPage extends React.Component {
   }
 }
 
-export default withRouter(AuthPage);
+// export default withRouter(AuthPage);
+
+const mapStateToProps = (state) => ({
+  auth: getAuthState(state),
+});
+const mapDispatchToProps = {
+  login,
+  authClearError,
+};
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+export default compose(withRouter, withConnect)(AuthPage);

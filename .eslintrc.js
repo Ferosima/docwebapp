@@ -46,6 +46,7 @@ module.exports = {
     "react/jsx-props-no-spreading": 0,
     "jsx-a11y/label-has-associated-control": 0,
     "jsx-a11y/anchor-is-valid": 1,
+    "no-param-reassign": 1,
     quotes: 0,
     camelcase: 0,
   },
