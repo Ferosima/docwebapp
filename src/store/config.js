@@ -1,7 +1,9 @@
+import { createBrowserHistory } from "history";
 import { applyMiddleware, createStore } from "redux";
+import { persistStore } from "redux-persist";
 import createSagaMiddleware from "redux-saga";
-import { persistStore, persistReducer } from "redux-persist";
-import reducers from "./reducers";
+import { routerMiddleware } from "connected-react-router";
+import { reducers, history } from "./reducers";
 import rootSaga from "./saga";
 
 function logger({ getState }) {
@@ -13,9 +15,13 @@ function logger({ getState }) {
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(reducers, {}, applyMiddleware(sagaMiddleware, logger));
+const store = createStore(
+  reducers,
+  {},
+  applyMiddleware(routerMiddleware(history), sagaMiddleware, logger),
+);
 const persistor = persistStore(store);
 
 sagaMiddleware.run(rootSaga);
 
-export { store, persistor };
+export { store, persistor, history };

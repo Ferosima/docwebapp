@@ -8,19 +8,19 @@ const sidebar_routers = [
   {
     name: "Documents",
     icon: "documents", // name must be from ./components/Icon/icons.js
-    path: "/documents",
-    exact: true, // path must be '/' for exact:true
+    path: "/app/documents/*",
+    exact: true,
     main: () => <Documents />,
   },
   {
     name: "Signatures",
     icon: "signatures",
-    path: "/signatures",
+    path: "/app/signatures/*",
     main: () => <Signatures />,
   },
 ];
 
-export default function SidebarRouter() {
+export default function AppRouter() {
   return (
     <Route>
       <div

@@ -1,8 +1,8 @@
-import './App.css';
-import SideBar from './router';
+import "./App.css";
+import Router from "./router";
 
 function App() {
-  return <SideBar />;
+  return <Router />;
 }
 
 export default App;

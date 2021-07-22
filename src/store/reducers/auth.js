@@ -10,8 +10,6 @@ import {
 } from "../types/auth";
 
 const initialState = {
-  accessToken: null,
-  refreshToken: null,
   isLoggedIn: false,
   panding: false,
   error: null,
@@ -30,8 +28,6 @@ export default function reducer(state = initialState, action) {
         error: null,
         panding: false,
         isLoggedIn: true,
-        refreshToken: action.payload.refreshToken,
-        accessToken: action.payload.accessToken,
       };
     case AUTH_LOGIN_FAILED:
       return {
@@ -49,8 +45,6 @@ export default function reducer(state = initialState, action) {
         ...state,
         panding: false,
         isLoggedIn: true,
-        refreshToken: action.payload.refreshToken,
-        accessToken: action.payload.accessToken,
       };
     case AUTH_REGISTRATION_FAILED:
       return {

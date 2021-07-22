@@ -12,11 +12,11 @@ import {
 
 export const login = createAction(AUTH_LOGIN, (payload) => payload);
 export const loginFailed = createAction(AUTH_LOGIN_FAILED, (payload) => payload);
-export const loginSuccess = createAction(AUTH_LOGIN_SUCCESS, (payload) => payload);
+export const loginSuccess = createAction(AUTH_LOGIN_SUCCESS);
 
 export const registration = createAction(AUTH_REGISTRATION, (payload) => payload);
 export const registrationFailed = createAction(AUTH_REGISTRATION_FAILED, (payload) => payload);
-export const registrationSuccess = createAction(AUTH_REGISTRATION_SUCCESS, (payload) => payload);
+export const registrationSuccess = createAction(AUTH_REGISTRATION_SUCCESS);
 
 export const authClearError = createAction(AUTH_CLEAR_ERROR);
 export const authClear = createAction(AUTH_CLEAR);
