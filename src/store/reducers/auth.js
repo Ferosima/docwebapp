@@ -5,11 +5,14 @@ import {
   AUTH_REGISTRATION,
   AUTH_REGISTRATION_SUCCESS,
   AUTH_REGISTRATION_FAILED,
+  AUTH_SET_TOKEN,
   AUTH_CLEAR_ERROR,
-  AUTH_CLEAR,
+  AUTH_LOGOUT,
 } from "../types/auth";
 
 const initialState = {
+  accessToken: null,
+  refreshToken: null,
   isLoggedIn: false,
   panding: false,
   error: null,
@@ -28,6 +31,8 @@ export default function reducer(state = initialState, action) {
         error: null,
         panding: false,
         isLoggedIn: true,
+        refreshToken: action.payload.refreshToken,
+        accessToken: action.payload.accessToken,
       };
     case AUTH_LOGIN_FAILED:
       return {
@@ -45,6 +50,8 @@ export default function reducer(state = initialState, action) {
         ...state,
         panding: false,
         isLoggedIn: true,
+        refreshToken: action.payload.refreshToken,
+        accessToken: action.payload.accessToken,
       };
     case AUTH_REGISTRATION_FAILED:
       return {
@@ -52,14 +59,19 @@ export default function reducer(state = initialState, action) {
         panding: false,
         error: action.payload,
       };
+    case AUTH_SET_TOKEN:
+      return {
+        ...state,
+        accessToken: action.payload,
+      };
     case AUTH_CLEAR_ERROR:
       return {
         ...state,
         error: null,
       };
-    case AUTH_CLEAR:
+    case AUTH_LOGOUT:
       return {
-        ...state,
+        state,
       };
     default:
       return state;

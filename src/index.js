@@ -8,6 +8,9 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { history, persistor, store } from "./store/config";
 import Router from "./router";
+import { injectStore } from "./store/client";
+
+injectStore(store);
 
 ReactDOM.render(
   <React.StrictMode>

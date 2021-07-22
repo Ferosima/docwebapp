@@ -10,8 +10,8 @@ import { fetchUser } from "../actions/user";
 export function* login({ payload }) {
   try {
     const response = yield client.post("auth/login", payload);
-    yield put(loginSuccess());
-    storage.setItem("accessToken", response.data.accessToken);
+    yield put(loginSuccess(response.data));
+    // storage.setItem("accessToken", response.data.accessToken);
     yield put(fetchUser(response.data.user));
     yield put(push("/app"));
   } catch (e) {
