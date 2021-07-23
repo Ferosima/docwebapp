@@ -54,7 +54,7 @@ export const Item = styled(Link)`
   padding: 15px 0;
   color: #939499;
   text-decoration: inherit;
-  border-left: ${({ isActive }) => (isActive ? "3px solid #3751FF" : "3px solid transparent")};
+  border-left: ${({ isActive }) => (isActive ? "3px solid #3751FF" : "3px solid #D0D0D4")};
 
   p {
     font-family: Mulish;

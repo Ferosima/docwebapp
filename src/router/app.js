@@ -7,15 +7,14 @@ import Signatures from "../pages/SignaturesPage";
 const sidebar_routers = [
   {
     name: "Documents",
-    icon: "documents", // name must be from ./components/Icon/icons.js
-    path: "/app/documents/*",
-    exact: true,
+    icon: "documents",
+    path: "/app/documents/",
     main: () => <Documents />,
   },
   {
     name: "Signatures",
     icon: "signatures",
-    path: "/app/signatures/*",
+    path: "/app/signatures/",
     main: () => <Signatures />,
   },
 ];

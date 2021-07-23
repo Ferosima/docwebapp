@@ -1,18 +1,18 @@
-import React from 'react';
-import './style.css';
+import moment from "moment";
+import React from "react";
+import "./style.css";
 
-export default class DocumentsListItem extends React.Component {
-  render() {
-    const { data, empty } = this.props;
-    const { title, created_at } = data;
-    return (
-      <div className="documentsListItem">
-        <div className="document" />
-        <div className="infoContainer">
-          <p className="title">{title}</p>
-          <p className="subtitle">{created_at}</p>
-        </div>
+export function DocumentsListItem(props) {
+  const parseDate = (date) => moment(date).format("D.MM.YYYY");
+
+  const { name, created_at } = props.data;
+  return (
+    <div className="documentsListItem">
+      <div className="document" />
+      <div className="infoContainer">
+        <p className="title">{name}</p>
+        <p className="subtitle">{parseDate(created_at)}</p>
       </div>
-    );
-  }
+    </div>
+  );
 }

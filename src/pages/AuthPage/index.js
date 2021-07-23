@@ -22,8 +22,6 @@ class AuthPage extends React.Component {
   render() {
     const { login, auth, match } = this.props;
     const { path, url } = match;
-    console.log("MATCH", path, url);
-    console.log("AUTH", auth);
     return (
       <Wrapper>
         <Rectangle isEmpty />
