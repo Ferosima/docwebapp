@@ -10,7 +10,7 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 22;
-  padding: 50px;
+  padding: 30px 50px;
   align-items: center;
 
   @media (max-width: 680px) {
@@ -22,6 +22,7 @@ export const Logo = styled.div`
   flex-direction: row;
   width: 100%;
   align-items: center;
+  cursor: pointer;
 
   img {
     width: 32px;

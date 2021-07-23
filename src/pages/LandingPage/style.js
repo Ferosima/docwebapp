@@ -4,8 +4,8 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  overflow: scroll;
-  padding: 0 20px;
+  overflow-y: scroll;
+  padding: 0 50px;
 `;
 export const Logo = styled.div`
   display: flex;
@@ -33,6 +33,7 @@ export const Row = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: ${(props) => props?.padding};
+  margin: ${(props) => props?.margin};
 `;
 export const Column = styled.div`
   display: flex;

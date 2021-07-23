@@ -15,6 +15,10 @@ class AuthPage extends React.Component {
     this.props.authClearError();
   }
 
+  handleOnClick = (route) => () => {
+    this.props.history.push(route);
+  };
+
   render() {
     const { login, auth, match } = this.props;
     const { path, url } = match;
@@ -24,7 +28,7 @@ class AuthPage extends React.Component {
       <Wrapper>
         <Rectangle isEmpty />
         <FormWrapper>
-          <Logo>
+          <Logo onClick={this.handleOnClick("/")}>
             <img src={assetsData.images.Logo} alt="Logo" />
             <p>Docwebapp</p>
           </Logo>

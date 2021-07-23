@@ -22,7 +22,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Row padding="10px 0">
+        <Row padding="15px 0" margin="15px 0">
           <Logo onClick={this.handleOnClick("/")}>
             <img src={assetsData.images.Logo} alt="Logo" />
             <p>Docwebapp</p>
