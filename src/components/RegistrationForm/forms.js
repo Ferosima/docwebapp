@@ -1,6 +1,6 @@
 export const form_name = [
   {
-    name: "first_name",
+    name: "firstName",
     label: "First Name",
     type: "text",
     validation: {
@@ -8,7 +8,7 @@ export const form_name = [
     },
   },
   {
-    name: "last_name",
+    name: "secondName",
     label: "Last Name",
     type: "text",
     validation: {
@@ -25,15 +25,15 @@ export const form_data = [
       required: true,
     },
   },
-  {
-    name: "birthdate",
-    label: "Birth Date",
-    type: "date",
-    validation: {
-      required: true,
-      max: { value: new Date().toJSON(), message: "Not valide date" },
-    },
-  },
+  // {
+  //   name: "birthdate",
+  //   label: "Birth Date",
+  //   type: "date",
+  //   validation: {
+  //     required: true,
+  //     max: { value: new Date().toJSON(), message: "Not valide date" },
+  //   },
+  // },
   {
     name: "password",
     label: "Password",

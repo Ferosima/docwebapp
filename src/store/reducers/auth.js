@@ -49,9 +49,6 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         panding: false,
-        isLoggedIn: true,
-        refreshToken: action.payload.refreshToken,
-        accessToken: action.payload.accessToken,
       };
     case AUTH_REGISTRATION_FAILED:
       return {

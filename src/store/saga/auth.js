@@ -1,21 +1,33 @@
-import {
-  call, put, select, take,
-} from "redux-saga/effects";
-import storage from "redux-persist/lib/storage";
 import { push } from "connected-react-router";
-import client from "../client";
-import { loginSuccess, loginFailed } from "../actions/auth";
+import { call, put } from "redux-saga/effects";
+import {
+  loginFailed,
+  loginSuccess,
+  registrationFailed,
+  registrationSuccess,
+} from "../actions/auth";
 import { fetchUser } from "../actions/user";
+import client from "../client";
 
-export function* login({ payload }) {
+export function* login(payload) {
   try {
     const response = yield client.post("auth/login", payload);
     yield put(loginSuccess(response.data));
-    // storage.setItem("accessToken", response.data.accessToken);
     yield put(fetchUser(response.data.user));
     yield put(push("/app/documents/"));
   } catch (e) {
-    console.log("LOGIN ERROR", e);
-    yield put(loginFailed(e.message));
+    console.log("LOGIN ERROR", e.response.data);
+    yield put(loginFailed(e.response.data.message));
+  }
+}
+export function* registration({ payload }) {
+  try {
+    yield client.post("auth/register", payload);
+    const { email, password } = payload;
+    yield put(registrationSuccess());
+    yield call(login, { email, password });
+  } catch (e) {
+    console.log("REGISTRATION ERROR", e.response.data);
+    yield put(registrationFailed(e.response.data.message));
   }
 }

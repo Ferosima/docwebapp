@@ -1,16 +1,20 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useRouteMatch } from "react-router-dom";
-import { Wrapper } from "./style";
+import { Wrapper, ErrorText } from "./style";
 import { form_data, form_name } from "./forms";
 
-export default function RegistrationForm() {
+export default function RegistrationForm({ action, error, panding }) {
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const onSubmit = (data) => {
+    console.log(data);
+    action(data);
+  };
 
   const renderInput = ({
     name, label, type, validation,
@@ -29,7 +33,8 @@ export default function RegistrationForm() {
         <div className="row">{form_name.map(renderInput)}</div>
         {form_data.map(renderInput)}
         <input type="submit" value="Sing up" />
-      </form>{" "}
+      </form>
+      <ErrorText>{error || null}</ErrorText>
       <div className="row">
         <p>Do you have account?</p>
         <Link to="/auth/login">Log in</Link>

@@ -7,7 +7,7 @@ import assetsData from "../../assets/assetsData";
 import { FormWrapper, Logo, Rectangle, Wrapper } from "./style";
 import LoginForm from "../../components/LoginForm";
 import RegistrationForm from "../../components/RegistrationForm";
-import { login, authClearError } from "../../store/actions/auth";
+import { login, authClearError, registration } from "../../store/actions/auth";
 import { getAuthState } from "../../store/selectors/auth";
 
 class AuthPage extends React.Component {
@@ -20,7 +20,7 @@ class AuthPage extends React.Component {
   };
 
   render() {
-    const { login, auth, match } = this.props;
+    const { login, registration, auth, match } = this.props;
     const { path, url } = match;
     return (
       <Wrapper>
@@ -35,7 +35,7 @@ class AuthPage extends React.Component {
               <LoginForm action={login} error={auth.error} panding={auth.panding} />
             </Route>
             <Route exact path={`/auth/registration`}>
-              <RegistrationForm />
+              <RegistrationForm action={registration} error={auth.error} panding={auth.panding} />
             </Route>
           </Switch>
         </FormWrapper>
@@ -52,6 +52,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = {
   login,
+  registration,
   authClearError,
 };
 
