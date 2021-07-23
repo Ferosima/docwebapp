@@ -13,7 +13,7 @@ export function* login({ payload }) {
     yield put(loginSuccess(response.data));
     // storage.setItem("accessToken", response.data.accessToken);
     yield put(fetchUser(response.data.user));
-    yield put(push("/app"));
+    yield put(push("/app/documents/"));
   } catch (e) {
     console.log("LOGIN ERROR", e);
     yield put(loginFailed(e.message));

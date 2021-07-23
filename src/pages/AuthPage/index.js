@@ -4,9 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import assetsData from "../../assets/assetsData";
-import {
-  FormWrapper, Logo, Rectangle, Wrapper,
-} from "./style";
+import { FormWrapper, Logo, Rectangle, Wrapper } from "./style";
 import LoginForm from "../../components/LoginForm";
 import RegistrationForm from "../../components/RegistrationForm";
 import { login, authClearError } from "../../store/actions/auth";

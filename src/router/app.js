@@ -23,22 +23,12 @@ const sidebar_routers = [
 export default function AppRouter() {
   return (
     <Route>
-      <div
-        style={{
-          display: "flex",
-          height: "100%",
-          width: "100%",
-          background: "#f8f9fb",
-          overflow: "hidden",
-        }}
-      >
-        <Sidebar routers={sidebar_routers} />
-        <Switch>
-          {sidebar_routers.map((route, index) => (
-            <Route key={index} path={route.path} exact={route.exact} children={<route.main />} />
-          ))}
-        </Switch>
-      </div>
+      <Sidebar routers={sidebar_routers} />
+      <Switch>
+        {sidebar_routers.map((route, index) => (
+          <Route key={index} path={route.path} exact={route.exact} children={<route.main />} />
+        ))}
+      </Switch>
     </Route>
   );
 }
