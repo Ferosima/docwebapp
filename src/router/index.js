@@ -1,46 +1,39 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
-import Documents from "../pages/DocumentsPage";
-import Signatures from "../pages/SignaturesPage";
+import { Route, Switch } from "react-router-dom";
+import { PrivateRoute } from "../components/PrivateRoute";
+import { PublicRoute } from "../components/PublicRoute";
+import Auth from "../pages/AuthPage";
+import Landing from "../pages/LandingPage";
+import NoMatch from "../pages/NoMatch";
+import App from "./app";
 
-const sidebar_routers = [
+const app_routers = [
   {
-    name: "Documents",
-    icon: "documents", // name must be from ./components/Icon/icons.js
-    path: "/documents",
-    exact: true, // path must be '/' for exact:true
-    main: () => <Documents />,
+    path: "/",
+    exact: true,
+    main: () => <PublicRoute restricted component={Landing} exact />,
   },
   {
-    name: "Signatures",
-    icon: "signatures",
-    path: "/signatures",
-    main: () => <Signatures />,
+    path: "/auth/*",
+    exact: true,
+    main: () => <PublicRoute restricted component={Auth} exact />,
+  },
+  {
+    path: "/app/*",
+    exact: true,
+    main: () => <PrivateRoute component={App} exact />,
   },
 ];
 
-export default function SidebarExample() {
+export default function AppRouter() {
   return (
-    <Router>
-      <div
-        style={{
-          display: "flex",
-          height: "100%",
-          width: "100%",
-          background: "#f8f9fb",
-          overflow: "hidden",
-        }}
-      >
-        <Sidebar routers={sidebar_routers} />
-
-        {/* Router */}
-        <Switch>
-          {sidebar_routers.map((route, index) => (
-            <Route key={index} path={route.path} exact={route.exact} children={<route.main />} />
-          ))}
-        </Switch>
-      </div>
-    </Router>
+    <Switch>
+      {app_routers.map((route, index) => (
+        <Route key={index} path={route.path} exact={route.exact} children={<route.main />} />
+      ))}
+      <Route path="*">
+        <NoMatch />
+      </Route>
+    </Switch>
   );
 }
