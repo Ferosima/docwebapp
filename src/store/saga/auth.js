@@ -11,7 +11,7 @@ import client from "../client";
 
 export function* login(payload) {
   try {
-    const response = yield client.post("auth/login", payload);
+    const response = yield client.post("auth/login", payload?.payload || payload);
     yield put(loginSuccess(response.data));
     yield put(fetchUser(response.data.user));
     yield put(push("/app/documents/"));
