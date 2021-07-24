@@ -7,8 +7,7 @@ export default function reducer(state = initialState, action) {
     case USER_FETCH:
       return {
         ...state,
-        ...action.payyload,
-        // user: action.payload,
+        ...action.payload,
       };
     case USER_CLEAR:
       return {

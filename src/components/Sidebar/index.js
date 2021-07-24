@@ -5,8 +5,9 @@ import { compose } from "redux";
 import assetsData from "../../assets/assetsData";
 import { setSidebarState } from "../../store/actions/app";
 import { getSidebarState } from "../../store/selectors/app";
-import Icon from "../Icon";
-import { Arrow, Header, Item, SidebarWrapper } from "./style";
+import { getUserState } from "../../store/selectors/user";
+import { SidebarItem } from "../SidebarItem";
+import { Arrow, Header, SidebarWrapper, Container } from "./style";
 
 class Sidebar extends React.Component {
   state = {
@@ -19,34 +20,46 @@ class Sidebar extends React.Component {
 
   isMatch = (path) => this.props.location.pathname.includes(path);
 
-  renderItem = ({ path, icon, name }) => {
+  renderItem = ({ path, icon, name }, index) => {
     const { isOpen } = this.state;
-    const isMatch = this.isMatch(path);
-    return (
-      <Item to={path} isActive={isMatch} isOpen={isOpen}>
-        <Icon name={icon} color={isMatch ? "#3751FF" : null} size="1em" />
-        <p>{name}</p>
-        <div />
-      </Item>
-    );
+    return <SidebarItem key={index} isOpen={isOpen} path={path} name={name} icon={icon} />;
   };
 
   render() {
     const { isOpen } = this.state;
+    const { firstName, secondName } = this.props.user;
     return (
       <SidebarWrapper isOpen={isOpen}>
-        <Header isOpen={isOpen}>
-          <img src={assetsData.images.Logo} alt="Logo" />
-          <p>Docwebapp</p>
-        </Header>
-        <Arrow
-          name="arrowLeft"
-          size="20px"
-          color="#4D5F68"
-          onClick={() => this.handleClick()}
-          isOpen={isOpen}
-        />
-        {this.props.routers.map(this.renderItem)}
+        <Container>
+          <Header isOpen={isOpen}>
+            <img src={assetsData.images.Logo} alt="Logo" />
+            <p>Docwebapp</p>
+          </Header>
+          <Arrow
+            name="arrowLeft"
+            size="20px"
+            color="#4D5F68"
+            onClick={() => this.handleClick()}
+            isOpen={isOpen}
+          />
+          {this.props.routers.map(this.renderItem)}
+        </Container>
+        <Container padding="0 0 20px 0">
+          <SidebarItem
+            isOpen={isOpen}
+            path="/app/user/"
+            name={`${firstName} ${secondName}`}
+            icon="user"
+            withoutBorder
+          />
+          <SidebarItem
+            isOpen={isOpen}
+            path="/app/settings/"
+            name="Settings"
+            icon="settings"
+            withoutBorder
+          />
+        </Container>
       </SidebarWrapper>
     );
   }
@@ -54,6 +67,7 @@ class Sidebar extends React.Component {
 
 const mapStateToProps = (state) => ({
   isSidebarOpen: getSidebarState(state),
+  user: getUserState(state),
 });
 const mapDispatchToProps = {
   setSidebarState,

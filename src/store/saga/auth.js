@@ -6,7 +6,7 @@ import {
   registrationFailed,
   registrationSuccess,
 } from "../actions/auth";
-import { fetchUser } from "../actions/user";
+import { fetchUser, userClear } from "../actions/user";
 import client from "../client";
 
 export function* login(payload) {
@@ -30,4 +30,7 @@ export function* registration({ payload }) {
     console.log("REGISTRATION ERROR", e.response.data);
     yield put(registrationFailed(e.response.data.message));
   }
+}
+export function* logout() {
+  yield put(userClear());
 }

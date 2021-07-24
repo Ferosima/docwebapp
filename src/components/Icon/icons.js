@@ -12,7 +12,8 @@ import {
   HiOutlineArrowCircleRight,
 } from "react-icons/hi";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
-import { FaFileSignature } from "react-icons/fa";
+import { FaFileSignature, FaRegUserCircle, FaUserCircle } from "react-icons/fa";
+import { BiLogOut } from "react-icons/bi";
 
 export const icons = {
   documents: <IoDocumentsSharp />,
@@ -24,6 +25,9 @@ export const icons = {
   settingsOutline: <IoSettingsOutline />,
   arrowLeft: <HiOutlineArrowCircleLeft />,
   arrowRight: <HiOutlineArrowCircleRight />,
+  logout: <BiLogOut />,
+  user: <FaRegUserCircle />,
+  userOutline: <FaUserCircle />,
   undefined: <AiOutlineQuestionCircle />,
 };
 

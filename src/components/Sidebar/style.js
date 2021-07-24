@@ -1,17 +1,25 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Icon from "../Icon";
+import icon from "../Icon";
 
 export const SidebarWrapper = styled.div`
   -webkit-transition-duration: 1s;
   flex-direction: column;
   display: inline-flex;
   align-items: flex-end;
+  justify-content: space-between;
   overflow: hidden;
-  //   flex-shrink:0; to match the width
   width: ${({ isOpen }) => (isOpen ? "250px" : "110px")};
   border: 1px solid #c7c7cc;
 `;
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: inherit;
+  width: 100%;
+  padding: ${(props) => props?.padding};
+`;
+
 export const Header = styled.div`
   display: flex;
   flex-direction: row;
@@ -36,32 +44,9 @@ export const Header = styled.div`
     max-width: ${({ isOpen }) => (isOpen ? "100%" : "0%")};
   }
 `;
-export const Arrow = styled(Icon)`
+export const Arrow = styled(icon)`
   -webkit-transition-duration: 0.5s;
   cursor: pointer;
   padding: 6px;
   transform: ${({ isOpen }) => (isOpen ? "rotate(360deg)" : "rotate(180deg)")};
-`;
-
-export const Item = styled(Link)`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: center;
-  align-content: center;
-  align-self: flex-start;
-  align-items: center;
-  padding: 15px 0;
-  color: #939499;
-  text-decoration: inherit;
-  border-left: ${({ isActive }) => (isActive ? "3px solid #3751FF" : "3px solid #D0D0D4")};
-
-  p {
-    font-family: Mulish;
-    font-size: 16px;
-    overflow: hidden;
-    max-width: ${({ isOpen }) => (isOpen ? "100%" : "0%")};
-    padding: ${({ isOpen }) => (isOpen ? "0 23px" : "0px")};
-    -webkit-transition-duration: 1s;
-  }
 `;
