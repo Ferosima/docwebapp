@@ -9,6 +9,7 @@ import {
   AUTH_SET_TOKEN,
   AUTH_CLEAR_ERROR,
   AUTH_LOGOUT,
+  AUTH_CLEAR,
 } from "../types/auth";
 
 export const login = createAction(AUTH_LOGIN, (payload) => payload);
@@ -22,5 +23,7 @@ export const registrationSuccess = createAction(AUTH_REGISTRATION_SUCCESS, (payl
 export const setToken = createAction(AUTH_SET_TOKEN, (payload) => payload);
 
 export const logout = createAction(AUTH_LOGOUT);
+
+export const authClear = createAction(AUTH_CLEAR);
 
 export const authClearError = createAction(AUTH_CLEAR_ERROR);

@@ -6,6 +6,7 @@ import {
   AUTH_REGISTRATION_SUCCESS,
   AUTH_REGISTRATION_FAILED,
   AUTH_SET_TOKEN,
+  AUTH_CLEAR,
   AUTH_CLEAR_ERROR,
   AUTH_LOGOUT,
 } from "../types/auth";
@@ -56,6 +57,10 @@ export default function reducer(state = initialState, action) {
         panding: false,
         error: action.payload,
       };
+    case AUTH_LOGOUT:
+      return {
+        state,
+      };
     case AUTH_SET_TOKEN:
       return {
         ...state,
@@ -66,10 +71,11 @@ export default function reducer(state = initialState, action) {
         ...state,
         error: null,
       };
-    case AUTH_LOGOUT:
+    case AUTH_CLEAR:
       return {
         state,
       };
+
     default:
       return state;
   }

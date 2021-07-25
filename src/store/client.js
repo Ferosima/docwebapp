@@ -1,6 +1,7 @@
 import axios from "axios";
 import storage from "redux-persist/lib/storage";
-import { logout, setToken } from "./actions/auth";
+import { logout, setToken, authClear } from "./actions/auth";
+import { userClear } from "./actions/user";
 
 export const API_URL = "http://localhost:3000";
 
@@ -29,12 +30,12 @@ client.interceptors.response.use(
       originalRequest._isRetry = true;
       try {
         const response = await axios.get(`${API_URL}/auth/refresh`, { withCredentials: true });
-        // storage.setItem("accessToken", response.data.accessToken);
         store.dispatch(setToken(response.data.accessToken));
         return client.request(originalRequest);
       } catch (e) {
         console.log("НЕ АВТОРИЗОВАН");
-        store.dispatch(logout());
+        store.dispatch(authClear());
+        store.dispatch(userClear());
       }
     }
     throw error;
