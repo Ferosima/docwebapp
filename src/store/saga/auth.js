@@ -32,5 +32,10 @@ export function* registration({ payload }) {
   }
 }
 export function* logout() {
-  yield put(userClear());
+  try {
+    yield put(userClear());
+    yield client.post("auth/logout");
+  } catch (e) {
+    console.log("LOGOUT ERROR", e.response.data);
+  }
 }
