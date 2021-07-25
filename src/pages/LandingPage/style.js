@@ -21,7 +21,7 @@ export const Logo = styled.div`
   }
 
   p {
-    font-family: Mulish-SemiBold;
+    font-family: Roboto-Medium;
     font-size: 17px;
     color: #3751ff;
   }
@@ -49,13 +49,13 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.p`
-  font-family: Mulish-SemiBold;
+  font-family: Roboto-Medium;
   font-size: 36px;
   padding: ${(props) => props?.padding};
 `;
 
 export const Subtitle = styled.p`
-  font-family: Mulish-Light;
+  font-family: Roboto-Light;
   font-size: 24px;
 `;
 

@@ -4,7 +4,7 @@ import { Icon, Item } from "./style";
 
 export function SidebarItem(props) {
   const {
-    path, icon, image, name, withoutBorder, isOpen,
+    path, icon, image, name, withoutBorder, isOpen, ...other
   } = props;
   const isMatch = useRouteMatch(path);
   return (

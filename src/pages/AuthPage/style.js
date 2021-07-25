@@ -14,7 +14,8 @@ export const FormWrapper = styled.div`
   align-items: center;
 
   @media (max-width: 680px) {
-    padding: 20px;
+    /* padding: 20px; */
+    padding: 20px 30px 0 20px;
   }
 `;
 export const Logo = styled.div`
@@ -31,7 +32,7 @@ export const Logo = styled.div`
   }
 
   p {
-    font-family: Mulish-SemiBold;
+    font-family: Roboto-Medium;
     font-size: 17px;
     color: #3751ff;
   }

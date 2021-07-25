@@ -18,7 +18,7 @@ module.exports = {
     "eslint import/no-unresolved": 0,
     "react/jsx-filename-extension": 0,
     "no-unused-vars": 1,
-    "react/prop-types": 1,
+    "react/prop-types": 0,
     "react/prefer-stateless-function": 0,
     "react/no-children-prop": 0,
     "react/no-array-index-key": 0,

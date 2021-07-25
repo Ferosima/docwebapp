@@ -12,11 +12,12 @@ export const Item = styled(Link)`
   align-items: center;
   padding: 15px 0;
   color: #939499;
+  color: ${({ isActive }) => (isActive ? "#0B152D" : "#939499")};
   text-decoration: inherit;
-  border-left: ${({ isActive, withoutBorder }) => withoutBorder || (isActive ? "3px solid #3751FF" : "3px solid #D0D0D4")};
+  border-left: ${({ isActive, withoutBorder }) => withoutBorder || (isActive ? "4px solid #3751FF" : "4px solid #D0D0D4")};
 
   p {
-    font-family: Mulish;
+    font-family: Roboto;
     font-size: 16px;
     overflow: hidden;
     width: 60%;

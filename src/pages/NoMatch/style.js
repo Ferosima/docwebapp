@@ -12,10 +12,10 @@ export const Wrapper = styled.div`
 export const Title = styled.h1`
   margin: 0;
   font-size: 96px;
-  font-family: Mulish-Black;
+  font-family: Roboto-Black;
 `;
 export const Text = styled.h1`
   font-size: 24px;
-  font-family: Mulish;
+  font-family: Roboto;
   text-align: center;
 `;

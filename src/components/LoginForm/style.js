@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   }
 
   h1 {
-    font-family: Mulish-Black;
+    font-family: Roboto-Black;
     font-size: 48px;
     align-self: end;
     color: #263238;
@@ -49,7 +49,7 @@ export const Wrapper = styled.div`
     a,
     p {
       padding: 5px 0 15px 0;
-      font-family: Mulish-SemiBold;
+      font-family: Roboto-Medium;
       font-size: 13px;
     }
 
@@ -79,7 +79,7 @@ export const Wrapper = styled.div`
       padding: 5px 0;
       color: #263238;
       font-size: 16px;
-      font-family: Mulish;
+      font-family: Roboto;
     }
 
     button[type="submit"],
@@ -92,7 +92,7 @@ export const Wrapper = styled.div`
       margin:5px 0;
       width: 100%;
       font-size: 20px;
-      font-family: Mulish;
+      font-family: Roboto;
     }
 
     input:focus {
@@ -119,7 +119,7 @@ export const Wrapper = styled.div`
 
 
   a {
-    font-family: Mulish-SemiBold;
+    font-family: Roboto-Medium;
     color: #2f49fb;
     cursor:pointer;
   }
@@ -131,7 +131,7 @@ export const Wrapper = styled.div`
 `;
 export const ErrorText = styled.p`
   padding: 5px 0 15px 0;
-  font-family: Mulish-SemiBold;
+  font-family: Roboto-Medium;
   font-size: 13px;
   color: #d80404;
   align-self: self-end;

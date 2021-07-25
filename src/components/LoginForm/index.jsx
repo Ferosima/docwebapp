@@ -34,7 +34,7 @@ export default function LoginForm({ action, error, panding }) {
           <a onClick={() => console.log("Посилання було натиснуте.")}>Forgot password?</a>
         </div>
         <input type="submit" value="Log in" />
-      </form>{" "}
+      </form>
       <ErrorText>{error || null}</ErrorText>
       <div className="row">
         <p>Not registered yet?</p>

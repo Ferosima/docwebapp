@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1;
   width: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
   padding: 30px 20px;
 `;

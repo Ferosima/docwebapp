@@ -4,7 +4,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Mulish, sans-serif;
+  font-family: Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
@@ -25,7 +25,7 @@ p, button {
   background-color: unset;
   border: unset;
   outline: none;
-  font-family: 'Mulish'
+  font-family: 'Roboto'
 }
 
 button {
@@ -38,22 +38,27 @@ button {
 }
 
 @font-face {
-  font-family: 'Mulish';
-  src: local('mulish'), url(./assets//fonts/Mulish-Regular.ttf) format('opentype');
+  font-family: 'Roboto';
+  src: local('Roboto'), url(./assets//fonts/Roboto-Regular.ttf) format('opentype');
   font-weight: normal;
 }
 
 @font-face {
-  font-family: 'Mulish-Light';
-  src: local('mulish'), url(./assets//fonts/Mulish-Light.ttf) format('opentype');
+  font-family: 'Roboto-Light';
+  src: local('Roboto'), url(./assets//fonts/Roboto-Light.ttf) format('opentype');
 }
 
 @font-face {
-  font-family: 'Mulish-SemiBold';
-  src: local('mulish'), url(./assets//fonts/Mulish-SemiBold.ttf) format('opentype');
+  font-family: 'Roboto-Medium';
+  src: local('Roboto'), url(./assets//fonts/Roboto-Medium.ttf) format('opentype');
 }
 
 @font-face {
-  font-family: 'Mulish-Black';
-  src: local('mulish'), url(./assets//fonts/Mulish-Black.ttf) format('opentype');
+  font-family: 'Roboto-Bold';
+  src: local('Roboto'), url(./assets//fonts/Roboto-Bold.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Roboto-Black';
+  src: local('Roboto'), url(./assets//fonts/Roboto-Black.ttf) format('opentype');
 }
