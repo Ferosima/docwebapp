@@ -46,6 +46,7 @@ export const Container = styled.div`
   display: flex;
   padding: ${(props) => props?.padding};
   height: ${(props) => props?.height};
+  justify-content: center;
 `;
 
 export const Title = styled.p`

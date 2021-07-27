@@ -4,12 +4,12 @@ import icon from "../Icon";
 
 export const SidebarWrapper = styled.div`
   -webkit-transition-duration: 1s;
+  display: flex;
   flex-direction: column;
-  display: inline-flex;
   align-items: flex-end;
   justify-content: space-between;
   overflow: hidden;
-  width: ${({ isOpen }) => (isOpen ? "250px" : "110px")};
+  width: ${({ isOpen }) => (isOpen ? "250px" : "70px")};
   border: 1px solid #c7c7cc;
 `;
 export const Container = styled.div`
@@ -38,7 +38,7 @@ export const Header = styled.div`
   p {
     font-family: Roboto-Medium;
     font-size: 17px;
-    color: #3751ff;
+    color: #426ef3;
     overflow: hidden;
     -webkit-transition-duration: 1s;
     max-width: ${({ isOpen }) => (isOpen ? "100%" : "0%")};

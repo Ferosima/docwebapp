@@ -5,26 +5,37 @@ import icon from "../Icon";
 export const Item = styled(Link)`
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: calc(100% - 30px);
   justify-content: center;
-  align-content: center;
-  align-self: flex-start;
+  align-self: center;
   align-items: center;
-  padding: 15px 0;
+  padding: 15px 5px;
   color: #939499;
-  color: ${({ isActive }) => (isActive ? "#0B152D" : "#939499")};
+  color: ${({ isActive }) => (isActive ? "#F8F9FB" : "#939499")};
   text-decoration: inherit;
-  border-left: ${({ isActive, withoutBorder }) => withoutBorder || (isActive ? "4px solid #3751FF" : "4px solid #D0D0D4")};
+  background-color: ${({ isActive }) => (isActive ? "#426EF3" : "transparent")};
 
+  border-radius: 10px;
+
+  :hover {
+    background-color: ${({ isActive }) => (isActive ? "#426EF3" : "#E4EBFA")};
+    color: ${({ isActive }) => (isActive ? "#F8F9FB" : "#678ABE")};
+  }
   p {
     font-family: Roboto;
     font-size: 16px;
     overflow: hidden;
+    white-space: nowrap;
     width: 60%;
     max-width: ${({ isOpen }) => (isOpen ? "100%" : "0%")};
     -webkit-transition-duration: 1s;
+    -webkit-transition-property: max-width;
   }
 `;
 export const Icon = styled(icon)`
-  width: 40%;
+  align-items: center;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  height: 20px;
+  width: ${({ isOpen }) => (isOpen ? "30%" : "100%")};
 `;

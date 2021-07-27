@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouteMatch } from "react-router-dom";
-import { Icon, Item } from "./style";
+import { Wrapper, Icon, Item } from "./style";
 
 export function SidebarItem(props) {
   const {
@@ -10,7 +10,15 @@ export function SidebarItem(props) {
   return (
     <Item to={path} isActive={isMatch} isOpen={isOpen} withoutBorder={withoutBorder}>
       {/* TODO ADD IMAGE  */}
-      {icon && <Icon name={icon} color={isMatch ? "#3751FF" : null} size="1em" />}
+      {icon && (
+        <Icon
+          isOpen={isOpen}
+          name={icon}
+          color={isMatch ? "#F8F9FB" : null}
+          size={isOpen ? "17px" : "20px"}
+          isOutline={!isMatch}
+        />
+      )}
       <p>{name}</p>
       <div />
     </Item>

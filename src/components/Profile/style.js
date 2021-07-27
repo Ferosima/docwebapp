@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
     width: -webkit-fill-available;
     padding: 0 80px;
-    max-width: 500px;
+    max-width: 650px;
   }
 `;
 export const Row = styled.div`

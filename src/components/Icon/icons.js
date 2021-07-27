@@ -14,20 +14,25 @@ import {
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { FaFileSignature, FaRegUserCircle, FaUserCircle } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
+import {
+  RiPenNibFill, RiPenNibLine, RiPencilFill, RiPencilLine,
+} from "react-icons/ri";
 
 export const icons = {
   documents: <IoDocumentsSharp />,
   documentsOutline: <IoDocumentsOutline />,
   pen: <HiPencil />,
   penOutline: <HiOutlinePencil />,
-  signatures: <FaFileSignature />,
+  signatures: <HiPencil />,
+  signaturesOutline: <HiOutlinePencil />,
+  // signatures: <FaFileSignature />,
   settings: <IoSettingsOutline />,
   settingsOutline: <IoSettingsOutline />,
   arrowLeft: <HiOutlineArrowCircleLeft />,
   arrowRight: <HiOutlineArrowCircleRight />,
   logout: <BiLogOut />,
-  user: <FaRegUserCircle />,
-  userOutline: <FaUserCircle />,
+  user: <FaUserCircle />,
+  userOutline: <FaRegUserCircle />,
   undefined: <AiOutlineQuestionCircle />,
 };
 

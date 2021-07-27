@@ -34,7 +34,7 @@ export const Logo = styled.div`
   p {
     font-family: Roboto-Medium;
     font-size: 17px;
-    color: #3751ff;
+    color: #426EF3;
   }
 `;
 

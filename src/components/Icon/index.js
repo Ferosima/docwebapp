@@ -6,7 +6,7 @@ import { icons } from "./icons";
 export default class Icon extends React.Component {
   render() {
     const {
-      name, color, className, size, style, onClick,
+      name, color, className, size, style, onClick, isOutline,
     } = this.props;
     return (
       <IconContext.Provider
@@ -18,7 +18,7 @@ export default class Icon extends React.Component {
       >
         {/* If you wanna add new icon add it to icons.js */}
         <Wrapper className={`wrapper ${className}`} onClick={onClick}>
-          {icons[name] ? icons[name] : icons.undefined}
+          {(isOutline && icons[`${name}Outline`]) || icons[name] || icons.undefined}
         </Wrapper>
       </IconContext.Provider>
     );

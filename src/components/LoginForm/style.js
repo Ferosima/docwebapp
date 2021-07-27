@@ -84,7 +84,7 @@ export const Wrapper = styled.div`
 
     button[type="submit"],
     input[type="submit"] {
-      background: #2f4afb;
+      background: #426EF3;
       border-radius: 10px;
       color: white;
       border: none;
