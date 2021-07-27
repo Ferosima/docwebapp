@@ -10,11 +10,11 @@ export const Item = styled(Link)`
   align-self: center;
   align-items: center;
   padding: 15px 5px;
+  margin: 5px 0;
   color: #939499;
   color: ${({ isActive }) => (isActive ? "#F8F9FB" : "#939499")};
-  text-decoration: inherit;
   background-color: ${({ isActive }) => (isActive ? "#426EF3" : "transparent")};
-
+  text-decoration: inherit;
   border-radius: 10px;
 
   :hover {

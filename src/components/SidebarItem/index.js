@@ -15,7 +15,7 @@ export function SidebarItem(props) {
           isOpen={isOpen}
           name={icon}
           color={isMatch ? "#F8F9FB" : null}
-          size={isOpen ? "17px" : "20px"}
+          size="20px"
           isOutline={!isMatch}
         />
       )}
