@@ -5,16 +5,20 @@ import {
   loginSuccess,
   registrationFailed,
   registrationSuccess,
+  setToken,
 } from "../actions/auth";
 import { fetchUser, userClear } from "../actions/user";
 import client from "../client";
+import { fetchCurrentWorkspace } from "./workspaces";
 
 export function* login(payload) {
   try {
     const response = yield client.post("auth/login", payload?.payload || payload);
-    yield put(loginSuccess(response.data));
+    yield put(setToken(response.data.accessToken));
+    const isHaveworkspace = yield call(fetchCurrentWorkspace);
     yield put(fetchUser(response.data.user));
-    yield put(push("/app/documents/"));
+    yield put(loginSuccess(response.data));
+    yield put(push(isHaveworkspace ? "/app/documents/" : "/app/workspace/"));
   } catch (e) {
     console.log("LOGIN ERROR", e.response.data);
     yield put(loginFailed(e.response.data.message));
@@ -34,7 +38,7 @@ export function* registration({ payload }) {
 export function* logout() {
   try {
     yield put(userClear());
-    yield client.post("auth/logout");
+    const response = yield client.post("auth/logout");
   } catch (e) {
     console.log("LOGOUT ERROR", e.response.data);
   }

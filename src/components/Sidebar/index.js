@@ -4,8 +4,11 @@ import { withRouter } from "react-router";
 import { compose } from "redux";
 import assetsData from "../../assets/assetsData";
 import { setSidebarState } from "../../store/actions/app";
+import { logout } from "../../store/actions/auth";
 import { getSidebarState } from "../../store/selectors/app";
 import { getUserState } from "../../store/selectors/user";
+import { getCurrentWorkspacesState, getWorkspacesState } from "../../store/selectors/workspaces";
+// import { routers, default_routers } from "./routes";
 import { SidebarItem } from "../SidebarItem";
 import { Arrow, Header, SidebarWrapper, Container } from "./style";
 
@@ -27,14 +30,25 @@ class Sidebar extends React.Component {
 
   render() {
     const { isOpen } = this.state;
-    const { firstName, secondName } = this.props.user;
+    const { user, logout, currentWorkspace } = this.props;
+    const { firstName, secondName } = user;
     return (
       <SidebarWrapper isOpen={isOpen}>
         <Container>
-          <Header isOpen={isOpen}>
-            <img src={assetsData.images.Logo} alt="Logo" />
-            <p>Docwebapp</p>
-          </Header>
+          {currentWorkspace ? (
+            <Header isOpen={isOpen}>
+              <img src={assetsData.images.Logo} alt="Logo" />
+              <p>Docwebapp</p>
+            </Header>
+          ) : (
+            <SidebarItem
+              style={{ margin: "20px 0 0" }}
+              isOpen={isOpen}
+              path="/app/workspace/"
+              name={`Create workspace`}
+              icon="user"
+            />
+          )}
           <Arrow
             name="arrowLeft"
             size="20px"
@@ -42,7 +56,7 @@ class Sidebar extends React.Component {
             onClick={() => this.handleClick()}
             isOpen={isOpen}
           />
-          {this.props.routers.map(this.renderItem)}
+          {this.props.default_routers.map(this.renderItem)}
         </Container>
         <Container padding="0 0 20px 0">
           <SidebarItem
@@ -50,15 +64,8 @@ class Sidebar extends React.Component {
             path="/app/user/"
             name={`${firstName} ${secondName}`}
             icon="user"
-            withoutBorder
           />
-          <SidebarItem
-            isOpen={isOpen}
-            path="/app/settings/"
-            name="Settings"
-            icon="settings"
-            withoutBorder
-          />
+          <SidebarItem isOpen={isOpen} onClick={logout} name="Log out" icon="logout" isNonActive />
         </Container>
       </SidebarWrapper>
     );
@@ -67,10 +74,12 @@ class Sidebar extends React.Component {
 
 const mapStateToProps = (state) => ({
   isSidebarOpen: getSidebarState(state),
+  currentWorkspace: getCurrentWorkspacesState(state),
   user: getUserState(state),
 });
 const mapDispatchToProps = {
   setSidebarState,
+  logout,
 };
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

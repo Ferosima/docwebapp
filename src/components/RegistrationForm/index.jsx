@@ -1,7 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useRouteMatch } from "react-router-dom";
-import { Wrapper, ErrorText } from "./style";
+import ClipLoader from "react-spinners/ClipLoader";
+import {
+  Wrapper, ErrorText, Button, Label, Row, Text, Column,
+} from "./style";
 import { form_data, form_name } from "./forms";
 
 export default function RegistrationForm({ action, error, panding }) {
@@ -18,27 +21,29 @@ export default function RegistrationForm({ action, error, panding }) {
 
   const renderInput = ({
     name, label, type, validation,
-  }) => (
-    <div className="input_wrapper">
-      <label htmlFor={name}>{label}</label>
+  }, index) => (
+    <Column>
+      <Label htmlFor={name}>{label}</Label>
       <input type={type} {...register(name, validation)} />
-      <p>{errors[name] ? errors[name].message || `${label} is required` : null}</p>
-    </div>
+      <ErrorText>{errors[name] ? errors[name].message || `${label} is required` : null}</ErrorText>
+    </Column>
   );
 
   return (
     <Wrapper>
       <h1>Getting started</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="row">{form_name.map(renderInput)}</div>
+        <Row>{form_name.map(renderInput)}</Row>
         {form_data.map(renderInput)}
-        <input type="submit" value="Sing up" />
+        <Button onClick={!panding && handleSubmit(onSubmit)}>
+          {panding ? <ClipLoader color="#fff" loading={panding} size={20} /> : <p>Sing up</p>}
+        </Button>
       </form>
-      <ErrorText>{error || null}</ErrorText>
-      <div className="row">
-        <p>Do you have account?</p>
+      {error && <ErrorText>{error}</ErrorText>}
+      <Row>
+        <Text>Do you have account?</Text>
         <Link to="/auth/login">Log in</Link>
-      </div>
+      </Row>
     </Wrapper>
   );
 }

@@ -1,13 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Sidebar from "../components/Sidebar";
 import Documents from "../pages/DocumentsPage";
 import Signatures from "../pages/SignaturesPage";
 import Settings from "../pages/SettingsPage";
 import User from "../pages/UserPage";
+import People from "../pages/PeoplePage";
+import Notifications from "../pages/NotificationsPage";
 import NoMatch from "../pages/NoMatch";
+import Workspace from "../pages/WorkspacePage";
+import { getCurrentWorkspacesState } from "../store/selectors/workspaces";
 
-const sidebar_routers = [
+const routers = [
   {
     name: "Documents",
     icon: "documents",
@@ -20,18 +25,48 @@ const sidebar_routers = [
     path: "/app/signatures/",
     main: () => <Signatures />,
   },
+  {
+    name: "People",
+    icon: "people",
+    path: "/app/people/",
+    main: () => <People />,
+  },
+];
+
+const default_routers = [
+  {
+    name: "Notifications",
+    icon: "notifications",
+    path: "/app/notifications/",
+    main: () => <Notifications />,
+  },
+  {
+    name: "Settings",
+    icon: "settings",
+    path: "/app/settings/",
+    main: () => <Settings />,
+  },
 ];
 
 export default function AppRouter() {
+  const currentWorkspace = useSelector(getCurrentWorkspacesState);
   return (
     <Route>
-      <Sidebar routers={sidebar_routers} />
+      <Sidebar
+        routers={routers}
+        currentWorkspace={currentWorkspace}
+        default_routers={default_routers}
+      />
       <Switch>
-        {sidebar_routers.map((route, index) => (
+        {currentWorkspace
+          && routers.map((route, index) => (
+            <Route key={index} path={route.path} exact={route.exact} children={<route.main />} />
+          ))}
+        {default_routers.map((route, index) => (
           <Route key={index} path={route.path} exact={route.exact} children={<route.main />} />
         ))}
+        <Route path="/app/workspace/*" children={<Workspace />} />
         <Route path="/app/user/*" children={<User />} />
-        <Route path="/app/settings/*" children={<Settings />} />
         <Route path="*">
           <NoMatch />
         </Route>

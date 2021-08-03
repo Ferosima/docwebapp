@@ -4,11 +4,27 @@ import { Wrapper, Icon, Item } from "./style";
 
 export function SidebarItem(props) {
   const {
-    path, icon, image, name, withoutBorder, isOpen, ...other
+    path,
+    icon,
+    image,
+    name,
+    withoutBorder,
+    isOpen,
+    onClick,
+    isNonActive,
+    style,
+    ...other
   } = props;
-  const isMatch = useRouteMatch(path);
+  const isMatch = !isNonActive && useRouteMatch(path);
   return (
-    <Item to={path} isActive={isMatch} isOpen={isOpen} withoutBorder={withoutBorder}>
+    <Item
+      style={style}
+      to={path}
+      isActive={isMatch}
+      isOpen={isOpen}
+      withoutBorder={withoutBorder}
+      onClick={onClick}
+    >
       {/* TODO ADD IMAGE  */}
       {icon && (
         <Icon
@@ -20,7 +36,6 @@ export function SidebarItem(props) {
         />
       )}
       <p>{name}</p>
-      <div />
     </Item>
   );
 }

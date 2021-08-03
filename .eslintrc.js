@@ -49,6 +49,7 @@ module.exports = {
     "no-param-reassign": 1,
     "import/no-cycle": 1,
     "no-underscore-dangle": 1,
+    "import/no-unresolved": 1,
     quotes: 0,
     camelcase: 0,
   },

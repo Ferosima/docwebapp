@@ -1,5 +1,54 @@
 import styled from "styled-components";
 
+export const Label = styled.p`
+  margin: 0;
+  padding: 5px 0;
+  color: #263238;
+  font-size: 16px;
+  font-family: Roboto;
+`;
+export const Text = styled.p`
+  padding: 5px 5px 15px 0;
+  font-family: Roboto;
+  font-size: 13px;
+`;
+
+export const Button = styled.div`
+  display: flex;
+  justify-content: center;
+  background: #426ef3;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  padding: 15px;
+  margin: 5px 10px;
+  font-size: 20px;
+  font-family: Roboto;
+
+  :active {
+    // transition: 0.3s all;
+    transform: none;
+    opacity: 0.8;
+  }
+  p {
+    padding: 0;
+    color: white;
+  }
+`;
+
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  align-items: baseline;
+`;
+export const Column = styled.div`
+  display: flex;
+  flex: 1;
+  margin: 0 10px;
+  flex-direction: column;
+`;
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -9,62 +58,33 @@ export const Wrapper = styled.div`
   max-width: 700px;
   width: -webkit-fill-available;
 
-  .row {
-    display: flex;
-    flex-direction: row;
-    align-self: flex-start;
-  }
-
   h1 {
-    font-family:Roboto-Black;
+    font-family: Roboto-Black;
     font-size: 48px;
     align-self: end;
     color: #263238;
     margin: 0;
     padding: 0 0 60px 0;
   }
-  
+
   @media (max-width: 680px) {
-    h1{
+    h1 {
       padding: 30px 0;
     }
-   }
-  
+  }
 
   form {
     display: flex;
     flex-direction: column;
     width: -webkit-fill-available;
-
-    .row {
-        margin:0 -10px;
+    margin: 0 -10px;
+    
+    div${Row} {
       align-self: inherit;
       justify-content: space-between;
-
-      .input_wrapper{
-        flex: 1 ;
-        margin:0 10px;
-    }
-    }
-    
-    a,
-    p {
-      padding: 5px 0 15px 0;
-      font-family: Roboto-Medium;
-      font-size: 13px;
-    }
-
-    p {
-      color: #d80404;
-    }
-
-    a {
-      color: #2f49fb;
-      text-decoration-line: none;
     }
 
     input {
-      font-family: Roboto;
       outline: none;
       display: block;
       box-sizing: border-box;
@@ -76,64 +96,17 @@ export const Wrapper = styled.div`
       font-size: 16px;
     }
 
-    label {
-      margin: 0;
-      padding: 5px 0;
-      color: #263238;
-      font-size: 16px;
-      font-family: Roboto;
-    }
-
-    button[type="submit"],
-    input[type="submit"] {
-      background: #426EF3;
-      border-radius: 10px;
-      color: white;
-      border: none;
-      padding: 15px;
-      margin:5px 0;
-      width: 100%;
-      font-size: 20px;
-      font-family: Roboto;
-    }
-
     input:focus {
       border: 1px solid #2339c3;
     }
-
-    a:active,
-    button[type="submit"]:active,
-    input[type="button"]:active,
-    input[type="submit"]:active {
-      // transition: 0.3s all;
-      transform: none;
-      opacity: 0.8;
-    }
-    
   }
-
-  a,
-  p {
-    padding: 5px 0 15px 0;
-    font-size: 13px;
-  }
-
-  p {
-    padding-right: 5px;
-  }
-
   a {
+    padding: 5px 0 5px 0;
     font-family: Roboto-Medium;
+    font-size: 13px;
     color: #2f49fb;
-    cursor:pointer;
   }
-  a:active
- {
-    opacity: 0.8;
-  }
-}
 `;
-
 export const ErrorText = styled.p`
   padding: 5px 0 15px 0;
   font-family: Roboto-Medium;

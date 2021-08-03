@@ -1,21 +1,28 @@
 import { combineReducers } from "redux";
-import { persistReducer } from "redux-persist";
+import { persistReducer, createTransform } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { connectRouter } from "connected-react-router";
 import { createBrowserHistory } from "history";
-
+import * as Flatted from "flatted";
 import app from "./app";
 import auth from "./auth";
 import user from "./user";
 import documents from "./documents";
+import workspaces from "./workspaces";
 
 const history = createBrowserHistory();
+
+export const transformCircular = createTransform(
+  (inboundState, key) => Flatted.stringify(inboundState),
+  (outboundState, key) => Flatted.parse(outboundState),
+);
 
 const rootPersistConfig = {
   key: "root",
   storage,
-  blacklist: ["app", "documents"],
+  blacklist: ["app", "documents", "workspaces"],
   whitelist: ["user", "auth"],
+  transforms: [transformCircular],
 };
 
 const rootReducer = (history) => combineReducers({
@@ -24,6 +31,7 @@ const rootReducer = (history) => combineReducers({
   auth,
   user,
   documents,
+  workspaces,
 });
 
 const reducers = persistReducer(rootPersistConfig, rootReducer(history));

@@ -7,6 +7,7 @@ export const Item = styled(Link)`
   flex-direction: row;
   width: calc(100% - 30px);
   justify-content: center;
+  /* justify-content: end; */
   align-self: center;
   align-items: center;
   padding: 15px 5px;
@@ -26,16 +27,14 @@ export const Item = styled(Link)`
     font-size: 16px;
     overflow: hidden;
     white-space: nowrap;
-    width: 60%;
-    max-width: ${({ isOpen }) => (isOpen ? "100%" : "0%")};
-    -webkit-transition-duration: 1s;
-    -webkit-transition-property: max-width;
+    width: 100%;
+    /* max-width: ${({ isOpen }) => (isOpen ? "100%" : "0%")}; */
+    transition-duration: 1s;
+    transition-property: width;
+    user-select: none;
   }
 `;
 export const Icon = styled(icon)`
-  align-items: center;
-  -webkit-transition-duration: 1s;
-  transition-duration: 1s;
   height: 20px;
-  width: ${({ isOpen }) => (isOpen ? "30%" : "100%")};
+  padding: 0 15px;
 `;
