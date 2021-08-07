@@ -3,10 +3,12 @@ import { all, takeLatest } from "redux-saga/effects";
 import * as auth from "../actions/auth";
 import * as documents from "../actions/documents";
 import * as workspaces from "../actions/workspaces";
+import * as organizations from "../actions/organizations";
 
 import { login, registration, logout } from "./auth";
 import { fetchDocuments } from "./documents";
-import { fetchWorkspaces, fetchCurrentWorkspace } from "./workspaces";
+import { fetchWorkspaces, fetchCurrentWorkspace, createWorkspace } from "./workspaces";
+import { createOrganization } from "./organizations";
 
 function* loginSaga() {
   yield takeLatest(auth.login, login);
@@ -27,6 +29,13 @@ function* fetchWorkspacesSaga() {
 function* fetchCurrentWorkspaceSaga() {
   yield takeLatest(workspaces.fetchCurrentWorkspace, fetchCurrentWorkspace);
 }
+function* createWorkspaceSaga() {
+  yield takeLatest(workspaces.createWorkspace, createWorkspace);
+}
+
+function* createOrganizationSaga() {
+  yield takeLatest(organizations.createOrganization, createOrganization);
+}
 
 export default function* rootSaga() {
   yield all([
@@ -39,5 +48,8 @@ export default function* rootSaga() {
     // WORKSPACES
     fetchWorkspacesSaga(),
     fetchCurrentWorkspaceSaga(),
+    createWorkspaceSaga(),
+    // ORGANIZATIONS
+    createOrganizationSaga(),
   ]);
 }

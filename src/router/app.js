@@ -9,7 +9,7 @@ import User from "../pages/UserPage";
 import People from "../pages/PeoplePage";
 import Notifications from "../pages/NotificationsPage";
 import NoMatch from "../pages/NoMatch";
-import Workspace from "../pages/WorkspacePage";
+import Organization from "../pages/OrganizationPage";
 import { getCurrentWorkspacesState } from "../store/selectors/workspaces";
 
 const routers = [
@@ -65,7 +65,7 @@ export default function AppRouter() {
         {default_routers.map((route, index) => (
           <Route key={index} path={route.path} exact={route.exact} children={<route.main />} />
         ))}
-        <Route path="/app/workspace/*" children={<Workspace />} />
+        <Route path="/app/organization/*" children={<Organization />} />
         <Route path="/app/user/*" children={<User />} />
         <Route path="*">
           <NoMatch />

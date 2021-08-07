@@ -5,6 +5,9 @@ import {
   WORKSPACES_FETCH_CURRENT_WORKSPACE,
   WORKSPACES_FETCH_CURRENT_WORKSPACE_SUCCESS,
   WORKSPACES_FETCH_CURRENT_WORKSPACE_FAILED,
+  WORKSPACES_CREATE_WORKSPACE,
+  WORKSPACES_CREATE_WORKSPACE_FAILED,
+  WORKSPACES_CREATE_WORKSPACE_SUCCESS,
   WORKSPACES_CLEAR,
 } from "../types/workspaces";
 
@@ -48,6 +51,24 @@ export default function reducer(state = initialState, action) {
         currentWorkspace: action.payload,
       };
     case WORKSPACES_FETCH_CURRENT_WORKSPACE_FAILED:
+      return {
+        ...state,
+        panding: false,
+        error: action.payload,
+      };
+    case WORKSPACES_CREATE_WORKSPACE:
+      return {
+        ...state,
+        panding: true,
+      };
+    case WORKSPACES_CREATE_WORKSPACE_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        panding: false,
+        currentWorkspace: action.payload,
+      };
+    case WORKSPACES_CREATE_WORKSPACE_FAILED:
       return {
         ...state,
         panding: false,

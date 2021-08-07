@@ -9,6 +9,7 @@ import auth from "./auth";
 import user from "./user";
 import documents from "./documents";
 import workspaces from "./workspaces";
+import organizations from "./organizations";
 
 const history = createBrowserHistory();
 
@@ -20,8 +21,8 @@ export const transformCircular = createTransform(
 const rootPersistConfig = {
   key: "root",
   storage,
-  blacklist: ["app", "documents", "workspaces"],
-  whitelist: ["user", "auth"],
+  blacklist: ["user", "auth", "app", "documents", "workspaces", "organizations "],
+  // whitelist: ["user", "auth"],
   transforms: [transformCircular],
 };
 
@@ -32,6 +33,7 @@ const rootReducer = (history) => combineReducers({
   user,
   documents,
   workspaces,
+  organizations,
 });
 
 const reducers = persistReducer(rootPersistConfig, rootReducer(history));

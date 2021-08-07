@@ -6,11 +6,10 @@ import assetsData from "../../assets/assetsData";
 import { setSidebarState } from "../../store/actions/app";
 import { logout } from "../../store/actions/auth";
 import { getSidebarState } from "../../store/selectors/app";
+import { getCurrentOrganizationState } from "../../store/selectors/organizations";
 import { getUserState } from "../../store/selectors/user";
-import { getCurrentWorkspacesState, getWorkspacesState } from "../../store/selectors/workspaces";
-// import { routers, default_routers } from "./routes";
 import { SidebarItem } from "../SidebarItem";
-import { Arrow, Header, SidebarWrapper, Container } from "./style";
+import { Arrow, Container, Header, SidebarWrapper } from "./style";
 
 class Sidebar extends React.Component {
   state = {
@@ -28,27 +27,37 @@ class Sidebar extends React.Component {
     return <SidebarItem key={index} isOpen={isOpen} path={path} name={name} icon={icon} />;
   };
 
-  render() {
+  renderHeader = (isOpen) => (
+    <Header isOpen={isOpen}>
+      <img src={assetsData.images.Logo} alt="Logo" />
+      <p>Docwebapp</p>
+    </Header>
+  );
+
+  renderOrganizationItem = (name, style) => {
     const { isOpen } = this.state;
-    const { user, logout, currentWorkspace } = this.props;
+    return (
+      <SidebarItem
+        style={style}
+        isOpen={isOpen}
+        path="/app/organization/"
+        name={name || `Create organization`}
+        icon="user"
+      />
+    );
+  };
+
+  render() {
+    const { user, logout, currentOrganization,routers,default_routers } = this.props;
     const { firstName, secondName } = user;
+    const { isOpen } = this.state;
+    console.log(currentOrganization);
     return (
       <SidebarWrapper isOpen={isOpen}>
         <Container>
-          {currentWorkspace ? (
-            <Header isOpen={isOpen}>
-              <img src={assetsData.images.Logo} alt="Logo" />
-              <p>Docwebapp</p>
-            </Header>
-          ) : (
-            <SidebarItem
-              style={{ margin: "20px 0 0" }}
-              isOpen={isOpen}
-              path="/app/workspace/"
-              name={`Create workspace`}
-              icon="user"
-            />
-          )}
+          {currentOrganization
+            ? this.renderHeader(isOpen)
+            : this.renderOrganizationItem(null, { margin: "20px 0 0" })}
           <Arrow
             name="arrowLeft"
             size="20px"
@@ -56,7 +65,13 @@ class Sidebar extends React.Component {
             onClick={() => this.handleClick()}
             isOpen={isOpen}
           />
-          {this.props.default_routers.map(this.renderItem)}
+          {currentOrganization ? (
+            <>
+              {this.renderOrganizationItem(currentOrganization.name)}
+              {routers.map(this.renderItem)}
+            </>
+          ) : null}
+          {default_routers.map(this.renderItem)}
         </Container>
         <Container padding="0 0 20px 0">
           <SidebarItem
@@ -74,7 +89,7 @@ class Sidebar extends React.Component {
 
 const mapStateToProps = (state) => ({
   isSidebarOpen: getSidebarState(state),
-  currentWorkspace: getCurrentWorkspacesState(state),
+  currentOrganization: getCurrentOrganizationState(state),
   user: getUserState(state),
 });
 const mapDispatchToProps = {

@@ -36,7 +36,7 @@ export default function LoginForm({ action, error, panding }) {
           <ErrorText>{errors.password?.message}</ErrorText>
           <a onClick={() => console.log("Посилання було натиснуте.")}>Forgot password?</a>
         </Row>
-        <Button onClick={!panding && handleSubmit(onSubmit)}>
+        <Button onClick={!panding ? handleSubmit(onSubmit) : undefined}>
           {panding ? <ClipLoader color="#fff" loading={panding} size={20} /> : <p>Log in</p>}
         </Button>
       </form>

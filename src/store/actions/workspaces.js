@@ -6,6 +6,9 @@ import {
   WORKSPACES_FETCH_CURRENT_WORKSPACE,
   WORKSPACES_FETCH_CURRENT_WORKSPACE_SUCCESS,
   WORKSPACES_FETCH_CURRENT_WORKSPACE_FAILED,
+  WORKSPACES_CREATE_WORKSPACE,
+  WORKSPACES_CREATE_WORKSPACE_SUCCESS,
+  WORKSPACES_CREATE_WORKSPACE_FAILED,
   WORKSPACES_CLEAR,
 } from "../types/workspaces";
 
@@ -25,6 +28,16 @@ export const fetchCurrentWorkspaceFailed = createAction(
 );
 export const fetchCurrentWorkspaceSuccess = createAction(
   WORKSPACES_FETCH_CURRENT_WORKSPACE_SUCCESS,
+  (payload) => payload,
+);
+
+export const createWorkspace = createAction(WORKSPACES_CREATE_WORKSPACE, (payload) => payload);
+export const createWorkspaceFailed = createAction(
+  WORKSPACES_CREATE_WORKSPACE_FAILED,
+  (payload) => payload,
+);
+export const createWorkspaceSuccess = createAction(
+  WORKSPACES_CREATE_WORKSPACE_SUCCESS,
   (payload) => payload,
 );
 

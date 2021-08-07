@@ -13,4 +13,4 @@ export const fetchDocumentsSuccess = createAction(
   (payload) => payload,
 );
 
-export const authClear = createAction(DOCS_CLEAR);
+export const documentsClear = createAction(DOCS_CLEAR);
