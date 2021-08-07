@@ -20,7 +20,11 @@ class OrganizationPage extends React.Component {
           <Title>{currentOrganization?.name || "Create Organization"}</Title>
         </Header>
         <Container>
-          <OrganizationForm action={!currentOrganization && createOrganization} panding={panding} />
+          <OrganizationForm
+            action={!currentOrganization && createOrganization}
+            panding={panding}
+            data={currentOrganization}
+          />
         </Container>
       </Wrapper>
     );

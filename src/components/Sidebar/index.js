@@ -34,21 +34,22 @@ class Sidebar extends React.Component {
     </Header>
   );
 
-  renderOrganizationItem = (name, style) => {
+  renderOrganizationItem = (name, theme) => {
     const { isOpen } = this.state;
     return (
       <SidebarItem
-        style={style}
+        // style={style}
         isOpen={isOpen}
         path="/app/organization/"
         name={name || `Create organization`}
-        icon="user"
+        icon="organization"
+        theme={theme}
       />
     );
   };
 
   render() {
-    const { user, logout, currentOrganization,routers,default_routers } = this.props;
+    const { user, logout, currentOrganization, routers, default_routers } = this.props;
     const { firstName, secondName } = user;
     const { isOpen } = this.state;
     console.log(currentOrganization);
@@ -56,8 +57,8 @@ class Sidebar extends React.Component {
       <SidebarWrapper isOpen={isOpen}>
         <Container>
           {currentOrganization
-            ? this.renderHeader(isOpen)
-            : this.renderOrganizationItem(null, { margin: "20px 0 0" })}
+            ? this.renderOrganizationItem(currentOrganization.name, "header")
+            : this.renderHeader(isOpen)}
           <Arrow
             name="arrowLeft"
             size="20px"
@@ -66,11 +67,10 @@ class Sidebar extends React.Component {
             isOpen={isOpen}
           />
           {currentOrganization ? (
-            <>
-              {this.renderOrganizationItem(currentOrganization.name)}
-              {routers.map(this.renderItem)}
-            </>
-          ) : null}
+            <>{routers.map(this.renderItem)}</>
+          ) : (
+            this.renderOrganizationItem()
+          )}
           {default_routers.map(this.renderItem)}
         </Container>
         <Container padding="0 0 20px 0">

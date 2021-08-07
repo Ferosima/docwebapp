@@ -18,7 +18,12 @@ import { FaFileSignature, FaRegUserCircle, FaUserCircle } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import { BsPeople, BsPeopleFill } from "react-icons/bs";
 import {
-  RiPenNibFill, RiPenNibLine, RiPencilFill, RiPencilLine,
+  RiPenNibFill,
+  RiPenNibLine,
+  RiPencilFill,
+  RiPencilLine,
+  RiBuilding2Line,
+  RiBuilding2Fill,
 } from "react-icons/ri";
 
 export const icons = {
@@ -29,6 +34,8 @@ export const icons = {
   signatures: <HiPencil />,
   signaturesOutline: <HiOutlinePencil />,
   // signatures: <FaFileSignature />,
+  organization: <RiBuilding2Fill />,
+  organizationOutline: <RiBuilding2Line />,
   settings: <IoSettingsSharp />,
   settingsOutline: <IoSettingsOutline />,
   notifications: <IoNotifications />,

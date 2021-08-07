@@ -15,7 +15,9 @@ const theme = {
   },
 };
 
-export default function OrganizationnForm({ action, error, panding = false }) {
+export default function OrganizationnForm({
+  action, error, panding = false, data,
+}) {
   const {
     register,
     reset,
@@ -33,7 +35,7 @@ export default function OrganizationnForm({ action, error, panding = false }) {
   }, index) => (
     <Column key={index}>
       <Label htmlFor={name}>{label}</Label>
-      <input type={type} {...register(name, validation)} />
+      <input type={type} {...register(name, validation)} disabled={data} value={data?.[name]} />
       <ErrorText>{errors[name] ? errors[name].message || `${label} is required` : null}</ErrorText>
     </Column>
   );
@@ -45,9 +47,11 @@ export default function OrganizationnForm({ action, error, panding = false }) {
 
   return (
     <Wrapper>
-      <Text>
-        You can create your own organization or wait for an invitation to the organization
-      </Text>
+      {!data ? (
+        <Text>
+          You can create your own organization or wait for an invitation to the organization
+        </Text>
+      ) : null}
       <Image
         src={assetsData.images.AddImage}
         alt="Add image"
