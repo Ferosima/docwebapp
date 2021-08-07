@@ -1,9 +1,8 @@
 import axios from "axios";
-import storage from "redux-persist/lib/storage";
-import { logout, setToken, authClear } from "./actions/auth";
+import { setToken, authClear } from "./actions/auth";
 import { userClear } from "./actions/user";
 
-export const API_URL = "http://localhost:3000";
+export const API_URL = "http://localhost:3000/api";
 
 let store;
 

@@ -3,7 +3,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useRouteMatch } from "react-router-dom";
 import * as yup from "yup";
-import { Wrapper, ErrorText } from "./style";
+import ClipLoader from "react-spinners/ClipLoader";
+import {
+  Wrapper, ErrorText, Button, Label, Row, Text,
+} from "./style";
 
 const schema = yup.object().shape({
   email: yup.string().required("Email is a required"),
@@ -23,23 +26,25 @@ export default function LoginForm({ action, error, panding }) {
   return (
     <Wrapper>
       <h1>Wellcome back!</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="email">Email</label>
+      <form>
+        <Label htmlFor="email">Email</Label>
         <input {...register("email")} />
         <ErrorText>{errors.email?.message}</ErrorText>
-        <label htmlFor="password">Password</label>
+        <Label htmlFor="password">Password</Label>
         <input type="password" {...register("password")} />
-        <div className="row">
+        <Row>
           <ErrorText>{errors.password?.message}</ErrorText>
           <a onClick={() => console.log("Посилання було натиснуте.")}>Forgot password?</a>
-        </div>
-        <input type="submit" value="Log in" />
+        </Row>
+        <Button onClick={!panding ? handleSubmit(onSubmit) : undefined}>
+          {panding ? <ClipLoader color="#fff" loading={panding} size={20} /> : <p>Log in</p>}
+        </Button>
       </form>
-      <ErrorText>{error || null}</ErrorText>
-      <div className="row">
-        <p>Not registered yet?</p>
+      {error && <ErrorText>{error}</ErrorText>}
+      <Row>
+        <Text>Not registered yet?</Text>
         <Link to="/auth/registration">Create account</Link>
-      </div>
+      </Row>
     </Wrapper>
   );
 }

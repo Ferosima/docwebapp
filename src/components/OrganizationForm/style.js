@@ -2,28 +2,31 @@ import styled from "styled-components";
 
 export const Label = styled.p`
   margin: 0;
-  padding: 5px 0;
-  color: #263238;
+  padding: 10px 0;
+  color: #939499;
   font-size: 16px;
   font-family: Roboto;
 `;
 export const Text = styled.p`
   padding: 5px 5px 15px 0;
-  font-family: Roboto;
-  font-size: 13px;
+  font-family: Roboto-Medium;
+  font-size: 16px;
+  color: #939499;
 `;
 
 export const Button = styled.div`
   display: flex;
+  width: fit-content;
   justify-content: center;
-  background: #426ef3;
+  background: ${({ theme }) => theme.bg || "#426ef3"};
   border-radius: 10px;
-  color: white;
   border: none;
-  padding: 15px;
+  padding: 8px 15px;
   margin: 5px 10px;
   font-size: 20px;
-  font-family: Roboto;
+  font-family: Roboto-Medium;
+  cursor: pointer;
+  user-select: none;
 
   :active {
     // transition: 0.3s all;
@@ -31,8 +34,9 @@ export const Button = styled.div`
     opacity: 0.8;
   }
   p {
+    font-size: 14px;
     padding: 0;
-    color: white;
+    color: ${({ theme }) => theme.text || "white"};
   }
 `;
 
@@ -55,7 +59,7 @@ export const Wrapper = styled.div`
   flex: 1;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
+  padding: 30px 40px;
   width: -webkit-fill-available;
 
   h1 {
@@ -76,9 +80,10 @@ export const Wrapper = styled.div`
   form {
     display: flex;
     flex-direction: column;
+    align-self: center;
     width: -webkit-fill-available;
-    margin: 0 -10px;
-    
+    max-width: 400px;
+
     div${Row} {
       align-self: inherit;
       justify-content: space-between;
@@ -92,7 +97,7 @@ export const Wrapper = styled.div`
       border-radius: 4px;
       border: 1px solid #acb7c5;
       border-radius: 5px;
-      padding: 15px 15px;
+      padding: 10px 15px;
       font-size: 16px;
     }
 
@@ -113,4 +118,11 @@ export const ErrorText = styled.p`
   font-size: 13px;
   color: #d80404;
   align-self: self-end;
+`;
+
+export const Image = styled.img`
+  width: 140px;
+  height: 140px;
+  padding: 30px;
+  cursor: pointer;
 `;

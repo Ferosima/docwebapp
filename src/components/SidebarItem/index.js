@@ -2,14 +2,35 @@ import React from "react";
 import { useRouteMatch } from "react-router-dom";
 import { Wrapper, Icon, Item } from "./style";
 
+const themes = {
+  header: { fontFamily: "Roboto-Medium", fontSize: "18px", margin: "20px 0 0" },
+};
+
 export function SidebarItem(props) {
   const {
-    path, icon, image, name, withoutBorder, isOpen, ...other
+    path,
+    icon,
+    image,
+    name,
+    withoutBorder,
+    isOpen,
+    onClick,
+    isNonActive,
+    style,
+    theme,
+    ...other
   } = props;
-  const isMatch = useRouteMatch(path);
+  const isMatch = !isNonActive && useRouteMatch(path);
   return (
-    <Item to={path} isActive={isMatch} isOpen={isOpen} withoutBorder={withoutBorder}>
-      {/* TODO ADD IMAGE  */}
+    <Item
+      style={style}
+      to={path}
+      isActive={isMatch}
+      isOpen={isOpen}
+      withoutBorder={withoutBorder}
+      onClick={onClick}
+      theme={theme && themes[theme]}
+    >
       {icon && (
         <Icon
           isOpen={isOpen}
@@ -20,7 +41,6 @@ export function SidebarItem(props) {
         />
       )}
       <p>{name}</p>
-      <div />
     </Item>
   );
 }

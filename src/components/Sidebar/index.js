@@ -4,10 +4,12 @@ import { withRouter } from "react-router";
 import { compose } from "redux";
 import assetsData from "../../assets/assetsData";
 import { setSidebarState } from "../../store/actions/app";
+import { logout } from "../../store/actions/auth";
 import { getSidebarState } from "../../store/selectors/app";
+import { getCurrentOrganizationState } from "../../store/selectors/organizations";
 import { getUserState } from "../../store/selectors/user";
 import { SidebarItem } from "../SidebarItem";
-import { Arrow, Header, SidebarWrapper, Container } from "./style";
+import { Arrow, Container, Header, SidebarWrapper } from "./style";
 
 class Sidebar extends React.Component {
   state = {
@@ -25,16 +27,38 @@ class Sidebar extends React.Component {
     return <SidebarItem key={index} isOpen={isOpen} path={path} name={name} icon={icon} />;
   };
 
-  render() {
+  renderHeader = (isOpen) => (
+    <Header isOpen={isOpen}>
+      <img src={assetsData.images.Logo} alt="Logo" />
+      <p>Docwebapp</p>
+    </Header>
+  );
+
+  renderOrganizationItem = (name, theme) => {
     const { isOpen } = this.state;
-    const { firstName, secondName } = this.props.user;
+    return (
+      <SidebarItem
+        // style={style}
+        isOpen={isOpen}
+        path="/app/organization/"
+        name={name || `Create organization`}
+        icon="organization"
+        theme={theme}
+      />
+    );
+  };
+
+  render() {
+    const { user, logout, currentOrganization, routers, default_routers } = this.props;
+    const { firstName, secondName } = user;
+    const { isOpen } = this.state;
+    console.log(currentOrganization);
     return (
       <SidebarWrapper isOpen={isOpen}>
         <Container>
-          <Header isOpen={isOpen}>
-            <img src={assetsData.images.Logo} alt="Logo" />
-            <p>Docwebapp</p>
-          </Header>
+          {currentOrganization
+            ? this.renderOrganizationItem(currentOrganization.name, "header")
+            : this.renderHeader(isOpen)}
           <Arrow
             name="arrowLeft"
             size="20px"
@@ -42,7 +66,12 @@ class Sidebar extends React.Component {
             onClick={() => this.handleClick()}
             isOpen={isOpen}
           />
-          {this.props.routers.map(this.renderItem)}
+          {currentOrganization ? (
+            <>{routers.map(this.renderItem)}</>
+          ) : (
+            this.renderOrganizationItem()
+          )}
+          {default_routers.map(this.renderItem)}
         </Container>
         <Container padding="0 0 20px 0">
           <SidebarItem
@@ -50,15 +79,8 @@ class Sidebar extends React.Component {
             path="/app/user/"
             name={`${firstName} ${secondName}`}
             icon="user"
-            withoutBorder
           />
-          <SidebarItem
-            isOpen={isOpen}
-            path="/app/settings/"
-            name="Settings"
-            icon="settings"
-            withoutBorder
-          />
+          <SidebarItem isOpen={isOpen} onClick={logout} name="Log out" icon="logout" isNonActive />
         </Container>
       </SidebarWrapper>
     );
@@ -67,10 +89,12 @@ class Sidebar extends React.Component {
 
 const mapStateToProps = (state) => ({
   isSidebarOpen: getSidebarState(state),
+  currentOrganization: getCurrentOrganizationState(state),
   user: getUserState(state),
 });
 const mapDispatchToProps = {
   setSidebarState,
+  logout,
 };
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
