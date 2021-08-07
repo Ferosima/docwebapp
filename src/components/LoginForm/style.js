@@ -7,6 +7,10 @@ export const Label = styled.p`
   color: #263238;
   font-size: 16px;
   font-family: Roboto;
+
+  @media (max-width: 1440px) {
+    font-size:14px;
+  }
 `;
 export const Text = styled.p`
   padding: 5px 5px 15px 0;
@@ -34,6 +38,11 @@ export const Button = styled.div`
   p {
     padding: 0;
     color: white;
+}
+@media (max-width: 1440px) {
+    font-size:14px;
+    padding:12px;
+    border-radius: 7px;
   }
 `;
 
@@ -53,6 +62,8 @@ export const Wrapper = styled.div`
   max-width: 700px;
   width: -webkit-fill-available;
 
+
+
   h1 {
     font-family: Roboto-Black;
     font-size: 48px;
@@ -61,6 +72,14 @@ export const Wrapper = styled.div`
     margin: 0;
     padding: 0 0 60px 0;
   }
+  @media (max-width: 1440px) {
+ max-width:500px;
+
+ h1 {
+      padding: 30px 0;
+      font-size:40px;
+    }
+}
 
   @media (max-width: 680px) {
     h1 {
