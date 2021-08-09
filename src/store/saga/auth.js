@@ -10,18 +10,19 @@ import {
 import { fetchUser, userClear } from "../actions/user";
 import { documentsClear } from "../actions/documents";
 import { workspacesClear } from "../actions/workspaces";
-import { organizationsClear } from "../actions/organizations";
+import { organizationsClear, getCurrentOrganization } from "../actions/organizations";
 import client from "../client";
-import { fetchCurrentWorkspace } from "./workspaces";
 
 export function* login(payload) {
   try {
     const response = yield client.post("auth/login", payload?.payload || payload);
     yield put(setToken(response.data.accessToken));
-    const isHaveworkspace = yield call(fetchCurrentWorkspace);
-    yield put(fetchUser(response.data.user));
+    const { organization, ...user } = response.data.user;
+    console.log(response.data.user, organization, user);
+    yield put(fetchUser(user));
+    yield put(getCurrentOrganization(organization));
     yield put(loginSuccess(response.data));
-    yield put(push(isHaveworkspace ? "/app/documents/" : "/app/organization/"));
+    yield put(push(organization ? "/app/documents/" : "/app/organization/"));
   } catch (e) {
     console.log("LOGIN ERROR", e.response.data);
     yield put(loginFailed(e.response.data.message));

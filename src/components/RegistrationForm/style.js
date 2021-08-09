@@ -7,7 +7,7 @@ export const Label = styled.p`
   font-size: 16px;
   font-family: Roboto;
   @media (max-width: 1440px) {
-    font-size:14px;
+    font-size: 14px;
   }
 `;
 export const Text = styled.p`
@@ -38,8 +38,8 @@ export const Button = styled.div`
     color: white;
   }
   @media (max-width: 1440px) {
-    font-size:14px;
-    padding:12px;
+    font-size: 14px;
+    padding: 12px;
     border-radius: 7px;
   }
 `;
@@ -75,13 +75,13 @@ export const Wrapper = styled.div`
     padding: 0 0 60px 0;
   }
   @media (max-width: 1440px) {
- max-width:500px;
+    max-width: 600px;
 
- h1 {
+    h1 {
       padding: 30px 0;
-      font-size:40px;
+      font-size: 40px;
     }
-}
+  }
 
   @media (max-width: 680px) {
     h1 {
@@ -94,7 +94,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
     width: -webkit-fill-available;
     margin: 0 -10px;
-    
+
     div${Row} {
       align-self: inherit;
       justify-content: space-between;

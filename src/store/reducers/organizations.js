@@ -46,7 +46,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         error: null,
         panding: false,
-        currentWorkspace: action.payload,
+        currentOrganization: action.payload,
       };
     case ORGANIZATIONS_CREATE_ORGANIZATION_FAILED:
       return {
@@ -61,7 +61,7 @@ export default function reducer(state = initialState, action) {
       };
     case ORGANIZATIONS_CLEAR:
       return {
-        initialState,
+        ...state,
       };
 
     default:

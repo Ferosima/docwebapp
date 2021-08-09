@@ -1,3 +1,7 @@
 export const USER_FETCH = "USER_FETCH";
 
+export const USER_UPDATE = "USER_UPDATE";
+export const USER_UPDATE_SUCCESS = "USER_UPDATE_SUCCESS";
+export const USER_UPDATE_FAILED = "USER_UPDATE_FAILED";
+
 export const USER_CLEAR = "USER_CLEAR";

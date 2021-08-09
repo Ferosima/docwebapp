@@ -1,11 +1,13 @@
 import { all, takeLatest } from "redux-saga/effects";
 
 import * as auth from "../actions/auth";
+import * as user from "../actions/user";
 import * as documents from "../actions/documents";
 import * as workspaces from "../actions/workspaces";
 import * as organizations from "../actions/organizations";
 
 import { login, registration, logout } from "./auth";
+import { userUpdate } from "./user";
 import { fetchDocuments } from "./documents";
 import { fetchWorkspaces, fetchCurrentWorkspace, createWorkspace } from "./workspaces";
 import { createOrganization } from "./organizations";
@@ -18,6 +20,10 @@ function* registrationSaga() {
 }
 function* logoutSaga() {
   yield takeLatest(auth.logout, logout);
+}
+
+function* userUpdateSaga() {
+  yield takeLatest(user.userUpdate, userUpdate);
 }
 
 function* fetchDocumentsSaga() {
@@ -43,6 +49,8 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     logoutSaga(),
+    // USER
+    userUpdateSaga(),
     // DOCS
     fetchDocumentsSaga(),
     // WORKSPACES

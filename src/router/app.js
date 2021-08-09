@@ -10,7 +10,7 @@ import People from "../pages/PeoplePage";
 import Notifications from "../pages/NotificationsPage";
 import NoMatch from "../pages/NoMatch";
 import Organization from "../pages/OrganizationPage";
-import { getCurrentWorkspacesState } from "../store/selectors/workspaces";
+import { getCurrentOrganizationState } from "../store/selectors/organizations";
 
 const routers = [
   {
@@ -49,16 +49,16 @@ const default_routers = [
 ];
 
 export default function AppRouter() {
-  const currentWorkspace = useSelector(getCurrentWorkspacesState);
+  const currentOrganization = useSelector(getCurrentOrganizationState);
   return (
     <Route>
       <Sidebar
         routers={routers}
-        currentWorkspace={currentWorkspace}
+        // currentOrganization={currentOrganization}
         default_routers={default_routers}
       />
       <Switch>
-        {currentWorkspace
+        {currentOrganization
           && routers.map((route, index) => (
             <Route key={index} path={route.path} exact={route.exact} children={<route.main />} />
           ))}
