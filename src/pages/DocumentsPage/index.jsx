@@ -22,6 +22,7 @@ class DocumentsPage extends React.Component {
   }
 
   render() {
+    console.log(this.props.store);
     const { list } = this.props.documents;
     return (
       <div className="documentsPage">
@@ -35,6 +36,7 @@ class DocumentsPage extends React.Component {
 
 const mapStateToProps = (state) => ({
   documents: getDocumentsState(state),
+  store: state,
 });
 const mapDispatchToProps = {
   fetchDocuments,

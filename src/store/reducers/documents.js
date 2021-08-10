@@ -33,7 +33,7 @@ export default function reducer(state = initialState, action) {
       };
     case DOCS_CLEAR:
       return {
-        state,
+        ...initialState,
       };
     default:
       return state;

@@ -73,7 +73,7 @@ export default function reducer(state = initialState, action) {
       };
     case AUTH_CLEAR:
       return {
-        state,
+        ...initialState,
       };
 
     default:
