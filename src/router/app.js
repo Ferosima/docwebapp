@@ -54,7 +54,6 @@ export default function AppRouter() {
     <Route>
       <Sidebar
         routers={routers}
-        // currentOrganization={currentOrganization}
         default_routers={default_routers}
       />
       <Switch>
