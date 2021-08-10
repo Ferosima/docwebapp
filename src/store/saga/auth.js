@@ -6,6 +6,7 @@ import {
   registrationFailed,
   registrationSuccess,
   setToken,
+  authClear,
 } from "../actions/auth";
 import { fetchUser, userClear } from "../actions/user";
 import { documentsClear } from "../actions/documents";
@@ -16,13 +17,12 @@ import client from "../client";
 export function* login(payload) {
   try {
     const response = yield client.post("auth/login", payload?.payload || payload);
-    yield put(setToken(response.data.accessToken));
-    const { organization, ...user } = response.data.user;
-    console.log(response.data.user, organization, user);
+    const { userWorkspace = null, ...user } = response.data.user;
+    // yield put(setToken(response.data.accessToken));
     yield put(fetchUser(user));
-    yield put(getCurrentOrganization(organization));
+    yield put(getCurrentOrganization(userWorkspace?.organization));
     yield put(loginSuccess(response.data));
-    yield put(push(organization ? "/app/documents/" : "/app/organization/"));
+    yield put(push(userWorkspace ? "/app/documents/" : "/app/organization/"));
   } catch (e) {
     console.log("LOGIN ERROR", e.response.data);
     yield put(loginFailed(e.response.data.message));
@@ -41,6 +41,7 @@ export function* registration({ payload }) {
 }
 export function* logout() {
   try {
+    yield put(authClear());
     yield put(userClear());
     yield put(workspacesClear());
     yield put(documentsClear());

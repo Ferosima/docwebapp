@@ -7,7 +7,6 @@ export const Item = styled(Link)`
   flex-direction: row;
   width: calc(100% - 30px);
   justify-content: center;
-  /* justify-content: end; */
   align-self: center;
   align-items: center;
   padding: 15px 5px;
@@ -21,6 +20,7 @@ export const Item = styled(Link)`
   font-family: ${({ theme }) => theme.fontFamily || "Roboto"};
   font-size: ${({ theme }) => theme.fontSize || "16px"};
 
+
   :hover {
     background-color: ${({ isActive }) => (isActive ? "#426EF3" : "#E4EBFA")};
     color: ${({ isActive }) => (isActive ? "#F8F9FB" : "#678ABE")};
@@ -32,9 +32,6 @@ export const Item = styled(Link)`
     width: 100%;
     font-family: inherit;
     font-size: inherit;
-    /* max-width: ${({ isOpen }) => (isOpen ? "100%" : "0%")}; */
-    transition-duration: 1s;
-    transition-property: width;
     user-select: none;
   }
 `;

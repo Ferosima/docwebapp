@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import icon from "../Icon";
 
 export const SidebarWrapper = styled.div`
-  -webkit-transition-duration: 1s;
+  transition: width 1s;
   display: flex;
   flex-direction: column;
   align-items: flex-end;

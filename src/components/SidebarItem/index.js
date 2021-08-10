@@ -30,6 +30,7 @@ export function SidebarItem(props) {
       withoutBorder={withoutBorder}
       onClick={onClick}
       theme={theme && themes[theme]}
+      {...other}
     >
       {icon && (
         <Icon
