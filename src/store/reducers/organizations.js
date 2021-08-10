@@ -61,7 +61,7 @@ export default function reducer(state = initialState, action) {
       };
     case ORGANIZATIONS_CLEAR:
       return {
-        ...state,
+        state,
       };
 
     default:

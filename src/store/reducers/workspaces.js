@@ -76,7 +76,7 @@ export default function reducer(state = initialState, action) {
       };
     case WORKSPACES_CLEAR:
       return {
-        ...state,
+        state,
       };
 
     default:
