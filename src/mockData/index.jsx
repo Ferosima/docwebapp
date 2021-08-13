@@ -1,0 +1,40 @@
+export const list = [
+  {
+    id: 0,
+    createdAt: "2021-08-11T14:41:26.749Z",
+    updatedAt: "2021-08-11T14:41:26.749Z",
+    name: "string",
+    headers: "string",
+    description: "string",
+    signerIds: ["string"],
+    creator: {
+      id: 0,
+      createdAt: "2021-08-11T14:41:26.749Z",
+      updatedAt: "2021-08-11T14:41:26.749Z",
+      firstName: "string",
+      secondName: "string",
+      email: "string",
+      userWorkspace: {
+        id: 0,
+        createdAt: "2021-08-11T14:41:26.749Z",
+        updatedAt: "2021-08-11T14:41:26.749Z",
+        organization: {
+          id: 0,
+          createdAt: "2021-08-11T14:41:26.749Z",
+          updatedAt: "2021-08-11T14:41:26.749Z",
+          name: "string",
+        },
+        accessLevel: "member",
+      },
+      isActive: true,
+    },
+    organization: {
+      id: 0,
+      createdAt: "2021-08-11T14:41:26.749Z",
+      updatedAt: "2021-08-11T14:41:26.749Z",
+      name: "string",
+    },
+    isReady: true,
+    expiresAt: "2021-08-11T14:41:26.749Z",
+  },
+];

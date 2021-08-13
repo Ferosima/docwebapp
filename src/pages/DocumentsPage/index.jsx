@@ -7,29 +7,27 @@ import documents from "../../mockData/documents";
 import { fetchDocuments } from "../../store/actions/documents";
 import { getDocumentsState } from "../../store/selectors/documents";
 import "./style.css";
+import Header from "../../components/Header";
+import Card from "../../components/Card";
+import { mock_data } from '../../mockData/index';
 
 class DocumentsPage extends React.Component {
   componentDidMount() {
     this.props.fetchDocuments();
   }
 
-  renderDocument(item, index) {
-    return (
-      <div className="listItem" key={index}>
-        <DocumentsListItem data={item} />
-      </div>
-    );
-  }
+  renderCard = (data, index) => {
+    <Card data={data} key={index} />;
+  };
 
   render() {
     console.log(this.props.store);
     const { list } = this.props.documents;
     return (
-      <div className="documentsPage">
-        <h2>Documents</h2>
-        <p className="subtitle">You have n documents</p>
-        <div className="list">{list.map(this.renderDocument)}</div>
-      </div>
+      <>
+        <Header buttons={[{ name: 'add', action: console.log('add') }]} />;
+        {list.map(renderCard)}
+      </>
     );
   }
 }
