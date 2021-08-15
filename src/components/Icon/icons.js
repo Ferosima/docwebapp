@@ -6,6 +6,7 @@ import {
   IoSettingsSharp,
   IoNotificationsOutline,
   IoNotifications,
+  IoConstructSharp,
 } from "react-icons/io5";
 import {
   HiPencil,
@@ -48,6 +49,7 @@ export const icons = {
   undefined: <AiOutlineQuestionCircle />,
   people: <BsPeopleFill />,
   peopleOutline: <BsPeople />,
+  construct: <IoConstructSharp />,
 };
 
 export default icons;

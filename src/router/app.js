@@ -20,16 +20,16 @@ const routers = [
     main: () => <Documents />,
   },
   {
-    name: "Signatures",
-    icon: "signatures",
-    path: "/app/signatures/",
-    main: () => <Signatures />,
-  },
-  {
     name: "People",
     icon: "people",
     path: "/app/people/",
     main: () => <People />,
+  },
+  {
+    name: "Signatures",
+    icon: "signatures",
+    path: "/app/signatures/",
+    main: () => <Signatures />,
   },
 ];
 
@@ -52,10 +52,7 @@ export default function AppRouter() {
   const currentOrganization = useSelector(getCurrentOrganizationState);
   return (
     <Route>
-      <Sidebar
-        routers={routers}
-        default_routers={default_routers}
-      />
+      <Sidebar routers={routers} default_routers={default_routers} />
       <Switch>
         {currentOrganization
           && routers.map((route, index) => (
