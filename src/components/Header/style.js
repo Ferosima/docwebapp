@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    max-width: 1065px;
+    max-width: 100%;
 `;
 export const Title = styled.div`
     display: flex;
