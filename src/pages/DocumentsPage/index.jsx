@@ -6,28 +6,28 @@ import { DocumentsListItem } from "../../components/DocumentListItem";
 import documents from "../../mockData/documents";
 import { fetchDocuments } from "../../store/actions/documents";
 import { getDocumentsState } from "../../store/selectors/documents";
-import "./style.css";
 import Header from "../../components/Header";
 import Card from "../../components/Card";
-import { mock_data } from '../../mockData/index';
+import { list } from "../../mockData/index";
+import { Wrapper } from "./style";
 
 class DocumentsPage extends React.Component {
   componentDidMount() {
     this.props.fetchDocuments();
   }
 
-  renderCard = (data, index) => {
-    <Card data={data} key={index} />;
-  };
+  renderCard(data, index) {
+    return <Card data={data} key={index} />;
+  }
 
   render() {
     console.log(this.props.store);
     const { list } = this.props.documents;
     return (
-      <>
-        <Header buttons={[{ name: 'add', action: console.log('add') }]} />;
-        {list.map(renderCard)}
-      </>
+      <Wrapper>
+        <Header buttons={[{ name: 'add', action: console.log('add') }]} />
+        {list.map(this.renderCard)}
+      </Wrapper>
     );
   }
 }
