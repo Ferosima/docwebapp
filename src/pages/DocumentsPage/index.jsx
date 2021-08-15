@@ -33,7 +33,7 @@ class DocumentsPage extends React.Component {
     const { list, panding } = this.props.documents;
     return (
       <Wrapper>
-        <Header buttons={[{ name: "add", action: console.log("add") }]} />
+        <Header title="Documents" buttons={[{ name: "add", action: console.log("add") }]} />
         <Container>
           {!panding ? (
             this.renderContent(list)

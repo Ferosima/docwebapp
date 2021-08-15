@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import { Wrapper, Title, Buttons } from "./style";
-import { myButtons } from './buttons';
+import { myButtons } from "./buttons";
 
 class Header extends React.Component {
   renderButton = (data, index) => (
@@ -10,15 +10,11 @@ class Header extends React.Component {
   );
 
   render() {
-    const { buttons } = this.props;
+    const { buttons, title } = this.props;
     return (
       <Wrapper>
-        <Title>
-          <h3>Documents</h3>
-        </Title>
-        <Buttons>
-          {buttons.map(this.renderButton)}
-        </Buttons>
+        <Title>{title}</Title>
+        <Buttons>{buttons && buttons.map(this.renderButton)}</Buttons>
       </Wrapper>
     );
   }

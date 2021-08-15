@@ -2,12 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { compose } from "redux";
-import {
-  Wrapper, Header, Title, Container,
-} from "./style";
+import { Wrapper, Title, Container } from "./style";
 import { createOrganization } from "../../store/actions/organizations";
 import { getOrganizationsState } from "../../store/selectors/organizations";
 import OrganizationForm from "../../components/OrganizationForm";
+import Header from "../../components/Header";
 
 class OrganizationPage extends React.Component {
   render() {
@@ -16,9 +15,7 @@ class OrganizationPage extends React.Component {
     console.log(organizations);
     return (
       <Wrapper>
-        <Header>
-          <Title>{currentOrganization?.name || "Create Organization"}</Title>
-        </Header>
+        <Header title={`${currentOrganization?.name || "Create Organization"}`} />
         <Container>
           <OrganizationForm
             action={!currentOrganization && createOrganization}

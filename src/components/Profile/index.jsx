@@ -4,6 +4,7 @@ import { schema } from "./schema";
 import {
   Header, Icon, Text, Wrapper, Row, Separator, Container, Input,
 } from "./style";
+import Avatar from "../Avatar";
 
 export default function Profile({ user }) {
   const {
@@ -19,10 +20,10 @@ export default function Profile({ user }) {
   const { firstName, secondName, email } = user;
   return (
     <Wrapper>
-      <Header>
+      {/* <Header>
         <Text>Profile</Text>
-      </Header>
-      <Icon name="user" color="#263238" size="10em" />
+      </Header> */}
+      <Avatar name={firstName} size="8em" textSize="60px" style={{ margin: "25px" }} />
       <form onSubmit={handleSubmit(onSubmit)}>
         <Row>
           <Input

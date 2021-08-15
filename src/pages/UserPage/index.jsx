@@ -9,6 +9,7 @@ import Icon from "../../components/Icon";
 import { logout } from "../../store/actions/auth";
 import { getUserState } from "../../store/selectors/user";
 import Profile from "../../components/Profile";
+import Avatar from "../../components/Avatar";
 
 class ProfilePage extends React.Component {
   render() {
@@ -18,13 +19,13 @@ class ProfilePage extends React.Component {
       <Wrapper>
         <Header>
           <Row>
-            <Icon name="user" color="#263238" size="3em" />
+            {/* <Avatar name={firstName} /> */}
             <Text>{`${firstName} ${secondName}`}</Text>
           </Row>
-          <Button onClick={logout}>
+          {/* <Button onClick={logout}>
             <Icon name="logout" color="#D31818" size="1em" />
             <Text>Log out</Text>
-          </Button>
+          </Button> */}
         </Header>
         <Container>
           <Profile user={user} />

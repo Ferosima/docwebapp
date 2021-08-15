@@ -27,11 +27,11 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #c7c7cc;
-  padding: 30px 20px 15px;
+  padding: 15px 20px;
 
   p${Text} {
     font-family: Roboto-Bold;
-    font-size: 18px;
+    font-size: 24px;
     padding: 0 10px;
   }
 `;

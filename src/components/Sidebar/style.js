@@ -10,7 +10,7 @@ export const SidebarWrapper = styled.div`
   justify-content: space-between;
   overflow: hidden;
   width: ${({ isOpen }) => (isOpen ? "250px" : "70px")};
-  border: 1px solid #c7c7cc;
+  border-right: 1px solid #c7c7cc;
 `;
 export const Container = styled.div`
   display: flex;

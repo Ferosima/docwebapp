@@ -5,23 +5,18 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 15px 20px;
   max-width: 100%;
   align-items: center;
 `;
-export const Title = styled.div`
-    display: flex;
-    align-items: center;
-    h3 {
-        margin: 0;
-        font-size: 24px;
-        }
-    }
+export const Title = styled.h3`
+  margin: 0;
+  font-size: 24px;
 `;
 export const Buttons = styled.div`
     button {
             display: inline-block;
-            margin: 3px;
+            margin-left:3px;
             cursor: pointer;
             border: none;
             outline: none;

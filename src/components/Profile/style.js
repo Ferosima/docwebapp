@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import icon from "../Icon";
 import input from "../Input";
+import avatar from "../Avatar";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -48,9 +49,7 @@ export const Header = styled.div`
     /* padding: 0 5px; */
   }
 `;
-export const Icon = styled(icon)`
-  padding: 25px;
-`;
+
 export const Input = styled(input)`
   padding: 0 0 20px;
 `;
