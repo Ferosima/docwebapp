@@ -46,10 +46,14 @@ class DocumentsPage extends React.Component {
     const { modalVisible } = this.state;
     return (
       <Wrapper>
-        <Modal modalVisible={modalVisible} onRequestClose={() => this.setModalVisible(false)}>
+        <Modal
+          title="Create Document"
+          modalVisible={modalVisible}
+          onRequestClose={() => this.setModalVisible(false)}
+        >
           <p>Text2sssssssssssssssssssssssssss</p>
         </Modal>
-        <Header title="Documents" buttons={[{ name: "add", action: console.log("add") }]} />
+        <Header title="Documents" buttons={[{ name: "add", action: () => console.log("add") }]} />
         {!panding ? this.renderContent(list) : <Loading panding={panding} />}
       </Wrapper>
     );

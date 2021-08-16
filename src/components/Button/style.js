@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${({ reverse }) => (reverse ? "row-reverse" : "row")};
   font-size: 15px;
   font-family: Roboto-Light;
   background-color: #407bff;
@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   cursor: pointer;
   user-select: none;
   img {
-    padding: 0 5px 0 0;
+    padding: ${({ reverse }) => (reverse ? " 0 0 0 5px" : " 0 5px 0 0")};
     height: 16px;
     width: 16px;
   }

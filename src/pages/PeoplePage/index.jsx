@@ -5,7 +5,17 @@ import { PeopleCard as Card } from "../../components/Card";
 import { people as list } from "../../mockData";
 import assetsData from "../../assets/assetsData";
 import { Empty, Loading } from "../../components/Plugs";
+import Modal from "../../components/Modal";
+import InviteForm from "../../components/InviteForm";
 export default class PeoplePage extends React.Component {
+  state = {
+    modalVisible: false,
+  };
+
+  setModalVisible = (visible) => {
+    this.setState({ modalVisible: visible });
+  };
+
   renderCard(data, index) {
     return <Card firstName={data.firstName} secondName={data.secondName} key={index} />;
   }
@@ -20,15 +30,23 @@ export default class PeoplePage extends React.Component {
         image={assetsData.images.invite}
         text="You don't have a members"
         buttonText="Invite People"
-        // onClick={() => console.log("HI")}
+        onClick={() => this.setModalVisible(true)}
       />
     );
 
   render() {
     const { panding = false } = this.props;
+    const { modalVisible } = this.state;
     return (
       <Wrapper>
-        <Header title="People" buttons={[{ name: "add", action: console.log("add") }]} />
+        <Modal
+          title="Invite People to organization"
+          modalVisible={modalVisible}
+          onRequestClose={() => this.setModalVisible(false)}
+        >
+          <InviteForm action={() => console.log("INVITE")} />
+        </Modal>
+        <Header title="People" buttons={[{ name: "add", action: () => console.log("add") }]} />
         {!panding ? this.renderContent(list) : <Loading panding={panding} />}
       </Wrapper>
     );

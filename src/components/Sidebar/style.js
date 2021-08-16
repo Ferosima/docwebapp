@@ -37,7 +37,7 @@ export const Header = styled.div`
 
   p {
     font-family: Roboto-Medium;
-    font-size: 17px;
+    font-size: 16px;
     color: #426ef3;
     overflow: hidden;
     -webkit-transition-duration: 1s;
@@ -48,5 +48,6 @@ export const Arrow = styled(icon)`
   -webkit-transition-duration: 0.5s;
   cursor: pointer;
   padding: 6px;
+  width: 20px;
   transform: ${({ isOpen }) => (isOpen ? "rotate(360deg)" : "rotate(180deg)")};
 `;

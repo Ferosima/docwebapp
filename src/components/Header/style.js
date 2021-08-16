@@ -11,12 +11,12 @@ export const Wrapper = styled.div`
 `;
 export const Title = styled.h3`
   margin: 0;
-  font-size: 24px;
+  font-size: 22px;
   user-select: none;
 `;
 export const Buttons = styled.div`
     button {
-            display: inline-block;
+            display: flex;
             margin-left:3px;
             cursor: pointer;
             border: none;
@@ -25,8 +25,8 @@ export const Buttons = styled.div`
             background-color: transparent;
             user-select: none;
             img {
-                width: 25px;
-                height: 25px;
+                width: 24px;
+                height: 24px;
             }
         }
 

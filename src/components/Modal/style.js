@@ -20,10 +20,10 @@ export const Wrapper = styled.div`
 export const Title = styled.p`
   color: #263238;
   font-family: Roboto-Medium;
-  font-size: 23px;
+  font-size: 22px;
 `;
 export const Icon = styled(icon)`
-  padding: 20px;
+  cursor: pointer;
 `;
 export const Row = styled.div`
   display: flex;
