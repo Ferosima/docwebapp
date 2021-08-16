@@ -1,14 +1,14 @@
 import React from "react";
-import { Wrapper } from "./style";
 import Header from "../../components/Header";
-import ConstuctionPlug from "../../components/ConstuctionPlug";
+import { Constuction } from "../../components/Plugs";
+import { Wrapper } from "./style";
 
 export default class NotificationsPage extends React.Component {
   render() {
     return (
       <Wrapper>
         <Header title="Notifications" />
-        <ConstuctionPlug />
+        <Constuction />
       </Wrapper>
     );
   }

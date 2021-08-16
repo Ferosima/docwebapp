@@ -3,9 +3,8 @@ import { Wrapper, Container, Grid } from "./style";
 import Header from "../../components/Header";
 import { PeopleCard as Card } from "../../components/Card";
 import { people as list } from "../../mockData";
-import EmptyPlug from "../../components/EmptyPlug";
-import LoadingPlug from "../../components/LoadingPlug";
 import assetsData from "../../assets/assetsData";
+import { Empty, Loading } from "../../components/Plugs";
 export default class PeoplePage extends React.Component {
   renderCard(data, index) {
     return <Card firstName={data.firstName} secondName={data.secondName} key={index} />;
@@ -17,7 +16,7 @@ export default class PeoplePage extends React.Component {
         <Grid>{list.map(this.renderCard)}</Grid>
       </Container>
     ) : (
-      <EmptyPlug
+      <Empty
         image={assetsData.images.invite}
         text="You don't have a members"
         buttonText="Invite People"
@@ -30,7 +29,7 @@ export default class PeoplePage extends React.Component {
     return (
       <Wrapper>
         <Header title="People" buttons={[{ name: "add", action: console.log("add") }]} />
-        {!panding ? this.renderContent(list) : <LoadingPlug panding={panding} />}
+        {!panding ? this.renderContent(list) : <Loading panding={panding} />}
       </Wrapper>
     );
   }
