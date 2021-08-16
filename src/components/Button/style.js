@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: ${({ reverse }) => (reverse ? "row-reverse" : "row")};
-  font-size: 15px;
+  font-size: 16px;
   font-family: Roboto-Light;
   background-color: #407bff;
   color: #fff;
