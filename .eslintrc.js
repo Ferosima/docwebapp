@@ -51,6 +51,8 @@ module.exports = {
     "no-underscore-dangle": 1,
     "import/no-unresolved": 1,
     "operator-linebreak": 1,
+    "implicit-arrow-linebreak": 1,
+    "no-confusing-arrow": 1,
     indent: 1,
     quotes: 0,
     camelcase: 0,

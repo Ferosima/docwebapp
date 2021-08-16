@@ -1,5 +1,6 @@
 html {
   height: 100%;
+  overflow-y: hidden;
 }
 
 body {
@@ -19,7 +20,8 @@ body {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 } */
 
-p, button {
+p,
+button {
   margin: 0;
   padding: 0;
   background-color: unset;

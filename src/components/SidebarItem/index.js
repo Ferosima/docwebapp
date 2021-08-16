@@ -8,33 +8,14 @@ const themes = {
 
 export function SidebarItem(props) {
   const {
-    path,
-    icon,
-    image,
-    name,
-    withoutBorder,
-    isOpen,
-    onClick,
-    isNonActive,
-    style,
-    theme,
-    ...other
+    path, icon, image, name, isNonActive, theme, ...other
   } = props;
   const isMatch = !isNonActive && useRouteMatch(path);
   return (
-    <Item
-      style={style}
-      to={path}
-      isActive={isMatch}
-      isOpen={isOpen}
-      withoutBorder={withoutBorder}
-      onClick={onClick}
-      theme={theme && themes[theme]}
-      {...other}
-    >
+    <Item to={path} isActive={isMatch} theme={theme && themes[theme]} {...other}>
       {icon && (
         <Icon
-          isOpen={isOpen}
+          {...other}
           name={icon}
           color={isMatch ? "#F8F9FB" : null}
           size="20px"

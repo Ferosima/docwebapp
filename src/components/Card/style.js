@@ -1,75 +1,60 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    height: 280px;
-    width: 210px;
-    border: 0.7px solid lightgrey;
-    display: inline-block;
-    margin: 20px;
-    border-radius: 10px;
-    padding: 0px;
-    background-color: #DAE0F7;
-    position:relative;
-    overflow: hidden;
-`;
-
-export const CardNested = styled.div`
-    height: 194px;
-    width: 135px;
-    background-color:white;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    display: block;
-    border: 0.5px solid lightgrey;
-    border-radius: 5px;
+  border: 1px solid #dadce0;
+  background-color: #fff;
+  border-radius: 3%;
+  overflow: hidden;
+  justify-content: center;
+  width: 210px;
+  height: fit-content;
+  position: relative;
 `;
 
 export const Status = styled.div`
-    height: 16px;
-    width: 52px;
-    left: 15px;
-    top: 12px;
-    font-family: Roboto, sans-serif;
-    border: 0.5px solid lightgrey;
-    border-radius: 15px;
-    background-color: rgba(196, 196, 196, 0.76);
-    position: absolute;
-    z-index: 3;
-    text-align: center;
-    font-weight: 200;
+  font-family: Roboto, sans-serif;
+  border: 0.5px solid lightgrey;
+  border-radius: 15px;
+  background-color: rgba(196, 196, 196, 0.76);
+  text-align: center;
+  font-weight: 200;
+  z-index: 100;
+  position: absolute;
+  margin: 10px;
+  padding: 0 5px;
+  user-select: none;
 `;
 
-export const TextBox = styled.div`
-    width: 100%;
-    top: 20px;
-    height: 100%;
-    position: relative;
-    background-color: white;
-    border-radius: 0px 0px 10px 10px;
-    z-index: 0;
+export const Preview = styled.div`
+  height: 220px;
+  width: 100%;
+  background-color: #dae0f7;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+`;
+export const Document = styled.div`
+  height: 190px;
+  aspect-ratio: 21/29;
+  background-color: #fff;
+  border-radius: 3%;
+`;
+export const Container = styled.div`
+  justify-content: center;
+  display: flex;
+  align-items: ${({ theme }) => theme.alignItems || "center"};
+  flex-direction: column;
+  padding: 10px 10px;
 `;
 
-export const TitleName = styled.div`
-    position:relative;
-    top: -255px;
-    z-index: 2;
-    font-family:Roboto, sans-serif;
-    font-size: 16px;
-    color: rgba(38, 57, 90, 1);
-    font-style: normal;
-    font-weight: 900;
-    letter-spacing: 0em;
-    text-align: left;
-    left: 13px;
-    width: 100%;
+export const Title = styled.div`
+  font-size: 16px;
+  font-family: Roboto-Bold;
+  padding: 0 0 2px;
 `;
 
-export const Data = styled.div`
-    left:14px;
-    top: -251px;
-    position:relative;
-    font-size: 12px;
-    color: rgba(38, 57, 90, 1);
+export const Subtitle = styled.div`
+  font-size: 14px;
+  font-family: Roboto;
+  color: #455a64;
 `;

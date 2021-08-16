@@ -13,4 +13,5 @@ export const Text = styled.p`
   color: #fff;
   font-family: Roboto-Medium;
   font-size: ${({ textSize }) => textSize || "22px"};
+  user-select: none;
 `;

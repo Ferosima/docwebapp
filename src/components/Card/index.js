@@ -1,19 +1,46 @@
-import React from 'react';
-import { Wrapper, CardNested, Status, TextBox, TitleName, Data } from './style';
+import moment from "moment";
+import React from "react";
+import Avatar from "../Avatar";
+import { Container, Document, Preview, Status, Subtitle, Title, Wrapper } from "./style";
 
-class Card extends React.Component {
+const theme = {
+  document: {
+    alignItems: "flex-start",
+  },
+  people: {
+    alignItems: "center",
+  },
+};
+export class DocumentCard extends React.Component {
+  getDate = (date) => moment(date).format("D.MM.YYYY");
+
   render() {
-    const { name, createdAt } = this.props.data;
+    const { data, style } = this.props;
+    const { name, createdAt } = data;
     return (
-      <Wrapper>
-        <CardNested />
+      <Wrapper style={style}>
         <Status>ready</Status>
-        <TextBox />
-        <TitleName>{name}</TitleName>
-        <Data>{createdAt}</Data>
+        <Preview>
+          <Document />
+        </Preview>
+        <Container theme={theme.document}>
+          <Title>{name}</Title>
+          <Subtitle>{this.getDate(createdAt)}</Subtitle>
+        </Container>
       </Wrapper>
     );
   }
 }
 
-export default Card;
+export function PeopleCard(props) {
+  const { firstName, secondName, style } = props;
+  return (
+    <Wrapper style={style}>
+      <Container>
+        <Avatar name={firstName} size="5em" textSize="45px" style={{ margin: "25px 0" }} />
+        <Title>{`${firstName} ${secondName}`}</Title>
+        <Subtitle>СEO</Subtitle>
+      </Container>
+    </Wrapper>
+  );
+}

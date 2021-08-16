@@ -7,16 +7,24 @@ export const Wrapper = styled.div`
   flex-direction: column;
   flex: 1;
   align-items: stretch;
+  justify-content: center;
+  overflow-y: hidden;
+`;
+
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  justify-items: center;
+  grid-gap: 1vw;
+  grid-row-gap: 2vw;
 `;
 
 export const Container = styled.div`
-  display: flex;
   flex: 1;
-  height: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 25px;
+  overflow-y: scroll;
 `;
+
 export const Text = styled.div`
   font-size: 18px;
   color: #939499;

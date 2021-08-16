@@ -11,7 +11,6 @@ export const Item = styled(Link)`
   align-items: center;
   padding: 15px 5px;
   margin: ${({ theme }) => theme.margin || "5px 0"};
-  color: #939499;
   color: ${({ isActive }) => (isActive ? "#F8F9FB" : "#939499")};
   background-color: ${({ isActive }) => (isActive ? "#426EF3" : "transparent")};
   text-decoration: inherit;
@@ -19,7 +18,7 @@ export const Item = styled(Link)`
   font-family: Roboto;
   font-family: ${({ theme }) => theme.fontFamily || "Roboto"};
   font-size: ${({ theme }) => theme.fontSize || "16px"};
-
+  pointer-events: ${({ isActive }) => isActive && "none"};
 
   :hover {
     background-color: ${({ isActive }) => (isActive ? "#426EF3" : "#E4EBFA")};

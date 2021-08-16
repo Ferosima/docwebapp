@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
 export const Title = styled.h3`
   margin: 0;
   font-size: 24px;
+  user-select: none;
 `;
 export const Buttons = styled.div`
     button {
@@ -22,6 +23,7 @@ export const Buttons = styled.div`
             outline: none;
             overflow: hidden;
             background-color: transparent;
+            user-select: none;
             img {
                 width: 25px;
                 height: 25px;
