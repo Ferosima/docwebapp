@@ -33,13 +33,13 @@ export class DocumentCard extends React.Component {
 }
 
 export function PeopleCard(props) {
-  const { data, style } = props;
+  const { data, style, isChosen } = props;
   const { firstName, secondName, userWorkspace } = data;
   return (
     <Wrapper style={style}>
       <Container>
         <Avatar name={firstName} size="5em" textSize="45px" style={{ margin: "25px 0" }} />
-        <Title>{`${firstName} ${secondName}`}</Title>
+        <Title isChosen={isChosen}>{`${firstName} ${secondName}`}</Title>
         <Subtitle>{userWorkspace.accessLevel}</Subtitle>
       </Container>
     </Wrapper>

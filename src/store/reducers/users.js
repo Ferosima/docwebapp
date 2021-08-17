@@ -58,6 +58,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         inviteSuccess: null,
+        error: null,
       };
     case USERS_CLEAR:
       return {
