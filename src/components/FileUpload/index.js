@@ -24,8 +24,6 @@ export default class FileUploadPage extends React.Component {
     this.setState({ selectedFile: file, fileName: event.target.files[0].name });
   };
 
-  handleSubmission = () => {};
-
   renderUploadButton = () => {
     const { selectedFile } = this.state;
     return (

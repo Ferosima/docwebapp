@@ -11,6 +11,7 @@ import { fetchDocuments } from "../../store/actions/documents";
 import { getDocumentsState } from "../../store/selectors/documents";
 import { Container, Grid, Wrapper } from "./style";
 import FileUploader from "../../components/FileUpload";
+import AddDocForm from "../../components/AddDocForm";
 class DocumentsPage extends React.Component {
   state = {
     modalVisible: false,
@@ -22,6 +23,10 @@ class DocumentsPage extends React.Component {
 
   setModalVisible = (visible) => {
     this.setState({ modalVisible: visible });
+  };
+
+  openModal = () => {
+    this.setModalVisible(true);
   };
 
   renderCard(data, index) {
@@ -38,7 +43,7 @@ class DocumentsPage extends React.Component {
         image={assetsData.images.addDoc}
         text="You don't have a documents"
         buttonText="Add Document"
-        onClick={() => this.setModalVisible(true)}
+        onClick={() => this.openModal}
       />
     );
 
@@ -52,9 +57,10 @@ class DocumentsPage extends React.Component {
           modalVisible={modalVisible}
           onRequestClose={() => this.setModalVisible(false)}
         >
+          <AddDocForm />
           <FileUploader />
         </Modal>
-        <Header title="Documents" buttons={[{ name: "add", action: () => console.log("add") }]} />
+        <Header title="Documents" buttons={[{ name: "add", action: this.openModal }]} />
         {!panding ? this.renderContent(list) : <Loading panding={panding} />}
       </Wrapper>
     );
