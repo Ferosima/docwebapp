@@ -15,7 +15,7 @@ export default function FileUploadPage() {
     setIsFilePicked(true);
   };
 
-  const handleSubmission = () => {};
+  const handleSubmission = () => { };
 
   return (
     <Wrapper>
@@ -46,7 +46,7 @@ export default function FileUploadPage() {
             name="file"
             onChange={changeHandler}
             accept="application/pdf,application/msword,.doc,.docx"
-            // TODO add check file type
+          // TODO add check file type
           />
         </Label>
       </Container>
