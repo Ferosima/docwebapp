@@ -8,7 +8,8 @@ import {
   setToken,
   authClear,
 } from "../actions/auth";
-import { fetchUser, userClear } from "../actions/user";
+import { setUser, userClear } from "../actions/user";
+import { usersClear } from "../actions/users";
 import { documentsClear } from "../actions/documents";
 import { workspacesClear } from "../actions/workspaces";
 import { organizationsClear, getCurrentOrganization } from "../actions/organizations";
@@ -19,7 +20,7 @@ export function* login(payload) {
     const response = yield client.post("auth/login", payload?.payload || payload);
     const { userWorkspace = null, ...user } = response.data.user;
     // yield put(setToken(response.data.accessToken));
-    yield put(fetchUser(user));
+    yield put(setUser(user));
     yield put(getCurrentOrganization(userWorkspace?.organization));
     yield put(loginSuccess(response.data));
     yield put(push(userWorkspace ? "/app/documents/" : "/app/organization/"));
@@ -43,6 +44,7 @@ export function* logout() {
   try {
     yield put(authClear());
     yield put(userClear());
+    yield put(usersClear());
     yield put(workspacesClear());
     yield put(documentsClear());
     yield put(organizationsClear());

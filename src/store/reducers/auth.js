@@ -70,6 +70,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         error: null,
+        panding: false,
       };
     case AUTH_CLEAR:
       return {

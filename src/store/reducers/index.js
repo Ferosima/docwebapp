@@ -7,6 +7,7 @@ import * as Flatted from "flatted";
 import app from "./app";
 import auth from "./auth";
 import user from "./user";
+import users from "./users";
 import documents from "./documents";
 import workspaces from "./workspaces";
 import organizations from "./organizations";
@@ -21,8 +22,8 @@ export const transformCircular = createTransform(
 const rootPersistConfig = {
   key: "root",
   storage,
-  blacklist: ["app", "documents"],
-  whitelist: ["user", "auth", "workspaces", "organizations"],
+  blacklist: ["app", "documents", "users"],
+  whitelist: ["user", "auth", "workspaces", "organizations", "users"],
   transforms: [transformCircular],
 };
 
@@ -31,6 +32,7 @@ const rootReducer = (history) => combineReducers({
   app,
   auth,
   user,
+  users,
   documents,
   workspaces,
   organizations,

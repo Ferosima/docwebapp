@@ -30,9 +30,8 @@ export default function LoginForm({ action, error, panding }) {
       <Form>
         <Label htmlFor="email">Email</Label>
         <Input {...register("email")} placeholder="Type email" />
-        {errors.email && <ErrorText>{errors.email?.message}</ErrorText>}
+        {(error || errors.email) && <ErrorText>{error || errors.email?.message}</ErrorText>}
       </Form>
-      {error && <ErrorText>{error}</ErrorText>}
       <Row>
         <div />
         <Button
@@ -40,7 +39,7 @@ export default function LoginForm({ action, error, panding }) {
           text="Send Invite"
           image={assetsData.images.ArrowRight}
           isImageRight
-          pandind={panding}
+          panding={panding}
         />
       </Row>
     </Wrapper>

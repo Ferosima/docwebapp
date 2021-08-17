@@ -1,8 +1,26 @@
 import { push } from "connected-react-router";
 import { call, put, select } from "redux-saga/effects";
-import { userUpdateSuccess, userUpdateFailed } from "../actions/user";
+import {
+  userUpdateSuccess,
+  userUpdateFailed,
+  fetchUserFailed,
+  fetchUserSuccess,
+} from "../actions/user";
+import { getCurrentOrganization } from "../actions/organizations";
 import { getUserState } from "../selectors/user";
 import client from "../client";
+
+export function* fetchUser() {
+  try {
+    const response = yield client.get("/users/current");
+    console.log("RES", response);
+    yield put(getCurrentOrganization(response.data?.userWorkspace?.organization));
+    yield put(fetchUserSuccess(response.data));
+  } catch (e) {
+    console.log("fetchUSER ERROR", e);
+    yield put(fetchUserFailed(e.message));
+  }
+}
 
 export function* userUpdate({ payload }) {
   try {

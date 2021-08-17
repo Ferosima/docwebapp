@@ -2,16 +2,19 @@ import { all, takeLatest } from "redux-saga/effects";
 
 import * as auth from "../actions/auth";
 import * as user from "../actions/user";
+import * as users from "../actions/users";
 import * as documents from "../actions/documents";
 import * as workspaces from "../actions/workspaces";
 import * as organizations from "../actions/organizations";
 
 import { login, registration, logout } from "./auth";
-import { userUpdate } from "./user";
+import { userUpdate, fetchUser } from "./user";
+import { fetchUsers, inviteUser } from "./users";
 import { fetchDocuments } from "./documents";
 import { fetchWorkspaces, fetchCurrentWorkspace, createWorkspace } from "./workspaces";
 import { createOrganization } from "./organizations";
 
+// AUTH
 function* loginSaga() {
   yield takeLatest(auth.login, login);
 }
@@ -21,14 +24,25 @@ function* registrationSaga() {
 function* logoutSaga() {
   yield takeLatest(auth.logout, logout);
 }
-
+// USER
 function* userUpdateSaga() {
   yield takeLatest(user.userUpdate, userUpdate);
 }
-
+function* fetchUserSaga() {
+  yield takeLatest(user.fetchUser, fetchUser);
+}
+// USERS
+function* fetchUsersSaga() {
+  yield takeLatest(users.fetchUsers, fetchUsers);
+}
+function* inviteUserSaga() {
+  yield takeLatest(users.inviteUser, inviteUser);
+}
+// DOCUMENTS
 function* fetchDocumentsSaga() {
   yield takeLatest(documents.fetchDocuments, fetchDocuments);
 }
+// WORKSPACES
 function* fetchWorkspacesSaga() {
   yield takeLatest(workspaces.fetchWorkspaces, fetchWorkspaces);
 }
@@ -38,7 +52,7 @@ function* fetchCurrentWorkspaceSaga() {
 function* createWorkspaceSaga() {
   yield takeLatest(workspaces.createWorkspace, createWorkspace);
 }
-
+// ORGANIZATIONS
 function* createOrganizationSaga() {
   yield takeLatest(organizations.createOrganization, createOrganization);
 }
@@ -51,6 +65,10 @@ export default function* rootSaga() {
     logoutSaga(),
     // USER
     userUpdateSaga(),
+    fetchUserSaga(),
+    // USERS
+    fetchUsersSaga(),
+    inviteUserSaga(),
     // DOCS
     fetchDocumentsSaga(),
     // WORKSPACES

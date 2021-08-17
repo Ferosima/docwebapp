@@ -17,7 +17,7 @@ import {
 } from "react-icons/hi";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { FaFileSignature, FaRegUserCircle, FaUserCircle } from "react-icons/fa";
-import { BiLogOut } from "react-icons/bi";
+import { BiLogOut, BiCheckCircle } from "react-icons/bi";
 import { BsPeople, BsPeopleFill } from "react-icons/bs";
 import {
   RiPenNibFill,
@@ -52,6 +52,7 @@ export const icons = {
   peopleOutline: <BsPeople />,
   construct: <IoConstructSharp />,
   close: <IoCloseSharp />,
+  done: <BiCheckCircle />,
 };
 
 export default icons;
