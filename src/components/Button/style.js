@@ -5,8 +5,9 @@ export const Wrapper = styled.div`
   flex-direction: ${({ reverse }) => (reverse ? "row-reverse" : "row")};
   font-size: 16px;
   font-family: Roboto-Light;
-  background-color: #407bff;
-  color: #fff;
+  background-color: ${({ theme }) => theme.background || "#407bff"};
+  border: ${({ theme }) => theme.border || ""};
+  color: ${({ theme }) => theme.color || "#fff"};
   padding: 10px 10px;
   border-radius: 10px;
   align-items: center;

@@ -10,6 +10,7 @@ import { Empty, Loading } from "../../components/Plugs";
 import { fetchDocuments } from "../../store/actions/documents";
 import { getDocumentsState } from "../../store/selectors/documents";
 import { Container, Grid, Wrapper } from "./style";
+import FileUploader from "../../components/FileUpload";
 class DocumentsPage extends React.Component {
   state = {
     modalVisible: false,
@@ -51,7 +52,7 @@ class DocumentsPage extends React.Component {
           modalVisible={modalVisible}
           onRequestClose={() => this.setModalVisible(false)}
         >
-          <p>Text2sssssssssssssssssssssssssss</p>
+          <FileUploader />
         </Modal>
         <Header title="Documents" buttons={[{ name: "add", action: () => console.log("add") }]} />
         {!panding ? this.renderContent(list) : <Loading panding={panding} />}

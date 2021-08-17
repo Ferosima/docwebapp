@@ -31,7 +31,7 @@ class PeoplePage extends React.Component {
   };
 
   renderCard(data, index) {
-    return <Card firstName={data.firstName} secondName={data.secondName} key={index} />;
+    return <Card data={data} key={index} />;
   }
 
   renderContent = (list) =>

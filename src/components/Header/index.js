@@ -4,7 +4,7 @@ import { myButtons } from "./buttons";
 
 class Header extends React.Component {
   renderButton = (data, index) => (
-    <button type="button" onClick={data.action}>
+    <button type="button" onClick={data.action} key={index}>
       <img src={myButtons[data.name].img} alt="myButtons" />
     </button>
   );

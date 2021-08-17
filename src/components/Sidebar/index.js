@@ -23,8 +23,7 @@ class Sidebar extends React.Component {
   isMatch = (path) => this.props.location.pathname.includes(path);
 
   renderItem = ({ path, icon, name }, index) => {
-    const { isOpen } = this.state;
-    return <SidebarItem key={index} isOpen={isOpen} path={path} name={name} icon={icon} />;
+    return <SidebarItem key={index} path={path} name={name} icon={icon} />;
   };
 
   renderHeader = (isOpen) => (
@@ -35,11 +34,9 @@ class Sidebar extends React.Component {
   );
 
   renderOrganizationItem = (name, theme) => {
-    const { isOpen } = this.state;
     return (
       <SidebarItem
         // style={style}
-        isOpen={isOpen}
         path="/app/organization/"
         name={name || `Create organization`}
         icon="organization"
@@ -74,13 +71,8 @@ class Sidebar extends React.Component {
           {default_routers.map(this.renderItem)}
         </Container>
         <Container padding="0 0 20px 0">
-          <SidebarItem
-            isOpen={isOpen}
-            path="/app/user/"
-            name={`${firstName} ${secondName}`}
-            icon="user"
-          />
-          <SidebarItem isOpen={isOpen} onClick={logout} name="Log out" icon="logout" isNonActive />
+          <SidebarItem path="/app/user/" name={`${firstName} ${secondName}`} icon="user" />
+          <SidebarItem onClick={logout} name="Log out" icon="logout" isNonActive />
         </Container>
       </SidebarWrapper>
     );

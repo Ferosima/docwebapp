@@ -2,23 +2,29 @@ import React from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { Wrapper } from "./style";
 
-const theme = {
+const buttonsTheme = {
   main: { background: "#407BFF", color: "#fff" },
+  outline: { background: "transparent", color: "#407BFF", border: "2px solid #407BFF" },
 };
 class Button extends React.Component {
   render() {
     const {
-      text, className, onClick, style, image, panding, isImageRight,
+      text, className, onClick, image, panding, isImageRight, theme, ...other
     } = this.props;
     return (
       <Wrapper
         className={className}
         onClick={!panding ? onClick : undefined}
-        style={style}
         reverse={isImageRight}
+        theme={buttonsTheme[theme]}
+        {...other}
       >
         {panding ? (
-          <ClipLoader color="#fff" loading={panding} size={20} />
+          <ClipLoader
+            color={theme ? buttonsTheme[theme].color : "#fff"}
+            loading={panding}
+            size={20}
+          />
         ) : (
           <>
             {image && <img src={image} alt="img" />}
