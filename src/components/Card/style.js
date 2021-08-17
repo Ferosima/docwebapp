@@ -49,7 +49,7 @@ export const Container = styled.div`
 
 export const Title = styled.div`
   font-size: 16px;
-  font-family: Roboto-Bold;
+  font-family: ${({ isChosen }) => (isChosen ? "Roboto-Bold" : "Roboto-Medium")};
   padding: 0 0 2px;
 `;
 

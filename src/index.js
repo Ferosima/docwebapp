@@ -3,12 +3,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import { pdfjs } from "react-pdf";
 import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { history, persistor, store } from "./store/config";
 import Router from "./router";
 import { injectStore } from "./store/client";
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 injectStore(store);
 

@@ -1,62 +1,73 @@
-import React, { useState } from "react";
-import {
-  Input, Label, Text, Wrapper, Title, Container,
-} from "./style";
-import Button from "../Button";
+import React from "react";
+import { Document, Page } from "react-pdf";
 import assetsData from "../../assets/assetsData";
+import Button from "../Button";
+import { Container, Input, Label, Preview, Text, Title, Wrapper } from "./style";
 
-export default function FileUploadPage() {
-  const [selectedFile, setSelectedFile] = useState();
-  const [isFilePicked, setIsFilePicked] = useState(false);
-
-  const changeHandler = (event) => {
-    setSelectedFile(event.target.files[0]);
-    console.log("UPOLAD", event.target.files[0]);
-    setIsFilePicked(true);
+export default class FileUploadPage extends React.Component {
+  state = {
+    selectedFile: null,
+    fileName: null,
   };
 
-  const handleSubmission = () => { };
+  toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
 
-  return (
-    <Wrapper>
-      <Title>Document</Title>
-      <Container style={{ padding: "30px 0 20px" }}>
-        {!isFilePicked ? (
-          <Text>
-            You don’t have document
-            <br /> You can upload only .pdf or .doc file
-          </Text>
-        ) : (
-          <div>
-            <p>Filename: {selectedFile?.name}</p>
-            <p>Filetype: {selectedFile?.type}</p>
-            <p>Size in bytes: {selectedFile?.size}</p>
-            <p>lastModifiedDate: {selectedFile?.lastModifiedDate.toLocaleDateString()}</p>
-          </div>
-        )}
-        <Label>
-          <Button
-            text="Upload"
-            image={assetsData.images.UploadBlue}
-            theme="outline"
-            style={{ padding: "3px 10px", borderRadius: "15px" }}
-          />
-          <Input
-            type="file"
-            name="file"
-            onChange={changeHandler}
-            accept="application/pdf,application/msword,.doc,.docx"
+  changeHandler = async (event) => {
+    const file = await URL.createObjectURL(event.target.files[0]);
+    console.log(event.target.files[0]);
+    this.setState({ selectedFile: file, fileName: event.target.files[0].name });
+  };
+
+  renderUploadButton = () => {
+    const { selectedFile } = this.state;
+    return (
+      <Label>
+        <Button
+          text={selectedFile ? "Change" : "Upload"}
+          image={selectedFile ? assetsData.images.ChangeBlue : assetsData.images.UploadBlue}
+          theme="outline"
+          style={{ padding: "3px 10px", borderRadius: "15px" }}
+        />
+        <Input
+          type="file"
+          name="file"
+          onChange={this.changeHandler}
+          accept="application/pdf"
           // TODO add check file type
-          />
-        </Label>
-      </Container>
-      {/* {isFilePicked ? (
+        />
+      </Label>
+    );
+  };
 
-      ) : (
-        <p>Select a file to show details</p>
-      )}
-      <div>
-      </div> */}
-    </Wrapper>
-  );
+  render() {
+    const { selectedFile, fileName } = this.state;
+    console.log(selectedFile);
+    return (
+      <Wrapper>
+        <Title>Document</Title>
+        <Container style={{ padding: !selectedFile ? "30px 0 20px" : "5px 0 10px" }}>
+          {!selectedFile ? (
+            <Text>
+              You don’t have document
+              <br /> You can upload only .pdf or .doc file
+            </Text>
+          ) : (
+            <Preview>
+              <Text>{fileName} </Text>
+              <Document file={selectedFile} className="Document">
+                <Page pageNumber={1} renderMode="svg" width="210" height="297" />
+              </Document>
+            </Preview>
+          )}
+          {this.renderUploadButton()}
+        </Container>
+      </Wrapper>
+    );
+  }
 }

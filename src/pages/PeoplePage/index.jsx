@@ -10,6 +10,7 @@ import Modal from "../../components/Modal";
 import { Empty, Loading, Success } from "../../components/Plugs";
 import { fetchUsers, inviteUser, inviteSuccessClear } from "../../store/actions/users";
 import { getUsersState } from "../../store/selectors/users";
+import { getUserState } from "../../store/selectors/user";
 import { Container, Grid, Wrapper } from "./style";
 import { fetchOrganizations } from "../../store/actions/organizations";
 class PeoplePage extends React.Component {
@@ -30,9 +31,11 @@ class PeoplePage extends React.Component {
     this.props.inviteSuccessClear();
   };
 
-  renderCard(data, index) {
-    return <Card data={data} key={index} />;
-  }
+  renderCard = (data, index) => {
+    const { user } = this.props;
+    console.log(this.props);
+    return <Card data={data} key={index} isChosen={data.uuid === user.uuid} />;
+  };
 
   renderContent = (list) =>
     list.length ? (
@@ -49,10 +52,10 @@ class PeoplePage extends React.Component {
     );
 
   render() {
-    const { users, inviteUser } = this.props;
+    const { users, inviteUser, user } = this.props;
     const { panding, list, inviteSuccess, error } = users;
     const { modalVisible } = this.state;
-    console.log(users, this.state);
+    // console.log(users, this.state);
     return (
       <Wrapper>
         <Modal
@@ -74,6 +77,7 @@ class PeoplePage extends React.Component {
 }
 const mapStateToProps = (state) => ({
   users: getUsersState(state),
+  user: getUserState(state),
 });
 const mapDispatchToProps = {
   fetchUsers,
