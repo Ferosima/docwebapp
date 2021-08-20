@@ -5,6 +5,7 @@ import { Wrapper } from "./style";
 const buttonsTheme = {
   main: { background: "#407BFF", color: "#fff" },
   outline: { background: "transparent", color: "#407BFF", border: "2px solid #407BFF" },
+  outlineRed: { background: "transparent", color: "#DF5753", border: "1px solid #DF5753" },
 };
 class Button extends React.Component {
   render() {
@@ -17,6 +18,7 @@ class Button extends React.Component {
         onClick={!panding ? onClick : undefined}
         reverse={isImageRight}
         theme={buttonsTheme[theme]}
+        // type="button"
         {...other}
       >
         {panding ? (

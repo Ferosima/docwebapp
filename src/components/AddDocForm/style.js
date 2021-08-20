@@ -1,12 +1,42 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
-  align-items: flex-start;
-  justify-content: center;
-  width: -webkit-fill-available;
+
+  /* max-height: 80vh; */
+  height: fit-content;
+  align-items: flex-end;
+
+  form {
+    max-height: 80vh;
+
+    padding: 0 22px 0 30px;
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: center;
+    width: -webkit-fill-available;
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      border: 1px solid #afb6c8;
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #dee5f0;
+      border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #9da9b9;
+    }
+  }
 `;
 
 export const Label = styled.p`
@@ -36,6 +66,9 @@ export const Input = styled.input`
   padding: 10px 5px;
   font-size: 14px;
   width: 500px;
+  font-size: 14px;
+  font-family: Roboto-Medium;
+  color: #4d545b;
 
   :focus {
     border: 1px solid #2339c3;
@@ -44,6 +77,13 @@ export const Input = styled.input`
     font-family: Roboto;
     font-size: 16px;
     color: #939499;
+  }
+  ::-webkit-datetime-edit {
+    font-size: 14px;
+    font-family: Roboto-Medium;
+  }
+  ::-webkit-calendar-picker-indicator {
+    color: #4d545b;
   }
   margin-bottom: 10px;
 `;
@@ -54,4 +94,9 @@ export const ErrorText = styled.p`
   font-size: 13px;
   color: #d80404;
   align-self: self-end;
+  max-width: 500px;
+`;
+
+export const Container = styled.div`
+  padding: 10px 30px;
 `;

@@ -13,6 +13,8 @@ export const Wrapper = styled.div`
   align-items: center;
   cursor: pointer;
   user-select: none;
+  max-width: fit-content;
+
   img {
     padding: ${({ reverse }) => (reverse ? " 0 0 0 5px" : " 0 5px 0 0")};
     height: 16px;

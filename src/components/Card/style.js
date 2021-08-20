@@ -18,7 +18,7 @@ export const Status = styled.div`
   background-color: rgba(196, 196, 196, 0.76);
   text-align: center;
   font-weight: 200;
-  z-index: 100;
+  z-index: 5;
   position: absolute;
   margin: 10px;
   padding: 0 5px;

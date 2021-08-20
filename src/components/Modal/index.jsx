@@ -3,11 +3,18 @@ import {
   Wrapper, Title, Row, Container, Icon,
 } from "./style";
 
+const themes = {
+  allScreen: {
+    justifyContent: "flex-start",
+    // height: "-webkit-fill-available",
+  },
+};
+
 export default function Modal({
-  modalVisible, children, onRequestClose, title,
+  modalVisible, children, onRequestClose, title, theme,
 }) {
   return (
-    <Wrapper modalVisible={modalVisible}>
+    <Wrapper modalVisible={modalVisible} theme={themes[theme]}>
       <Container>
         <Row>
           <Title>{title}</Title>
