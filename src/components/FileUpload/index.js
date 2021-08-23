@@ -10,24 +10,19 @@ export default class FileUploadPage extends React.Component {
     fileName: null,
   };
 
-  toBase64 = (file) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
-
   changeHandler = async (event) => {
-    const file = await URL.createObjectURL(event.target.files[0]);
-    console.log(event.target.files[0]);
-    this.setState({ selectedFile: file, fileName: event.target.files[0].name });
+    if (event.target.files.length !== 0) {
+      const file = await URL.createObjectURL(event.target.files[0]);
+      this.props.setValue("file", event.target.files);
+      this.setState({ selectedFile: file, fileName: event.target.files[0].name });
+    }
   };
 
   renderUploadButton = () => {
     const { selectedFile } = this.state;
+    const { register } = this.props;
     return (
-      <Label>
+      <Label selectedFile={selectedFile}>
         <Button
           text={selectedFile ? "Change" : "Upload"}
           image={selectedFile ? assetsData.images.ChangeBlue : assetsData.images.UploadBlue}
@@ -35,11 +30,11 @@ export default class FileUploadPage extends React.Component {
           style={{ padding: "3px 10px", borderRadius: "15px" }}
         />
         <Input
+          {...register("file", { required: true })}
           type="file"
           name="file"
           onChange={this.changeHandler}
           accept="application/pdf"
-          // TODO add check file type
         />
       </Label>
     );
@@ -47,11 +42,12 @@ export default class FileUploadPage extends React.Component {
 
   render() {
     const { selectedFile, fileName } = this.state;
-    console.log(selectedFile);
     return (
       <Wrapper>
         <Title>Document</Title>
-        <Container style={{ padding: !selectedFile ? "30px 0 20px" : "5px 0 10px" }}>
+        <Container
+          style={{ padding: !selectedFile ? "30px 0 20px" : "5px 0 10px", height: "260px" }}
+        >
           {!selectedFile ? (
             <Text>
               You don’t have document
@@ -61,7 +57,7 @@ export default class FileUploadPage extends React.Component {
             <Preview>
               <Text>{fileName} </Text>
               <Document file={selectedFile} className="Document">
-                <Page pageNumber={1} renderMode="svg" width="210" height="297" />
+                <Page pageNumber={1} renderMode="svg" width={150} height={212} className="Page" />
               </Document>
             </Preview>
           )}

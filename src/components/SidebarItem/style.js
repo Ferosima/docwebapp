@@ -33,6 +33,10 @@ export const Item = styled(Link)`
     font-size: inherit;
     user-select: none;
   }
+
+  @media (max-width: 700px) {
+    margin: 0;
+  }
 `;
 export const Icon = styled(icon)`
   height: 20px;

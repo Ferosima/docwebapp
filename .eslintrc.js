@@ -54,6 +54,7 @@ module.exports = {
     "implicit-arrow-linebreak": 1,
     "no-confusing-arrow": 1,
     "prefer-template": 1,
+    "no-return-assign": 1,
     indent: 1,
     quotes: 0,
     camelcase: 0,

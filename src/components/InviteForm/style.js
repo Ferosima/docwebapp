@@ -54,6 +54,7 @@ export const Wrapper = styled.div`
   align-items: flex-start;
   justify-content: center;
   width: -webkit-fill-available;
+  /* padding: 0 30px 20px; */
 `;
 export const ErrorText = styled.p`
   padding: 5px 0 15px 0;

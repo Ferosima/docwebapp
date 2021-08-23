@@ -18,7 +18,7 @@ export const Status = styled.div`
   background-color: rgba(196, 196, 196, 0.76);
   text-align: center;
   font-weight: 200;
-  z-index: 100;
+  z-index: 5;
   position: absolute;
   margin: 10px;
   padding: 0 5px;
@@ -32,6 +32,12 @@ export const Preview = styled.div`
   justify-content: center;
   display: flex;
   align-items: center;
+  .Document {
+    height: 190px;
+    aspect-ratio: 21/29;
+    background-color: #fff;
+    border-radius: 3%;
+  }
 `;
 export const Document = styled.div`
   height: 190px;
