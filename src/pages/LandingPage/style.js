@@ -5,7 +5,13 @@ export const Wrapper = styled.div`
   flex-direction: column;
   width: 100%;
   overflow-y: scroll;
+  overflow-x: hidden;
   padding: 0 50px;
+
+  @media (max-width: 585px) {
+    width: 100%;
+    padding: 0 20px;
+  } ;
 `;
 export const Logo = styled.div`
   display: flex;
@@ -34,6 +40,12 @@ export const Row = styled.div`
   justify-content: space-between;
   padding: ${(props) => props?.padding};
   margin: ${(props) => props?.margin};
+  /* flex-direction: column-reverse; */
+  height: min-content;
+
+  @media (max-width: 585px) {
+    flex-direction: ${({ noColumnReverse }) => noColumnReverse || "column-reverse"};
+  }
 `;
 export const Column = styled.div`
   display: flex;
@@ -41,28 +53,51 @@ export const Column = styled.div`
   align-items: flex-start;
   justify-content: center;
   width: ${(props) => props?.width};
+
+  @media (max-width: 585px) {
+    width: 100%;
+    padding: 0;
+  } ;
 `;
 export const Container = styled.div`
   display: flex;
   padding: ${(props) => props?.padding};
   height: ${(props) => props?.height};
   justify-content: center;
+
+  @media (max-width: 585px) {
+    width: 100%;
+    padding: 0;
+  } ;
 `;
 
 export const Title = styled.p`
   font-family: Roboto-Medium;
   font-size: 36px;
   padding: ${(props) => props?.padding};
+
+  @media (max-width: 585px) {
+    font-size: 20px;
+  } ;
 `;
 
 export const Subtitle = styled.p`
   font-family: Roboto-Light;
   font-size: 24px;
+
+  @media (max-width: 585px) {
+    font-size: 16px;
+  } ;
 `;
 
 export const ImageWrapper = styled.div`
   width: 40%;
   padding: 0 40px;
+
+  @media (max-width: 585px) {
+    width: 65%;
+    padding: 20px 0;
+  } ;
 `;
 
 export const Button = styled.button`
@@ -74,4 +109,9 @@ export const Button = styled.button`
   font-size: 18px;
   white-space: nowrap;
   height: fit-content;
+
+  @media (max-width: 585px) {
+    font-size: 16px;
+    padding: ${(props) => props.padding || "5px 10px"};
+  } ;
 `;

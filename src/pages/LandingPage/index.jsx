@@ -22,12 +22,12 @@ class HomePage extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Row padding="15px 0" margin="15px 0">
+        <Row padding="15px 0" margin="15px 0" noColumnReverse>
           <Logo onClick={this.handleOnClick("/")}>
             <img src={assetsData.images.Logo} alt="Logo" />
             <p>Docwebapp</p>
           </Logo>
-          <Row>
+          <Row noColumnReverse>
             <Button onClick={this.handleOnClick("/auth/login")}>Sing in</Button>
             <Button primary onClick={this.handleOnClick("/auth/registration")}>
               Sign up
