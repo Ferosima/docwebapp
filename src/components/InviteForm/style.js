@@ -35,7 +35,8 @@ export const Input = styled.input`
   border-radius: 5px;
   padding: 10px 5px;
   font-size: 14px;
-  width: 500px;
+  max-width: 500px;
+  width: 100%;
 
   :focus {
     border: 1px solid #2339c3;

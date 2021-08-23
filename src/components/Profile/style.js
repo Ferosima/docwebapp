@@ -17,6 +17,10 @@ export const Wrapper = styled.div`
     width: -webkit-fill-available;
     padding: 0 80px;
     max-width: 650px;
+    
+    @media(max-width:800px){
+      padding: 0 20px;
+    }
   }
 `;
 export const Row = styled.div`

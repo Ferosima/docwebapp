@@ -17,6 +17,12 @@ export const Grid = styled.div`
   justify-items: center;
   grid-gap: 1vw;
   grid-row-gap: 2vw;
+
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-gap: 2vw;
+    grid-row-gap: 3vw;
+  }
 `;
 
 export const Container = styled.div`

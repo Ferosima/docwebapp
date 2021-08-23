@@ -9,6 +9,9 @@ export const Wrapper = styled.div`
   width: 210px;
   height: fit-content;
   position: relative;
+  @media (max-width: 800px) {
+    width: 140px;
+  }
 `;
 
 export const Status = styled.div`
@@ -23,6 +26,10 @@ export const Status = styled.div`
   margin: 10px;
   padding: 0 5px;
   user-select: none;
+  @media (max-width: 800px) {
+    font-size: 14px;
+    margin: 10px;
+  }
 `;
 
 export const Preview = styled.div`
@@ -38,12 +45,19 @@ export const Preview = styled.div`
     background-color: #fff;
     border-radius: 3%;
   }
+  @media (max-width: 800px) {
+    height: 170px;
+  }
 `;
 export const Document = styled.div`
   height: 190px;
   aspect-ratio: 21/29;
   background-color: #fff;
   border-radius: 3%;
+
+  @media (max-width: 800px) {
+    height: 150px;
+  }
 `;
 export const Container = styled.div`
   justify-content: center;
@@ -57,10 +71,16 @@ export const Title = styled.div`
   font-size: 16px;
   font-family: ${({ isChosen }) => (isChosen ? "Roboto-Bold" : "Roboto-Medium")};
   padding: 0 0 2px;
+  @media (max-width: 800px) {
+    font-size: 14px;
+  }
 `;
 
 export const Subtitle = styled.div`
   font-size: 14px;
   font-family: Roboto;
   color: #455a64;
+  @media (max-width: 800px) {
+    font-size: 12px;
+  }
 `;

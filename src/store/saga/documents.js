@@ -27,8 +27,8 @@ export function* createDocument({ payload }) {
     };
 
     yield Object.keys(data).forEach((el) => formData.append(el, data[el]));
-    // yield signerIds.forEach((el) => formData.append("signerIds", el));
-    yield formData.append("signerIds", JSON.stringify(signerIds));
+    yield signerIds.forEach((el) => formData.append("signerIds[]", el));
+    // yield formData.append("signerIds", JSON.stringify(signerIds));
 
     const response = yield client.post("/documents", formData, {
       headers: {
