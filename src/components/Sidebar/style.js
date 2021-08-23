@@ -23,10 +23,10 @@ export const Wrapper = styled.div`
   @media (max-width: 700px) {
     position: absolute;
     z-index: 120;
-    transition: backdrop-filter 1s;
-    backdrop-filter: ${({ isOpen }) => (isOpen ? "blur(6px) opacity(1)" : "blur(6px) opacity(0)")};
+    /* transition: backdrop-filter 1s; */
+    background: rgba(0, 0, 0, 0.5);
+    /* backdrop-filter: ${({ isOpen }) => (isOpen ? "blur(6px) opacity(1)" : "blur(6px) opacity(0)")}; */
     height: 100%;
-    width: 100%;
     width: ${({ isOpen }) => (isOpen ? "100%" : "0px")};
   }
 `;

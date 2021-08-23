@@ -10,6 +10,10 @@ export const Container = styled.div`
   /* max-height: -webkit-fill-available; */
 
   margin: 50px 20px;
+
+  @media (max-width: 700px) {
+    margin: 20px 10px;
+  }
 `;
 
 export const Row = styled.div`
