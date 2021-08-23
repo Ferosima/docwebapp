@@ -101,6 +101,7 @@ export default function SearchSelect({
           search
           multiple
           printOptions="on-focus"
+          // printOptions="always"
         />
       </Container>
       {selectedList.length ? (
@@ -121,7 +122,8 @@ export default function SearchSelect({
             justifyContent: "center",
             borderRadius: "5px",
             border: "1px solid #ccd3e4",
-            margin: "5px 0 0",
+            margin: "5px 0 15px",
+            "box-sizing": "border-box",
           }}
         >
           <Subtitle textAlign="center">You don`t have signatures</Subtitle>

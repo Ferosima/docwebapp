@@ -3,14 +3,14 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-
+  overflow: hidden;
   /* max-height: 80vh; */
   height: fit-content;
   align-items: flex-end;
 
   form {
     max-height: 80vh;
-
+    overflow-x: hidden;
     padding: 0 22px 0 30px;
     overflow-y: auto;
     align-items: flex-start;
@@ -65,7 +65,8 @@ export const Input = styled.input`
   border-radius: 5px;
   padding: 10px 5px;
   font-size: 14px;
-  width: 500px;
+  max-width: 500px;
+  width: 100%;
   font-size: 14px;
   font-family: Roboto-Medium;
   color: #4d545b;

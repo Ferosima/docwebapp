@@ -9,7 +9,7 @@ export const Container = styled.div`
   flex-direction: column;
   /* max-height: -webkit-fill-available; */
 
-  margin: 50px 0;
+  margin: 50px 20px;
 `;
 
 export const Row = styled.div`
@@ -41,7 +41,10 @@ export const Wrapper = styled.div`
   ${Container} {
     height: ${({ theme }) => theme.height || "fit-content"};
     padding: ${({ theme }) => theme.containerPadding || " 0 20px 20px"};
+    width: ${({ theme }) => theme.width || "fit-content"};
+    max-width: ${({ theme }) => theme.maxWidth};
   }
+
   ${Row} {
     padding: ${({ theme }) => theme.rowPadding || "20px 0 0"};
   }

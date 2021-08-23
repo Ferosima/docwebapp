@@ -8,6 +8,9 @@ const themes = {
     justifyContent: "flex-start",
     containerPadding: "0",
     rowPadding: " 20px 30px 0",
+    height: "-webkit-fill-available",
+    width: "-webkit-fill-available",
+    maxWidth: "510px",
   },
 };
 

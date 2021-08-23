@@ -45,7 +45,7 @@ export const Title = styled.p`
 export const Preview = styled.object`
   padding: 5px 10px;
   background-color: #f9fbff;
-  width: 500px;
+  max-width: 500px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
