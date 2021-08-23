@@ -35,7 +35,7 @@ export const Item = styled(Link)`
   }
 
   @media (max-width: 700px) {
-    margin: 0;
+    /* margin: 0; */
   }
 `;
 export const Icon = styled(icon)`

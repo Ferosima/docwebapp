@@ -119,6 +119,7 @@ export const Container = styled.div`
 export const Row = styled.div`
   display: flex;
   flex-direction: row;
+ 
 `;
 export const Item = styled.button`
   display: flex;
@@ -136,6 +137,7 @@ export const Item = styled.button`
 
   ${Title} {
     margin: 0;
+    font-size: 14px;
   }
 `;
 

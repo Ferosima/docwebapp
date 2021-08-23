@@ -51,7 +51,7 @@ export default function SearchSelect({
     } = data;
     return (
       <Item onMouseDown={!selected ? props.onMouseDown : null} type="button" value={props.value}>
-        <Row>
+        <Row style={{ overflow: "hidden" }}>
           <Avatar name={user.uuid === uuid ? "Y" : firstName} style={{ marginRight: "10px" }} />
           <Container>
             <Title bold={user.uuid === uuid}>

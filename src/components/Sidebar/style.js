@@ -10,7 +10,25 @@ export const SidebarWrapper = styled.div`
   justify-content: space-between;
   overflow: hidden;
   width: ${({ isOpen }) => (isOpen ? "250px" : "70px")};
+  height: 100%;
   border-right: 1px solid #c7c7cc;
+  background: #fff;
+  @media (max-width: 700px) {
+    height: 100%;
+    width: ${({ isOpen }) => (isOpen ? "250px" : "0px")};
+  }
+`;
+export const Wrapper = styled.div`
+  width: fit-content;
+  @media (max-width: 700px) {
+    position: absolute;
+    z-index: 120;
+    transition: backdrop-filter 1s;
+    backdrop-filter: ${({ isOpen }) => (isOpen ? "blur(6px) opacity(1)" : "blur(6px) opacity(0)")};
+    height: 100%;
+    width: 100%;
+    width: ${({ isOpen }) => (isOpen ? "100%" : "0px")};
+  }
 `;
 export const Container = styled.div`
   display: flex;

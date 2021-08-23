@@ -9,7 +9,7 @@ import { getSidebarState } from "../../store/selectors/app";
 import { getCurrentOrganizationState } from "../../store/selectors/organizations";
 import { getUserState } from "../../store/selectors/user";
 import { SidebarItem } from "../SidebarItem";
-import { Arrow, Container, Header, SidebarWrapper } from "./style";
+import { Arrow, Container, Header, SidebarWrapper, Wrapper } from "./style";
 
 class Sidebar extends React.Component {
   state = {
@@ -17,7 +17,12 @@ class Sidebar extends React.Component {
   };
 
   handleClick = () => {
-    this.setState({ isOpen: !this.state.isOpen });
+    const { isSidebarOpen, setSidebarState } = this.props;
+    setSidebarState(!isSidebarOpen);
+  };
+
+  handleChildClick = (e) => {
+    e.stopPropagation();
   };
 
   isMatch = (path) => this.props.location.pathname.includes(path);
@@ -36,7 +41,6 @@ class Sidebar extends React.Component {
   renderOrganizationItem = (name, theme) => {
     return (
       <SidebarItem
-        // style={style}
         path="/app/organization/"
         name={name || `Create organization`}
         icon="organization"
@@ -46,34 +50,43 @@ class Sidebar extends React.Component {
   };
 
   render() {
-    const { user, logout, currentOrganization, routers, default_routers } = this.props;
+    const {
+      user,
+      logout,
+      currentOrganization,
+      routers,
+      default_routers,
+      isSidebarOpen,
+    } = this.props;
     const { firstName, secondName } = user;
     const { isOpen } = this.state;
     return (
-      <SidebarWrapper isOpen={isOpen}>
-        <Container>
-          {currentOrganization
-            ? this.renderOrganizationItem(currentOrganization.name, "header")
-            : this.renderHeader(isOpen)}
-          <Arrow
-            name="arrowLeft"
-            size="20px"
-            color="#4D5F68"
-            onClick={() => this.handleClick()}
-            isOpen={isOpen}
-          />
-          {currentOrganization ? (
-            <>{routers.map(this.renderItem)}</>
-          ) : (
-            this.renderOrganizationItem()
-          )}
-          {default_routers.map(this.renderItem)}
-        </Container>
-        <Container padding="0 0 20px 0">
-          <SidebarItem path="/app/user/" name={`${firstName} ${secondName}`} icon="user" />
-          <SidebarItem onClick={logout} name="Log out" icon="logout" isNonActive />
-        </Container>
-      </SidebarWrapper>
+      <Wrapper isOpen={isSidebarOpen} onClick={this.handleClick}>
+        <SidebarWrapper isOpen={isSidebarOpen} onClick={this.handleChildClick}>
+          <Container>
+            {currentOrganization
+              ? this.renderOrganizationItem(currentOrganization.name, "header")
+              : this.renderHeader(isSidebarOpen)}
+            <Arrow
+              name="arrowLeft"
+              size="20px"
+              color="#4D5F68"
+              onClick={this.handleClick}
+              isOpen={isSidebarOpen}
+            />
+            {currentOrganization ? (
+              <>{routers.map(this.renderItem)}</>
+            ) : (
+              this.renderOrganizationItem()
+            )}
+            {default_routers.map(this.renderItem)}
+          </Container>
+          <Container padding="0 0 20px 0">
+            <SidebarItem path="/app/user/" name={`${firstName} ${secondName}`} icon="user" />
+            <SidebarItem onClick={logout} name="Log out" icon="logout" isNonActive />
+          </Container>
+        </SidebarWrapper>
+      </Wrapper>
     );
   }
 }

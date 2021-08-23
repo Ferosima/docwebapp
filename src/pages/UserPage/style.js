@@ -18,6 +18,9 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0 60px 0;
+  @media (max-width: 700px) {
+    padding: 0 30px 0;
+  }
 `;
 export const Text = styled.p``;
 

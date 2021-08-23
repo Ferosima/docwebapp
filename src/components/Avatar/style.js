@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: ${({ size }) => size || "35px"};
+  min-width: ${({ size }) => size || "35px"};
   aspect-ratio: 1;
   background-color: ${({ color }) => color};
   justify-content: center;

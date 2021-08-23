@@ -8,6 +8,7 @@ import {
   IoNotifications,
   IoConstructSharp,
   IoCloseSharp,
+  IoMenu,
 } from "react-icons/io5";
 import {
   HiPencil,
@@ -54,6 +55,7 @@ export const icons = {
   close: <IoCloseSharp />,
   done: <BiCheckCircle />,
   search: <BiSearch />,
+  menu: <IoMenu />,
 };
 
 export default icons;
