@@ -13,7 +13,7 @@ import Button from "../Button";
 const schema = yup.object().shape({
   name: yup.string().required("Name is required!"),
   description: yup.string(),
-  expiredAt: yup
+  expiresAt: yup
     .date()
     .required()
     .min(
@@ -50,10 +50,11 @@ export default function AddDocForm({ action, error }) {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  // const onSubmit = (data) => action(data);
-  const onSubmit = (data) => console.log(data);
-  console.log("VALUES", getValues());
-  console.log(errors);
+
+  const onSubmit = (data) => {
+    action(data);
+  };
+
   return (
     <Wrapper>
       <form>
@@ -64,9 +65,8 @@ export default function AddDocForm({ action, error }) {
         <Input {...register("description")} placeholder="Type something about this document" />
         <Label htmlFor="expiredAt">Expired at</Label>
         <Input
-          {...register("expiredAt")}
+          {...register("expiresAt")}
           type="datetime-local"
-          // value={moment(new Date()).format("YYYY-MM-DDTHH:mm")}
           min={moment(new Date()).format("YYYY-MM-DDTHH:mm")}
         />
         <ErrorText>

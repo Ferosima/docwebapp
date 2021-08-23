@@ -9,7 +9,16 @@ export const Container = styled.div`
   flex-direction: column;
   /* max-height: -webkit-fill-available; */
 
-  margin: 50px 0 ;
+  margin: 50px 0;
+`;
+
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 30px 0;
 `;
 
 export const Wrapper = styled.div`
@@ -31,6 +40,10 @@ export const Wrapper = styled.div`
 
   ${Container} {
     height: ${({ theme }) => theme.height || "fit-content"};
+    padding: ${({ theme }) => theme.containerPadding || " 0 20px 20px"};
+  }
+  ${Row} {
+    padding: ${({ theme }) => theme.rowPadding || "20px 0 0"};
   }
 `;
 export const Title = styled.p`
@@ -40,12 +53,4 @@ export const Title = styled.p`
 `;
 export const Icon = styled(icon)`
   cursor: pointer;
-`;
-export const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 20px 30px 0;
 `;

@@ -32,6 +32,12 @@ export const Preview = styled.div`
   justify-content: center;
   display: flex;
   align-items: center;
+  .Document {
+    height: 190px;
+    aspect-ratio: 21/29;
+    background-color: #fff;
+    border-radius: 3%;
+  }
 `;
 export const Document = styled.div`
   height: 190px;

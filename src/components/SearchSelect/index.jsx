@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
-import SelectSearch from "react-select-search";
-import { useSelector, useDispatch } from "react-redux";
 import Fuse from "fuse.js";
-import { render } from "@testing-library/react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import SelectSearch from "react-select-search";
 import { fetchUsers } from "../../store/actions/users";
-import {
-  Wrapper, Container, Title, Subtitle, Item, Row, Input,
-} from "./style";
 import Avatar from "../Avatar";
 import Button from "../Button";
 import Icon from "../Icon";
+import {
+  Container, Input, Item, Row, Subtitle, Title, Wrapper,
+} from "./style";
 
 export default function SearchSelect({
   action, error, getValues, setValue, register,
 }) {
   const [selectedList, setSelectedList] = useState([]);
   const { panding, list } = useSelector((state) => state.users);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,13 +46,17 @@ export default function SearchSelect({
   };
 
   const renderUser = (props, { data }, { selected }) => {
-    const { firstName, secondName, email } = data;
+    const {
+      firstName, secondName, email, uuid,
+    } = data;
     return (
       <Item onMouseDown={!selected ? props.onMouseDown : null} type="button" value={props.value}>
         <Row>
-          <Avatar name={firstName} style={{ marginRight: "10px" }} />
+          <Avatar name={user.uuid === uuid ? "Y" : firstName} style={{ marginRight: "10px" }} />
           <Container>
-            <Title>{`${firstName} ${secondName}`}</Title>
+            <Title bold={user.uuid === uuid}>
+              {user.uuid === uuid ? "Your sing" : `${firstName} ${secondName}`}
+            </Title>
             <Subtitle>{email}</Subtitle>
           </Container>
         </Row>
@@ -87,7 +91,6 @@ export default function SearchSelect({
       <Container>
         <SelectSearch
           renderValue={renderValue}
-          // className="select"
           {...register("signerIds")}
           closeOnSelect={false}
           options={newlist}
@@ -98,7 +101,6 @@ export default function SearchSelect({
           search
           multiple
           printOptions="on-focus"
-          // printOptions="always"
         />
       </Container>
       {selectedList.length ? (

@@ -15,7 +15,6 @@ export default function RegistrationForm({ action, error, panding }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     action(data);
   };
 

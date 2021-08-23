@@ -49,7 +49,6 @@ class Sidebar extends React.Component {
     const { user, logout, currentOrganization, routers, default_routers } = this.props;
     const { firstName, secondName } = user;
     const { isOpen } = this.state;
-    console.log(currentOrganization);
     return (
       <SidebarWrapper isOpen={isOpen}>
         <Container>

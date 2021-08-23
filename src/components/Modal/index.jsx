@@ -6,7 +6,8 @@ import {
 const themes = {
   allScreen: {
     justifyContent: "flex-start",
-    // height: "-webkit-fill-available",
+    containerPadding: "0",
+    rowPadding: " 20px 30px 0",
   },
 };
 
@@ -15,8 +16,8 @@ export default function Modal({
 }) {
   return (
     <Wrapper modalVisible={modalVisible} theme={themes[theme]}>
-      <Container>
-        <Row>
+      <Container theme={themes[theme]}>
+        <Row theme={themes[theme]}>
           <Title>{title}</Title>
           <Icon name="close" size="25px" color="#455A64" onClick={onRequestClose} />
         </Row>

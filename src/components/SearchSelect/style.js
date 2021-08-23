@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Title = styled.p`
-  font-family: Roboto-Medium;
+  font-family: ${({ bold }) => (bold ? "Roboto-Bold" : "Roboto-Medium")};
   font-size: 14px;
   text-align: left;
   margin-top: 20px;
