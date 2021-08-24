@@ -55,6 +55,7 @@ module.exports = {
     "no-confusing-arrow": 1,
     "prefer-template": 1,
     "no-return-assign": 1,
+    "consistent-return": 1,
     indent: 1,
     quotes: 0,
     camelcase: 0,

@@ -18,10 +18,10 @@ import {
   HiOutlineArrowCircleLeft,
   HiOutlineArrowCircleRight,
 } from "react-icons/hi";
-import { AiOutlineQuestionCircle } from "react-icons/ai";
+import { AiOutlineQuestionCircle, AiOutlineInfoCircle, AiFillInfoCircle } from "react-icons/ai";
 import { FaFileSignature, FaRegUserCircle, FaUserCircle } from "react-icons/fa";
 import { BiLogOut, BiCheckCircle, BiSearch } from "react-icons/bi";
-import { BsPeople, BsPeopleFill } from "react-icons/bs";
+import { BsPeople, BsPeopleFill, BsArrowBarRight } from "react-icons/bs";
 import {
   RiPenNibFill,
   RiPenNibLine,
@@ -59,7 +59,10 @@ export const icons = {
   search: <BiSearch />,
   menu: <IoMenu />,
   arrowBack: <IoArrowBack />,
+  arrowCollapse: <BsArrowBarRight />,
   save: <IoSaveOutline />,
+  info: <AiFillInfoCircle />,
+  infoOutline: <AiOutlineInfoCircle />,
 };
 
 export default icons;

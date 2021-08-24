@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   left: 0;
+  top: 0;
 `;
 export const Header = styled.div`
   width: 100%;

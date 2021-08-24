@@ -4,7 +4,7 @@ import button from "../../components/Button";
 export const Wrapper = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex: 1;
   align-items: stretch;
   justify-content: center;
@@ -13,10 +13,12 @@ export const Wrapper = styled.div`
 
 export const Grid = styled.div`
   display: grid;
+  width: -webkit-fill-available;
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
   justify-items: center;
   grid-gap: 1vw;
   grid-row-gap: 2vw;
+  padding: 25px;
 
   @media (max-width: 800px) {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -26,8 +28,10 @@ export const Grid = styled.div`
 `;
 
 export const Container = styled.div`
+  display: flex;
   flex: 1;
-  padding: 25px;
+
+  flex-direction: column;
   overflow-y: scroll;
 `;
 

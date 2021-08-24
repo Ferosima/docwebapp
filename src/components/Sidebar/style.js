@@ -2,23 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import icon from "../Icon";
 
-export const SidebarWrapper = styled.div`
-  transition: width 1s;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-between;
-  overflow: hidden;
-  width: ${({ isOpen }) => (isOpen ? "250px" : "70px")};
-  height: 100%;
-  border-right: 1px solid #c7c7cc;
-  background: #fff;
-  @media (max-width: 700px) {
-    height: 100%;
-    width: ${({ isOpen }) => (isOpen ? "250px" : "0px")};
-  }
-`;
-export const Wrapper = styled.div`
+export const Background = styled.div`
   width: fit-content;
   @media (max-width: 700px) {
     position: absolute;
@@ -30,6 +14,23 @@ export const Wrapper = styled.div`
     width: ${({ isOpen }) => (isOpen ? "100%" : "0px")};
   }
 `;
+export const Wrapper = styled.div`
+  transition: width 1s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  overflow: hidden;
+  width: ${({ isOpen }) => (isOpen ? "250px" : "70px")};
+  height: 100%;
+  border-right: 1px solid #c7c7cc;
+  background-color: #f8f9fb;
+  @media (max-width: 700px) {
+    height: 100%;
+    width: ${({ isOpen }) => (isOpen ? "250px" : "0px")};
+  }
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
