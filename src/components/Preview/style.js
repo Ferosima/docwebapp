@@ -51,6 +51,12 @@ export const Column = styled.div`
   width: fit-content;
   overflow: auto;
 `;
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  overflow: auto;
+`;
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -116,9 +122,36 @@ export const Text = styled.p`
 export const Icon = styled(icon)`
   padding: 10px 5px;
 `;
+export const Avatar = styled(avatar)``;
+
 export const Button = styled(button)`
   padding: 5px 10px;
   border-radius: 20px;
   font-size: 14px;
   margin: 10px 0 0;
+`;
+
+export const Item = styled.button`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  /* justify-content: space-between; */
+  background-color: ${({ isSelected }) => (isSelected ? "#407BFF" : "#fff")};
+  padding: 5px;
+  align-items: center;
+  cursor: pointer;
+
+  ${Title} {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    text-align: left;
+    color: #263238;
+  }
+  ${Subtitle} {
+    font-size: 14px;
+    font-family: Roboto-Light;
+    color: #acb7c5;
+    text-align: left;
+  }
 `;
