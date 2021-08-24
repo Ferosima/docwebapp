@@ -6,6 +6,7 @@ import invite from "./images/invite.svg";
 import ArrowRight from "./images/ArrowRight.svg";
 import UploadBlue from "./images/UploadBlue.svg";
 import ChangeBlue from "./images/ChangeBlue.svg";
+import pdf from "./images/pdf.svg";
 
 const assetsData = {
   images: {
@@ -17,6 +18,7 @@ const assetsData = {
     ArrowRight,
     UploadBlue,
     ChangeBlue,
+    pdf,
   },
 };
 export default assetsData;

@@ -13,6 +13,7 @@ export default class FileUploadPage extends React.Component {
   changeHandler = async (event) => {
     if (event.target.files.length !== 0) {
       const file = await URL.createObjectURL(event.target.files[0]);
+      console.log("fileB", file);
       this.props.setValue("file", event.target.files);
       this.setState({ selectedFile: file, fileName: event.target.files[0].name });
     }

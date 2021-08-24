@@ -6,6 +6,9 @@ import {
   DOCS_CREATE_DOCUMENT,
   DOCS_CREATE_DOCUMENT_FAILED,
   DOCS_CREATE_DOCUMENT_SUCCESS,
+  DOCS_FETCH_DOCUMENT_FILE,
+  DOCS_FETCH_DOCUMENT_FILE_FAILED,
+  DOCS_FETCH_DOCUMENT_FILE_SUCCESS,
   DOCS_CLEAR_ERROR,
   DOCS_CLEAR,
 } from "../types/documents";
@@ -21,6 +24,16 @@ export const createDocument = createAction(DOCS_CREATE_DOCUMENT, (payload) => pa
 export const createDocumentFailed = createAction(DOCS_CREATE_DOCUMENT_FAILED, (payload) => payload);
 export const createDocumentSuccess = createAction(
   DOCS_CREATE_DOCUMENT_SUCCESS,
+  (payload) => payload,
+);
+
+export const fetchDocumentFile = createAction(DOCS_FETCH_DOCUMENT_FILE, (payload) => payload);
+export const fetchDocumentFileFailed = createAction(
+  DOCS_FETCH_DOCUMENT_FILE_FAILED,
+  (payload) => payload,
+);
+export const fetchDocumentFileSuccess = createAction(
+  DOCS_FETCH_DOCUMENT_FILE_SUCCESS,
   (payload) => payload,
 );
 

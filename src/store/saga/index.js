@@ -10,7 +10,7 @@ import * as organizations from "../actions/organizations";
 import { login, registration, logout } from "./auth";
 import { userUpdate, fetchUser } from "./user";
 import { fetchUsers, inviteUser } from "./users";
-import { createDocument, fetchDocuments } from "./documents";
+import { createDocument, fetchDocuments, fetchDocumentFile } from "./documents";
 import { fetchWorkspaces, fetchCurrentWorkspace, createWorkspace } from "./workspaces";
 import { createOrganization } from "./organizations";
 
@@ -45,6 +45,9 @@ function* fetchDocumentsSaga() {
 function* createDocumentSaga() {
   yield takeLatest(documents.createDocument, createDocument);
 }
+function* fetchDocumentFileSaga() {
+  yield takeLatest(documents.fetchDocumentFile, fetchDocumentFile);
+}
 // WORKSPACES
 function* fetchWorkspacesSaga() {
   yield takeLatest(workspaces.fetchWorkspaces, fetchWorkspaces);
@@ -75,6 +78,7 @@ export default function* rootSaga() {
     // DOCS
     fetchDocumentsSaga(),
     createDocumentSaga(),
+    fetchDocumentFileSaga(),
     // WORKSPACES
     fetchWorkspacesSaga(),
     fetchCurrentWorkspaceSaga(),

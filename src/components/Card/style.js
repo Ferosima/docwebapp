@@ -9,8 +9,27 @@ export const Wrapper = styled.div`
   width: 210px;
   height: fit-content;
   position: relative;
+  cursor: pointer;
+  .Document {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+  }
+  .Page {
+    justify-content: center;
+    display: flex;
+  }
   @media (max-width: 800px) {
     width: 140px;
+  }
+
+  :hover {
+    opacity: 0.9;
+  }
+  :active {
+    opacity: 0.6;
   }
 `;
 
@@ -38,6 +57,7 @@ export const Preview = styled.div`
   background-color: #dae0f7;
   justify-content: center;
   display: flex;
+  justify-content: center;
   align-items: center;
   .Document {
     height: 190px;
@@ -49,11 +69,19 @@ export const Preview = styled.div`
     height: 170px;
   }
 `;
-export const Document = styled.div`
+export const DocumentEmpty = styled.div`
   height: 190px;
   aspect-ratio: 21/29;
   background-color: #fff;
+  border: 1px solid #bcd1ff;
   border-radius: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    height: 40px;
+    user-select: none;
+  }
 
   @media (max-width: 800px) {
     height: 150px;
