@@ -30,7 +30,7 @@ export default function DocumentViewer({ file, onRequestClose, name }) {
       </Header>
       <Container>
         <Document
-          file={URL.createObjectURL(file)}
+          file={file}
           className="Document"
           onLoadSuccess={onDocumentLoadSuccess}
           onClick={onRequestClose}

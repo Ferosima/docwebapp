@@ -18,6 +18,7 @@ import { getDocumentsState } from "../../store/selectors/documents";
 import { Container, Grid, Wrapper } from "./style";
 import FileUploader from "../../components/FileUpload";
 import AddDocForm from "../../components/AddDocForm";
+import Preview from "../../components/Preview";
 class DocumentsPage extends React.Component {
   state = {
     modalVisible: false,
@@ -28,22 +29,22 @@ class DocumentsPage extends React.Component {
     this.props.fetchDocuments();
   }
 
+  openModal = () => {
+    this.setModalVisible(true);
+    this.props.documentsClearError();
+  };
+
   setModalVisible = (visible) => {
     this.setState({ modalVisible: visible });
   };
 
-  setSelectedFile = (uuid, name) => {
-    this.setState({ selectedFile: { uuid, name } });
-    this.props.fetchDocumentFile(uuid);
+  setSelectedFile = (data) => {
+    this.setState({ selectedFile: data });
+    this.props.fetchDocumentFile(data.uuid);
   };
 
   clearSelectedFile = () => {
     this.setState({ selectedFile: null });
-  };
-
-  openModal = () => {
-    this.setModalVisible(true);
-    this.props.documentsClearError();
   };
 
   renderCard = (data, index) => {
@@ -53,7 +54,7 @@ class DocumentsPage extends React.Component {
         data={data}
         key={index}
         file={files[data.uuid]}
-        onClick={() => this.setSelectedFile(data.uuid, data.name)}
+        onClick={() => this.setSelectedFile(data)}
       />
     );
   };
@@ -92,15 +93,25 @@ class DocumentsPage extends React.Component {
         >
           {this.renderForm()}
         </Modal>
-        {files[selectedFile?.uuid] && (
+        {/* {files[selectedFile?.uuid] && (
           <DocumentViewer
             file={files[selectedFile?.uuid]}
             onRequestClose={this.clearSelectedFile}
             name={selectedFile?.name}
           />
-        )}
-        <Header title="Documents" buttons={[{ name: "add", action: this.openModal }]} />
-        {!panding ? this.renderContent(list) : <Loading panding={panding} />}
+        )} */}
+        <Container>
+          <Header title="Documents" buttons={[{ name: "add", action: this.openModal }]} />
+          {!panding ? this.renderContent(list) : <Loading panding={panding} />}
+        </Container>
+        {
+          <Preview
+            isOpen={selectedFile}
+            data={selectedFile}
+            file={files[selectedFile?.uuid]}
+            onRequestClose={this.clearSelectedFile}
+          />
+        }
       </Wrapper>
     );
   }

@@ -9,7 +9,7 @@ import { getSidebarState } from "../../store/selectors/app";
 import { getCurrentOrganizationState } from "../../store/selectors/organizations";
 import { getUserState } from "../../store/selectors/user";
 import { SidebarItem } from "../SidebarItem";
-import { Arrow, Container, Header, SidebarWrapper, Wrapper } from "./style";
+import { Arrow, Container, Header, Wrapper, Background } from "./style";
 
 class Sidebar extends React.Component {
   state = {
@@ -61,8 +61,8 @@ class Sidebar extends React.Component {
     const { firstName, secondName } = user;
     const { isOpen } = this.state;
     return (
-      <Wrapper isOpen={isSidebarOpen} onClick={this.handleClick}>
-        <SidebarWrapper isOpen={isSidebarOpen} onClick={this.handleChildClick}>
+      <Background isOpen={isSidebarOpen} onClick={this.handleClick}>
+        <Wrapper isOpen={isSidebarOpen} onClick={this.handleChildClick}>
           <Container>
             {currentOrganization
               ? this.renderOrganizationItem(currentOrganization.name, "header")
@@ -85,8 +85,8 @@ class Sidebar extends React.Component {
             <SidebarItem path="/app/user/" name={`${firstName} ${secondName}`} icon="user" />
             <SidebarItem onClick={logout} name="Log out" icon="logout" isNonActive />
           </Container>
-        </SidebarWrapper>
-      </Wrapper>
+        </Wrapper>
+      </Background>
     );
   }
 }
