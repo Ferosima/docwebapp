@@ -1,7 +1,9 @@
 import moment from "moment";
 import React from "react";
+import { Document, Page } from "react-pdf";
 import Avatar from "../Avatar";
-import { Container, Document, Preview, Status, Subtitle, Title, Wrapper } from "./style";
+import { Container, DocumentEmpty, Preview, Status, Subtitle, Title, Wrapper } from "./style";
+import assetsData from "../../assets/assetsData";
 
 const theme = {
   document: {
@@ -15,14 +17,29 @@ export class DocumentCard extends React.Component {
   getDate = (date) => moment(date).format("D.MM.YYYY");
 
   render() {
-    const { data, style } = this.props;
+    const { data, style, file, onClick } = this.props;
     const { name, createdAt } = data;
     return (
-      <Wrapper style={style}>
+      <Wrapper
+        style={style}
+        onClick={() => {
+          onClick(file);
+        }}
+      >
         <Status>ready</Status>
+        {/* {!file ? ( */}
         <Preview>
-          <Document />
+          <DocumentEmpty>
+            <img src={assetsData.images.pdf} alt="pdf" />
+          </DocumentEmpty>
         </Preview>
+        {/* ) : (
+          <Preview>
+            <Document file={URL.createObjectURL(file)} className="Document">
+              <Page pageNumber={1} width={141} height={190} className="Page" />
+            </Document>
+          </Preview>
+        )} */}
         <Container theme={theme.document}>
           <Title>{name}</Title>
           <Subtitle>{this.getDate(createdAt)}</Subtitle>

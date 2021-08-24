@@ -6,8 +6,14 @@ import assetsData from "../../assets/assetsData";
 import { DocumentCard as Card } from "../../components/Card";
 import Header from "../../components/Header";
 import Modal from "../../components/Modal";
+import DocumentViewer from "../../components/DocumentViewer";
 import { Empty, Loading, Success } from "../../components/Plugs";
-import { fetchDocuments, createDocument, documentsClearError } from "../../store/actions/documents";
+import {
+  fetchDocuments,
+  createDocument,
+  documentsClearError,
+  fetchDocumentFile,
+} from "../../store/actions/documents";
 import { getDocumentsState } from "../../store/selectors/documents";
 import { Container, Grid, Wrapper } from "./style";
 import FileUploader from "../../components/FileUpload";
@@ -15,6 +21,7 @@ import AddDocForm from "../../components/AddDocForm";
 class DocumentsPage extends React.Component {
   state = {
     modalVisible: false,
+    selectedFile: null,
   };
 
   componentDidMount() {
@@ -25,14 +32,31 @@ class DocumentsPage extends React.Component {
     this.setState({ modalVisible: visible });
   };
 
+  setSelectedFile = (uuid, name) => {
+    this.setState({ selectedFile: { uuid, name } });
+    this.props.fetchDocumentFile(uuid);
+  };
+
+  clearSelectedFile = () => {
+    this.setState({ selectedFile: null });
+  };
+
   openModal = () => {
     this.setModalVisible(true);
     this.props.documentsClearError();
   };
 
-  renderCard(data, index) {
-    return <Card data={data} key={index} />;
-  }
+  renderCard = (data, index) => {
+    const { files } = this.props.documents;
+    return (
+      <Card
+        data={data}
+        key={index}
+        file={files[data.uuid]}
+        onClick={() => this.setSelectedFile(data.uuid, data.name)}
+      />
+    );
+  };
 
   renderContent = (list) =>
     list.length ? (
@@ -48,9 +72,16 @@ class DocumentsPage extends React.Component {
       />
     );
 
+  renderForm = () =>
+    this.props.documents.isSuccess ? (
+      <Success text="Create document success" onClick={() => this.setModalVisible(false)} />
+    ) : (
+      <AddDocForm action={this.props.createDocument} />
+    );
+
   render() {
-    const { list, panding, isSuccess } = this.props.documents;
-    const { modalVisible } = this.state;
+    const { list, panding, isSuccess, files } = this.props.documents;
+    const { modalVisible, selectedFile } = this.state;
     return (
       <Wrapper>
         <Modal
@@ -59,12 +90,15 @@ class DocumentsPage extends React.Component {
           onRequestClose={() => this.setModalVisible(false)}
           theme={!isSuccess && "allScreen"}
         >
-          {isSuccess ? (
-            <Success text="Create document success" onClick={() => this.setModalVisible(false)} />
-          ) : (
-            <AddDocForm action={this.props.createDocument} />
-          )}
+          {this.renderForm()}
         </Modal>
+        {files[selectedFile?.uuid] && (
+          <DocumentViewer
+            file={files[selectedFile?.uuid]}
+            onRequestClose={this.clearSelectedFile}
+            name={selectedFile?.name}
+          />
+        )}
         <Header title="Documents" buttons={[{ name: "add", action: this.openModal }]} />
         {!panding ? this.renderContent(list) : <Loading panding={panding} />}
       </Wrapper>
@@ -80,6 +114,7 @@ const mapDispatchToProps = {
   fetchDocuments,
   createDocument,
   documentsClearError,
+  fetchDocumentFile,
 };
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

@@ -1,21 +1,42 @@
-import { put, call } from "redux-saga/effects";
+import { put, call, all } from "redux-saga/effects";
 import {
   fetchDocumentsFailed,
   fetchDocumentsSuccess,
   createDocumentSuccess,
+  fetchDocumentFileFailed,
+  fetchDocumentFileSuccess,
   createDocumentFailed,
 } from "../actions/documents";
 import client from "../client";
 
+export function* fetchDocumentFile(payload) {
+  console.log("fetchDocumentFile");
+  try {
+    const uuid = payload?.payload || payload;
+    const response = yield client.get(`/documents/${uuid}`, {
+      responseType: "arraybuffer",
+      headers: {
+        Accept: "application/pdf",
+        "Content-Type": "application/json",
+      },
+    });
+    yield put(fetchDocumentFileSuccess({ [uuid]: new Blob([response.data]) }));
+  } catch (e) {
+    console.log("fetchFileDoc ERROR", e);
+    yield put(fetchDocumentsFailed(e.message));
+  }
+}
 export function* fetchDocuments() {
   try {
-    const response = yield client.get("/documents");
+    const response = yield client.get("/documents/");
     yield put(fetchDocumentsSuccess(response.data));
+    // yield all(response.data.map((el) => call(fetchDocumentFile, el.uuid)));
   } catch (e) {
     console.log("fetchDocuments ERROR", e);
     yield put(fetchDocumentsFailed(e.message));
   }
 }
+
 export function* createDocument({ payload }) {
   try {
     const formData = new FormData();

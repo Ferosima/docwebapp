@@ -9,6 +9,8 @@ import {
   IoConstructSharp,
   IoCloseSharp,
   IoMenu,
+  IoArrowBack,
+  IoSaveOutline,
 } from "react-icons/io5";
 import {
   HiPencil,
@@ -56,6 +58,8 @@ export const icons = {
   done: <BiCheckCircle />,
   search: <BiSearch />,
   menu: <IoMenu />,
+  arrowBack: <IoArrowBack />,
+  save: <IoSaveOutline />,
 };
 
 export default icons;
