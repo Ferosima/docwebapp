@@ -1,7 +1,7 @@
 import { APP_SET_SIDEBAR_STATE } from '../types/app';
 
 const initialState = {
-  isSidebarOpen: true,
+  isSidebarOpen: false,
 };
 
 export default function reducer(state = initialState, action) {

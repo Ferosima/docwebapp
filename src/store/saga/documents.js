@@ -41,8 +41,10 @@ export function* fetchDocumentFile(payload) {
 export function* fetchSignatures(payload) {
   try {
     const uuid = payload?.payload || payload;
-    console.log("UUID", uuid);
+
     const response = yield client.get(`/documents/${uuid}/signatures`);
+
+    console.log("UUID", response.data);
     yield put(fetchSignaturesSuccess({ [uuid]: response.data }));
   } catch (e) {
     console.log("fetchFileDoc ERROR", e);

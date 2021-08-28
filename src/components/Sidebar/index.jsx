@@ -10,12 +10,7 @@ import { getCurrentOrganizationState } from "../../store/selectors/organizations
 import { getUserState } from "../../store/selectors/user";
 import { SidebarItem } from "../SidebarItem";
 import { Arrow, Container, Header, Wrapper, Background } from "./style";
-
 class Sidebar extends React.Component {
-  state = {
-    isOpen: true,
-  };
-
   handleClick = () => {
     const { isSidebarOpen, setSidebarState } = this.props;
     setSidebarState(!isSidebarOpen);
@@ -40,26 +35,13 @@ class Sidebar extends React.Component {
 
   renderOrganizationItem = (name, theme) => {
     return (
-      <SidebarItem
-        path="/app/organization/"
-        name={name || `Create organization`}
-        icon="organization"
-        theme={theme}
-      />
+      <SidebarItem path="/app/organization/" name={name || `Create organization`} icon="organization" theme={theme} />
     );
   };
 
   render() {
-    const {
-      user,
-      logout,
-      currentOrganization,
-      routers,
-      default_routers,
-      isSidebarOpen,
-    } = this.props;
+    const { user, logout, currentOrganization, routers, default_routers, isSidebarOpen } = this.props;
     const { firstName, secondName } = user;
-    const { isOpen } = this.state;
     return (
       <Background isOpen={isSidebarOpen} onClick={this.handleClick}>
         <Wrapper isOpen={isSidebarOpen} onClick={this.handleChildClick}>
@@ -67,18 +49,8 @@ class Sidebar extends React.Component {
             {currentOrganization
               ? this.renderOrganizationItem(currentOrganization.name, "header")
               : this.renderHeader(isSidebarOpen)}
-            <Arrow
-              name="arrowLeft"
-              size="20px"
-              color="#4D5F68"
-              onClick={this.handleClick}
-              isOpen={isSidebarOpen}
-            />
-            {currentOrganization ? (
-              <>{routers.map(this.renderItem)}</>
-            ) : (
-              this.renderOrganizationItem()
-            )}
+            <Arrow name="arrowLeft" size="20px" color="#4D5F68" onClick={this.handleClick} isOpen={isSidebarOpen} />
+            {currentOrganization ? <>{routers.map(this.renderItem)}</> : this.renderOrganizationItem()}
             {default_routers.map(this.renderItem)}
           </Container>
           <Container padding="0 0 20px 0">

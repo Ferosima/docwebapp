@@ -79,7 +79,7 @@ export const Container = styled.div`
   }
   .MuiTimeline-root {
     width: inherit;
-    overflow: hidden;
+    overflow-x: hidden;
   }
   .MuiTimelineContent-root {
     overflow: hidden;
@@ -125,7 +125,6 @@ export const Title = styled.p`
   color: #26395a;
   clear: both;
   display: inline-block;
-  overflow: hidden;
   white-space: nowrap;
 `;
 export const Subtitle = styled.p`

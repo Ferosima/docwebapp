@@ -90,10 +90,7 @@ export const SignaturesTab = ({ uuid }) => {
       </TimelineItem>
     );
   };
-  console.log(
-    signatures[uuid]?.find((el) => (el.signer.uuid = user.uuid))?.completedStatus,
-    signatures[uuid]?.find((el) => (el.signer.uuid = user.uuid)),
-  );
+  console.log(signatures);
   return (
     <Container style={{ padding: "15px 20px" }}>
       <Column>
@@ -126,6 +123,7 @@ const User = ({ data }) => {
   const {
     firstName, secondName, email, uuid,
   } = data;
+  console.log(user.uuid, uuid);
   return (
     <Item>
       <Avatar name={user.uuid === uuid ? "Y" : firstName} style={{ marginRight: "10px" }} />
