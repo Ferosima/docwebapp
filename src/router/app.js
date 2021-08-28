@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Sidebar from "../components/Sidebar";
 import Documents from "../pages/DocumentsPage";
-import Signatures from "../pages/SignaturesPage";
 import Settings from "../pages/SettingsPage";
 import User from "../pages/UserPage";
 import People from "../pages/PeoplePage";
@@ -24,12 +23,6 @@ const routers = [
     icon: "people",
     path: "/app/people/",
     main: () => <People />,
-  },
-  {
-    name: "Signatures",
-    icon: "signatures",
-    path: "/app/signatures/",
-    main: () => <Signatures />,
   },
 ];
 

@@ -22,8 +22,8 @@ export const transformCircular = createTransform(
 const rootPersistConfig = {
   key: "root",
   storage,
-  blacklist: ["app", "documents", "users"],
-  whitelist: ["user", "auth", "workspaces", "organizations", "users"],
+  blacklist: ["documents", "users"],
+  whitelist: ["app", "user", "auth", "workspaces", "organizations", "users"],
   transforms: [transformCircular],
 };
 

@@ -90,7 +90,7 @@ export const SignaturesTab = ({ uuid }) => {
       </TimelineItem>
     );
   };
-  console.log(signatures);
+  console.log("SIGNATURES", signatures[uuid]);
   return (
     <Container style={{ padding: "15px 20px" }}>
       <Column>
@@ -100,7 +100,7 @@ export const SignaturesTab = ({ uuid }) => {
         </Container>
         <Column />
       </Column>
-      {signatures[uuid] && !signatures[uuid]?.find((el) => (el.signer.uuid = user.uuid))?.completedStatus ? (
+      {signatures[uuid] && !signatures[uuid]?.find((el) => el.signer.uuid === user.uuid)?.completedStatus ? (
         <Row>
           <Button
             text="Reject"
@@ -111,7 +111,7 @@ export const SignaturesTab = ({ uuid }) => {
         </Row>
       ) : (
         signatures[uuid] && (
-          <Label>Document are {signatures[uuid]?.find((el) => (el.signer.uuid = user.uuid))?.completedStatus}</Label>
+          <Label>Document are {signatures[uuid]?.find((el) => el.signer.uuid === user.uuid)?.completedStatus}</Label>
         )
       )}
     </Container>
