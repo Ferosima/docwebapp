@@ -9,24 +9,29 @@ import Modal from "../../components/Modal";
 import DocumentViewer from "../../components/DocumentViewer";
 import { Empty, Loading, Success } from "../../components/Plugs";
 import {
-  fetchDocuments,
+  fetchCreatedDocuments,
+  fetchSigningDocuments,
   createDocument,
   documentsClearError,
   fetchDocumentFile,
 } from "../../store/actions/documents";
 import { getDocumentsState } from "../../store/selectors/documents";
-import { Container, Grid, Wrapper } from "./style";
+import { Container, Grid, Wrapper, Toggle } from "./style";
 import FileUploader from "../../components/FileUpload";
 import AddDocForm from "../../components/AddDocForm";
 import Preview from "../../components/Preview";
+// import { Toggle } from "../../components/Toggle";
+import { DOCS_FETCH_SIGNING_DOCUMENTS_FAILED } from "../../store/types/documents";
+
 class DocumentsPage extends React.Component {
   state = {
     modalVisible: false,
     selectedFile: null,
+    toggle: "Created",
   };
 
   componentDidMount() {
-    this.props.fetchDocuments();
+    this.props.fetchCreatedDocuments();
   }
 
   openModal = () => {
@@ -47,13 +52,18 @@ class DocumentsPage extends React.Component {
     this.setState({ selectedFile: null });
   };
 
+  onClickToggle = (text, action) => {
+    this.setState({ toggle: text });
+    action();
+  };
+
   renderCard = (data, index) => {
     const { files } = this.props.documents;
     return (
       <Card
         data={data}
         key={index}
-        file={files[data.uuid]}
+        file={files[data?.uuid]}
         onClick={() => this.setSelectedFile(data)}
       />
     );
@@ -81,8 +91,10 @@ class DocumentsPage extends React.Component {
     );
 
   render() {
-    const { list, panding, isSuccess, files } = this.props.documents;
-    const { modalVisible, selectedFile } = this.state;
+    const { documents, fetchCreatedDocuments, fetchSigningDocuments } = this.props;
+    const { created_documents, signing_documents, panding, isSuccess, files } = documents;
+    const { modalVisible, selectedFile, toggle } = this.state;
+    const tabs = { Created: created_documents, Signing: signing_documents };
     return (
       <Wrapper>
         <Modal
@@ -93,16 +105,21 @@ class DocumentsPage extends React.Component {
         >
           {this.renderForm()}
         </Modal>
-        {/* {files[selectedFile?.uuid] && (
-          <DocumentViewer
-            file={files[selectedFile?.uuid]}
-            onRequestClose={this.clearSelectedFile}
-            name={selectedFile?.name}
-          />
-        )} */}
-        <Container>
+        <Container style={{ overflow: "hidden" }}>
           <Header title="Documents" buttons={[{ name: "add", action: this.openModal }]} />
-          {!panding ? this.renderContent(list) : <Loading panding={panding} />}
+          <Toggle
+            buttons={[
+              { text: "Created", action: fetchCreatedDocuments },
+              { text: "Signing", action: fetchSigningDocuments },
+            ]}
+            active={toggle}
+            onClick={this.onClickToggle}
+          />
+          {!panding ? (
+            this.renderContent(tabs[toggle] ?? created_documents)
+          ) : (
+            <Loading panding={panding} />
+          )}
         </Container>
         {
           <Preview
@@ -122,7 +139,8 @@ const mapStateToProps = (state) => ({
   store: state,
 });
 const mapDispatchToProps = {
-  fetchDocuments,
+  fetchCreatedDocuments,
+  fetchSigningDocuments,
   createDocument,
   documentsClearError,
   fetchDocumentFile,

@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Item from "@material-ui/core/MenuItem";
+import icon from "../Icon";
 
 export const Wrapper = styled.div`
   border: 1px solid #dadce0;
@@ -24,20 +26,22 @@ export const Wrapper = styled.div`
   @media (max-width: 800px) {
     width: 140px;
   }
-
+  .MuiListItem-root {
+  }
   :hover {
     opacity: 0.9;
   }
-  :active {
+  /* :active {
     opacity: 0.6;
-  }
+  } */
 `;
 
-export const Status = styled.div`
+export const Status = styled.span`
   font-family: Roboto, sans-serif;
   border: 0.5px solid lightgrey;
   border-radius: 15px;
-  background-color: rgba(196, 196, 196, 0.76);
+  background-color: ${({ isReady }) => (isReady ? "#C4F5BC" : "rgba(196, 196, 196, 0.76)")};
+  color: #455a64;
   text-align: center;
   font-weight: 200;
   z-index: 5;
@@ -47,7 +51,7 @@ export const Status = styled.div`
   user-select: none;
   @media (max-width: 800px) {
     font-size: 14px;
-    margin: 10px;
+    margin: 7px;
   }
 `;
 
@@ -95,10 +99,21 @@ export const Container = styled.div`
   padding: 10px 10px;
 `;
 
+export const Row = styled.div`
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+`;
+
 export const Title = styled.div`
   font-size: 16px;
   font-family: ${({ isChosen }) => (isChosen ? "Roboto-Bold" : "Roboto-Medium")};
   padding: 0 0 2px;
+  clear: both;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
   @media (max-width: 800px) {
     font-size: 14px;
   }
@@ -110,5 +125,14 @@ export const Subtitle = styled.div`
   color: #455a64;
   @media (max-width: 800px) {
     font-size: 12px;
+  }
+`;
+export const Icon = styled(icon)``;
+
+export const MenuItem = styled(Item)`
+  ${Title} {
+    font-size: 16px;
+    font-family: Roboto;
+    padding: 0 5px 0;
   }
 `;

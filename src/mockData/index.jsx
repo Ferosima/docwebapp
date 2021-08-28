@@ -188,3 +188,68 @@ export const people1 = [
     isActive: true,
   },
 ];
+export const signatures = [
+  {
+    uuid: "string",
+    createdAt: "2021-08-27T23:13:51.640Z",
+    updatedAt: "2021-08-27T23:13:51.640Z",
+    document: {
+      uuid: "string",
+      createdAt: "2021-08-27T23:13:51.640Z",
+      updatedAt: "2021-08-27T23:13:51.640Z",
+      name: "string",
+      description: "string",
+      creator: {
+        uuid: "string",
+        createdAt: "2021-08-27T23:13:51.640Z",
+        updatedAt: "2021-08-27T23:13:51.640Z",
+        firstName: "string",
+        secondName: "string",
+        email: "string",
+        userWorkspace: {
+          uuid: "string",
+          createdAt: "2021-08-27T23:13:51.640Z",
+          updatedAt: "2021-08-27T23:13:51.640Z",
+          organization: {
+            uuid: "string",
+            createdAt: "2021-08-27T23:13:51.640Z",
+            updatedAt: "2021-08-27T23:13:51.640Z",
+            name: "string",
+          },
+          accessLevel: "member",
+        },
+        isActive: true,
+      },
+      organization: {
+        uuid: "string",
+        createdAt: "2021-08-27T23:13:51.640Z",
+        updatedAt: "2021-08-27T23:13:51.640Z",
+        name: "string",
+      },
+      isReady: true,
+      expiresAt: "2021-08-27T23:13:51.640Z",
+    },
+    signer: {
+      uuid: "string",
+      createdAt: "2021-08-27T23:13:51.640Z",
+      updatedAt: "2021-08-27T23:13:51.640Z",
+      firstName: "string",
+      secondName: "string",
+      email: "string",
+      userWorkspace: {
+        uuid: "string",
+        createdAt: "2021-08-27T23:13:51.640Z",
+        updatedAt: "2021-08-27T23:13:51.640Z",
+        organization: {
+          uuid: "string",
+          createdAt: "2021-08-27T23:13:51.640Z",
+          updatedAt: "2021-08-27T23:13:51.640Z",
+          name: "string",
+        },
+        accessLevel: "member",
+      },
+      isActive: true,
+    },
+    completedStatus: "signed",
+  },
+];

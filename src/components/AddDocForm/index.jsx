@@ -12,7 +12,7 @@ import Button from "../Button";
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required!"),
-  description: yup.string(),
+  description: yup.string().required("Description is required!"),
   expiresAt: yup
     .date()
     .required()
@@ -63,6 +63,7 @@ export default function AddDocForm({ action, error }) {
         <ErrorText>{errors.name?.message}</ErrorText>
         <Label htmlFor="description">Description</Label>
         <Input {...register("description")} placeholder="Type something about this document" />
+        <ErrorText>{errors.description?.message}</ErrorText>
         <Label htmlFor="expiredAt">Expired at</Label>
         <Input
           {...register("expiresAt")}

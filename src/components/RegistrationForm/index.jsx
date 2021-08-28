@@ -35,7 +35,7 @@ export default function RegistrationForm({ action, error, panding }) {
         <Row>{form_name.map(renderInput)}</Row>
         {form_data.map(renderInput)}
         <Button onClick={!panding && handleSubmit(onSubmit)}>
-          {panding ? <ClipLoader color="#fff" loading={panding} size={20} /> : <p>Sing up</p>}
+          {panding ? <ClipLoader color="#fff" loading={panding} size={20} /> : <p>Sign up</p>}
         </Button>
       </form>
       {error && <ErrorText>{error}</ErrorText>}

@@ -13,15 +13,14 @@ import {
   IoSaveOutline,
 } from "react-icons/io5";
 import {
-  HiPencil,
-  HiOutlinePencil,
-  HiOutlineArrowCircleLeft,
-  HiOutlineArrowCircleRight,
+  HiPencil, HiOutlinePencil, HiOutlineArrowCircleLeft, HiOutlineArrowCircleRight,
 } from "react-icons/hi";
 import { AiOutlineQuestionCircle, AiOutlineInfoCircle, AiFillInfoCircle } from "react-icons/ai";
 import { FaFileSignature, FaRegUserCircle, FaUserCircle } from "react-icons/fa";
 import { BiLogOut, BiCheckCircle, BiSearch } from "react-icons/bi";
-import { BsPeople, BsPeopleFill, BsArrowBarRight } from "react-icons/bs";
+import {
+  BsPeople, BsPeopleFill, BsArrowBarRight, BsThreeDotsVertical,
+} from "react-icons/bs";
 import {
   RiPenNibFill,
   RiPenNibLine,
@@ -29,6 +28,7 @@ import {
   RiPencilLine,
   RiBuilding2Line,
   RiBuilding2Fill,
+  RiDeleteBin6Line,
 } from "react-icons/ri";
 
 export const icons = {
@@ -63,6 +63,8 @@ export const icons = {
   save: <IoSaveOutline />,
   info: <AiFillInfoCircle />,
   infoOutline: <AiOutlineInfoCircle />,
+  dots: <BsThreeDotsVertical />,
+  delete: <RiDeleteBin6Line />,
 };
 
 export default icons;

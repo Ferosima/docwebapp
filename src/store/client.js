@@ -2,7 +2,7 @@ import axios from "axios";
 import { setToken, authClear } from "./actions/auth";
 import { userClear } from "./actions/user";
 
-export const API_URL = "http://localhost:3000/api";
+export const API_URL = "http://192.168.0.105:3000/api";
 
 let store;
 

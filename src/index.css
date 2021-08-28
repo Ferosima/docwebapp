@@ -38,6 +38,7 @@ button {
   display: flex;
   flex: 1;
   background-color: #F8F9FB;
+  overflow: hidden;
 }
 
 /* @media (max-width:700px) {

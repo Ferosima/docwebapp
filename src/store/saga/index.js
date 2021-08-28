@@ -10,7 +10,15 @@ import * as organizations from "../actions/organizations";
 import { login, registration, logout } from "./auth";
 import { userUpdate, fetchUser } from "./user";
 import { fetchUsers, inviteUser } from "./users";
-import { createDocument, fetchDocuments, fetchDocumentFile } from "./documents";
+import {
+  createDocument,
+  fetchCreatedDocuments,
+  fetchSigningDocuments,
+  fetchDocumentFile,
+  fetchSignatures,
+  processDocument,
+  deleteDocument,
+} from "./documents";
 import { fetchWorkspaces, fetchCurrentWorkspace, createWorkspace } from "./workspaces";
 import { createOrganization } from "./organizations";
 
@@ -39,14 +47,26 @@ function* inviteUserSaga() {
   yield takeLatest(users.inviteUser, inviteUser);
 }
 // DOCUMENTS
-function* fetchDocumentsSaga() {
-  yield takeLatest(documents.fetchDocuments, fetchDocuments);
+function* fetchCreatedDocumentsSaga() {
+  yield takeLatest(documents.fetchCreatedDocuments, fetchCreatedDocuments);
+}
+function* fetchSigningDocumentsSaga() {
+  yield takeLatest(documents.fetchSigningDocuments, fetchSigningDocuments);
 }
 function* createDocumentSaga() {
   yield takeLatest(documents.createDocument, createDocument);
 }
+function* processDocumentSaga() {
+  yield takeLatest(documents.processDocument, processDocument);
+}
+function* deleteDocumentSaga() {
+  yield takeLatest(documents.deleteDocument, deleteDocument);
+}
 function* fetchDocumentFileSaga() {
   yield takeLatest(documents.fetchDocumentFile, fetchDocumentFile);
+}
+function* fetchSignaturesSaga() {
+  yield takeLatest(documents.fetchSignatures, fetchSignatures);
 }
 // WORKSPACES
 function* fetchWorkspacesSaga() {
@@ -76,9 +96,13 @@ export default function* rootSaga() {
     fetchUsersSaga(),
     inviteUserSaga(),
     // DOCS
-    fetchDocumentsSaga(),
+    fetchCreatedDocumentsSaga(),
+    fetchSigningDocumentsSaga(),
     createDocumentSaga(),
+    processDocumentSaga(),
+    deleteDocumentSaga(),
     fetchDocumentFileSaga(),
+    fetchSignaturesSaga(),
     // WORKSPACES
     fetchWorkspacesSaga(),
     fetchCurrentWorkspaceSaga(),

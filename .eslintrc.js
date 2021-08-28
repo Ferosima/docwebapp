@@ -56,6 +56,8 @@ module.exports = {
     "prefer-template": 1,
     "no-return-assign": 1,
     "consistent-return": 1,
+    "max-len": [1, { code: 120 }],
+    "function-paren-newline": 1,
     indent: 1,
     quotes: 0,
     camelcase: 0,

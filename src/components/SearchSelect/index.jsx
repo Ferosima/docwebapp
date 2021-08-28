@@ -55,7 +55,7 @@ export default function SearchSelect({
           <Avatar name={user.uuid === uuid ? "Y" : firstName} style={{ marginRight: "10px" }} />
           <Container>
             <Title bold={user.uuid === uuid}>
-              {user.uuid === uuid ? "Your sing" : `${firstName} ${secondName}`}
+              {user.uuid === uuid ? "Your sign" : `${firstName} ${secondName}`}
             </Title>
             <Subtitle>{email}</Subtitle>
           </Container>

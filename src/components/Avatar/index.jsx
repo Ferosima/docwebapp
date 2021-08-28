@@ -7,10 +7,15 @@ export default function Avatar(props) {
     return Math.floor(Math.random() * max);
   }
   const {
-    name, size, textSize, style,
+    name, size, textSize, className, style,
   } = props;
   return (
-    <Wrapper color={colors[getRandomInt(colors.length)]} size={size} style={style}>
+    <Wrapper
+      color={colors[getRandomInt(colors.length)]}
+      size={size}
+      style={style}
+      className={className}
+    >
       <Text textSize={textSize}>{name[0]}</Text>
     </Wrapper>
   );

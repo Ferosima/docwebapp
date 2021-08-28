@@ -28,7 +28,7 @@ class HomePage extends React.Component {
             <p>Docwebapp</p>
           </Logo>
           <Row noColumnReverse>
-            <Button onClick={this.handleOnClick("/auth/login")}>Sing in</Button>
+            <Button onClick={this.handleOnClick("/auth/login")}>Sign in</Button>
             <Button primary onClick={this.handleOnClick("/auth/registration")}>
               Sign up
             </Button>

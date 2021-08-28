@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import button from "../../components/Button";
+import { Toggle as toggle } from "../../components/Toggle";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -8,7 +9,7 @@ export const Wrapper = styled.div`
   flex: 1;
   align-items: stretch;
   justify-content: center;
-  overflow-y: hidden;
+  overflow: hidden;
 `;
 
 export const Grid = styled.div`
@@ -18,7 +19,7 @@ export const Grid = styled.div`
   justify-items: center;
   grid-gap: 1vw;
   grid-row-gap: 2vw;
-  padding: 25px;
+  padding: 0 25px 25px;
 
   @media (max-width: 800px) {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -42,4 +43,7 @@ export const Text = styled.div`
 
 export const Button = styled(button)`
   margin: 10px 0;
+`;
+export const Toggle = styled(toggle)`
+  margin: 15px 25px 15px;
 `;

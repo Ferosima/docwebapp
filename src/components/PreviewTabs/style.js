@@ -29,12 +29,8 @@ export const Wrapper = styled.div`
   width: ${({ isOpen }) => (isOpen ? "350px" : "0")};
   height: 100%;
   border-left: 1px solid #c7c7cc;
-  box-sizing: border-box;
+  /* background: #fff; */
   background-color: #f8f9fb;
-  @media (max-width: 850px) {
-    height: 100%;
-    width: ${({ isOpen }) => (isOpen ? "270px" : "0")};
-  }
   @media (max-width: 700px) {
     height: 100%;
     width: ${({ isOpen }) => (isOpen ? "300px" : "0")};
@@ -54,22 +50,49 @@ export const Column = styled.div`
   flex-direction: column;
   width: fit-content;
   overflow: auto;
+  overflow-x: hidden;
+  width: inherit;
 `;
 export const Row = styled.div`
   display: flex;
   flex-direction: row;
   width: fit-content;
   overflow: auto;
+  justify-content: space-evenly;
+  width: 100%;
 `;
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   flex: 1;
   height: 100%;
   background: #fff;
   box-sizing: border-box;
+  overflow: hidden;
+
+  .MuiTimelineItem-missingOppositeContent:before {
+    padding: 0;
+    flex: 0;
+  }
+  .MuiTimeline-root {
+    width: inherit;
+    overflow: hidden;
+  }
+  .MuiTimelineContent-root {
+    overflow: hidden;
+  }
+  .MuiTimelineDot-defaultGrey {
+    background-color: #c7c7cc;
+  }
+  .MuiTimelineDot-defaultPrimary {
+    background-color: #32e032;
+  }
+  .MuiTimelineDot-defaultSecondary {
+    background-color: #f4911d;
+  }
 `;
 
 export const Preview = styled.object`
@@ -100,11 +123,17 @@ export const Title = styled.p`
   font-size: 20px;
   padding: 15px 0;
   color: #26395a;
+  clear: both;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 export const Subtitle = styled.p`
   font-family: Roboto-Medium;
   font-size: 18px;
   color: #252733;
+  width: 100%;
+  text-align: center;
 `;
 export const Label = styled.p`
   font-family: Roboto;
@@ -121,6 +150,7 @@ export const Text = styled.p`
   font-family: Roboto-Medium;
   font-size: 14px;
   color: #263238;
+  white-space: wrap;
 `;
 
 export const Icon = styled(icon)`
@@ -135,7 +165,7 @@ export const Button = styled(button)`
   margin: 10px 0 0;
 `;
 
-export const Item = styled.button`
+export const Item = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
