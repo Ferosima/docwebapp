@@ -26,7 +26,7 @@ export const Header = styled.div`
   padding: 30px 50px;
   align-items: center;
   @media (max-width: 585px) {
-    padding: 20px 30px;
+    padding: 15px 25px;
   } ;
 `;
 export const Logo = styled.div`

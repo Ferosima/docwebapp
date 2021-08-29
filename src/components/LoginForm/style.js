@@ -9,7 +9,7 @@ export const Label = styled.p`
   font-family: Roboto;
 
   @media (max-width: 1440px) {
-    font-size:14px;
+    font-size: 14px;
   }
 `;
 export const Text = styled.p`
@@ -21,7 +21,7 @@ export const Text = styled.p`
 export const Button = styled.div`
   display: flex;
   justify-content: center;
-  background: #477BFF;
+  background: #477bff;
   border-radius: 10px;
   color: white;
   border: none;
@@ -38,10 +38,10 @@ export const Button = styled.div`
   p {
     padding: 0;
     color: white;
-}
-@media (max-width: 1440px) {
-    font-size:14px;
-    padding:12px;
+  }
+  @media (max-width: 1440px) {
+    font-size: 14px;
+    padding: 12px;
     border-radius: 7px;
   }
 `;
@@ -62,8 +62,6 @@ export const Wrapper = styled.div`
   max-width: 700px;
   width: -webkit-fill-available;
 
-
-
   h1 {
     font-family: Roboto-Black;
     font-size: 48px;
@@ -73,13 +71,13 @@ export const Wrapper = styled.div`
     padding: 0 0 60px 0;
   }
   @media (max-width: 1440px) {
- max-width:500px;
+    max-width: 500px;
 
- h1 {
+    h1 {
       padding: 30px 0;
-      font-size:40px;
+      font-size: 40px;
     }
-}
+  }
 
   @media (max-width: 680px) {
     h1 {

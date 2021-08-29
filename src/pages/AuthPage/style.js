@@ -15,7 +15,7 @@ export const FormWrapper = styled.div`
 
   @media (max-width: 680px) {
     /* padding: 20px; */
-    padding: 20px 30px 0 20px;
+    padding: 10px 30px 0 20px;
   }
 `;
 export const Logo = styled.div`
