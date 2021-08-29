@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   flex: 1;
   width: 100%;
-  overflow-y: scroll;
   /* padding: 30px 20px; */
 `;
 export const Header = styled.div`
@@ -16,6 +15,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
+  overflow-y: auto;
 `;
 
 export const Title = styled.h1`

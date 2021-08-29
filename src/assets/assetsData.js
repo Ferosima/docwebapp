@@ -7,6 +7,7 @@ import ArrowRight from "./images/ArrowRight.svg";
 import UploadBlue from "./images/UploadBlue.svg";
 import ChangeBlue from "./images/ChangeBlue.svg";
 import pdf from "./images/pdf.svg";
+import organization from "./images/organization.svg";
 
 const assetsData = {
   images: {
@@ -19,6 +20,7 @@ const assetsData = {
     UploadBlue,
     ChangeBlue,
     pdf,
+    organization,
   },
 };
 export default assetsData;

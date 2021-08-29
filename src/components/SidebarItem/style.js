@@ -12,7 +12,7 @@ export const Item = styled(Link)`
   padding: 15px 5px;
   margin: ${({ theme }) => theme.margin || "5px 0"};
   color: ${({ isActive }) => (isActive ? "#F8F9FB" : "#939499")};
-  background-color: ${({ isActive }) => (isActive ? "#426EF3" : "transparent")};
+  background-color: ${({ isActive }) => (isActive ? "#507BFF" : "transparent")};
   text-decoration: inherit;
   border-radius: 10px;
   font-family: Roboto;
@@ -21,7 +21,7 @@ export const Item = styled(Link)`
   pointer-events: ${({ isActive }) => isActive && "none"};
 
   :hover {
-    background-color: ${({ isActive }) => (isActive ? "#426EF3" : "#E4EBFA")};
+    background-color: ${({ isActive }) => (isActive ? "#598CFF" : "#E4EBFA")};
     color: ${({ isActive }) => (isActive ? "#F8F9FB" : "#678ABE")};
   }
   p {

@@ -169,7 +169,7 @@ export const Item = styled.div`
   flex-direction: row;
   width: 100%;
   /* justify-content: space-between; */
-  background-color: ${({ isSelected }) => (isSelected ? "#407BFF" : "#fff")};
+  background-color: ${({ isSelected }) => (isSelected ? "#477BFF" : "#fff")};
   padding: 5px;
   align-items: center;
   cursor: pointer;

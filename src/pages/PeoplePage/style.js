@@ -23,5 +23,5 @@ export const Container = styled.div`
   flex: 1;
   align-content: baseline;
   padding: 25px;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;

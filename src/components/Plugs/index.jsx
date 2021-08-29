@@ -45,7 +45,7 @@ export function Empty({
 export function Loading({ panding }) {
   return (
     <Wrapper>
-      <ClipLoader color="#407bff" loading={panding} size={20} />
+      <ClipLoader color="#477BFF" loading={panding} size={20} />
       <Text>Loading...</Text>
     </Wrapper>
   );

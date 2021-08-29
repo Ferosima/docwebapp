@@ -26,7 +26,10 @@ export const Input = styled.input`
   font-size: 16px;
 
   :disabled {
-    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #acb7c5;
+    border-radius: 0;
+    background: transparent;
   }
 `;
 export const ErrorText = styled.p`

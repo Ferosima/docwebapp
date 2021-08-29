@@ -18,7 +18,7 @@ export const Button = styled.div`
   display: flex;
   width: fit-content;
   justify-content: center;
-  background: ${({ theme }) => theme.bg || "#426ef3"};
+  background: ${({ theme }) => theme.bg || "#477BFF"};
   border-radius: 10px;
   border: none;
   padding: 8px 15px;
@@ -103,6 +103,12 @@ export const Wrapper = styled.div`
 
     input:focus {
       border: 1px solid #2339c3;
+    }
+    input:disabled {
+      border: 0;
+      border-bottom: 1px solid #acb7c5;
+      border-radius: 0;
+      background: transparent;
     }
   }
   a {

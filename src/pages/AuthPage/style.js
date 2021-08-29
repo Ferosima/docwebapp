@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  overflow: scroll;
+  overflow-y: auto;
 `;
 export const FormWrapper = styled.div`
   display: flex;
@@ -34,16 +34,16 @@ export const Logo = styled.div`
   p {
     font-family: Roboto-Medium;
     font-size: 17px;
-    color: #426EF3;
+    color: #477bff;
   }
 `;
 
 export const Rectangle = styled.div`
   flex: ${({ isEmpty }) => (isEmpty ? "0" : "16")};
-  background: linear-gradient(157.42deg, #5369ff -7.47%, #1732a0 122.2%);
+  background: linear-gradient(157.42deg, #477bff -7.47%, #0c2484 122.2%);
 
   @media (max-width: 1024px) {
     flex: 1;
-    background: ${({ isEmpty }) => (isEmpty ? "transparent" : "linear-gradient(157.42deg, #5369ff -7.47%, #1732a0 122.2%)")};
+    background: ${({ isEmpty }) => (isEmpty ? "transparent" : "linear-gradient(157.42deg,#477BFF -7.47%,#0c2484 122.2%);")};
   }
 `;

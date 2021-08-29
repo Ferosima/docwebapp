@@ -59,14 +59,7 @@ class DocumentsPage extends React.Component {
 
   renderCard = (data, index) => {
     const { files } = this.props.documents;
-    return (
-      <Card
-        data={data}
-        key={index}
-        file={files[data?.uuid]}
-        onClick={() => this.setSelectedFile(data)}
-      />
-    );
+    return <Card data={data} key={index} file={files[data?.uuid]} onClick={() => this.setSelectedFile(data)} />;
   };
 
   renderContent = (list) =>
@@ -77,7 +70,7 @@ class DocumentsPage extends React.Component {
     ) : (
       <Empty
         image={assetsData.images.addDoc}
-        text="You don't have a documents"
+        text={`You don't have a ${this.state.toggle} Documents`}
         buttonText="Add Document"
         onClick={this.openModal}
       />
@@ -115,11 +108,7 @@ class DocumentsPage extends React.Component {
             active={toggle}
             onClick={this.onClickToggle}
           />
-          {!panding ? (
-            this.renderContent(tabs[toggle] ?? created_documents)
-          ) : (
-            <Loading panding={panding} />
-          )}
+          {!panding ? this.renderContent(tabs[toggle] ?? created_documents) : <Loading panding={panding} />}
         </Container>
         {
           <Preview

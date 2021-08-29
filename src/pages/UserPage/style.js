@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   width: 100%;
   flex: 1;
-  overflow-y: scroll;
 `;
 
 export const Row = styled.div`
@@ -18,6 +17,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0 60px 0;
+  overflow-y: auto;
   @media (max-width: 700px) {
     padding: 0 30px 0;
   }

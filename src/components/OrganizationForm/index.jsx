@@ -26,7 +26,6 @@ export default function OrganizationnForm({
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("PRESS");
     action(data);
   };
 
@@ -47,17 +46,13 @@ export default function OrganizationnForm({
 
   return (
     <Wrapper>
-      {!data ? (
-        <Text>
-          You can create your own organization or wait for an invitation to the organization
-        </Text>
-      ) : null}
+      {!data ? <Text>You can create your own organization or wait for an invitation to the organization</Text> : null}
       <Image
-        src={assetsData.images.AddImage}
+        src={data && assetsData.images.organization}
         alt="Add image"
-        onClick={() => {
-          console.log("Add image");
-        }}
+        // onClick={() => {
+        //   console.log("Add image");
+        // }}
       />
       <form>
         {form_data.map(renderInput)}

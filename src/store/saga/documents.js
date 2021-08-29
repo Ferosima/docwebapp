@@ -43,8 +43,6 @@ export function* fetchSignatures(payload) {
     const uuid = payload?.payload || payload;
 
     const response = yield client.get(`/documents/${uuid}/signatures`);
-
-    console.log("UUID", response.data);
     yield put(fetchSignaturesSuccess({ [uuid]: response.data }));
   } catch (e) {
     console.log("fetchFileDoc ERROR", e);
@@ -73,10 +71,11 @@ export function* fetchSigningDocuments() {
 export function* createDocument({ payload }) {
   try {
     const formData = new FormData();
-    const { signerIds, ...otherData } = payload;
+    const { signerIds, description, ...otherData } = payload;
     const data = yield {
       ...otherData,
       file: otherData.file[0],
+      description: description || null,
       expiresAt: otherData.expiresAt.toISOString(),
     };
 
@@ -107,13 +106,7 @@ export function* processDocument({ payload }) {
 
     const response = yield client.patch(`/documents/${uuid}/process`, null, { params: { status } });
 
-    const user = yield select(getUserState);
-    const successData = {
-      signing: response.data,
-      created: response.data.creator.uuid === user.uuid && response.data,
-    };
-
-    yield put(processDocumentSuccess(successData));
+    yield put(processDocumentSuccess(response.data));
     yield call(fetchSignatures, uuid);
   } catch (e) {
     console.log("processDocument ERROR", e);
@@ -124,7 +117,6 @@ export function* processDocument({ payload }) {
 export function* deleteDocument({ payload }) {
   try {
     const response = yield client.delete(`/documents/${payload}`);
-    console.log(response);
 
     yield put(deleteDocumentSuccess(payload));
   } catch (e) {

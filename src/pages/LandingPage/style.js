@@ -4,13 +4,29 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   padding: 0 50px;
+  position: relative;
+  justify-content: center;
 
   @media (max-width: 585px) {
     width: 100%;
-    padding: 0 20px;
+    padding: 0 30px;
+  } ;
+`;
+export const Header = styled.div`
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  right: 0;
+  left: 0;
+  padding: 30px 50px;
+  align-items: center;
+  @media (max-width: 585px) {
+    padding: 20px 30px;
   } ;
 `;
 export const Logo = styled.div`
@@ -29,7 +45,7 @@ export const Logo = styled.div`
   p {
     font-family: Roboto-Medium;
     font-size: 17px;
-    color: #3751ff;
+    color: #477bff;
   }
 `;
 
@@ -64,6 +80,7 @@ export const Container = styled.div`
   padding: ${(props) => props?.padding};
   height: ${(props) => props?.height};
   justify-content: center;
+  align-items: center;
 
   @media (max-width: 585px) {
     width: 100%;
@@ -77,7 +94,7 @@ export const Title = styled.p`
   padding: ${(props) => props?.padding};
 
   @media (max-width: 585px) {
-    font-size: 20px;
+    font-size: 24px;
   } ;
 `;
 
@@ -86,7 +103,7 @@ export const Subtitle = styled.p`
   font-size: 24px;
 
   @media (max-width: 585px) {
-    font-size: 16px;
+    font-size: 18px;
   } ;
 `;
 
@@ -104,8 +121,8 @@ export const Button = styled.button`
   /* padding: 5px 20px; */
   padding: ${(props) => props.padding || "5px 20px"};
   border-radius: 15px;
-  background: ${(props) => (props.primary ? "#2c5df2" : "transparent")};
-  color: ${(props) => (props.primary ? "white" : "#2c5df2")};
+  background: ${(props) => (props.primary ? "#477BFF" : "transparent")};
+  color: ${(props) => (props.primary ? "white" : "#477BFF")};
   font-size: 18px;
   white-space: nowrap;
   height: fit-content;

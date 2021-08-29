@@ -33,7 +33,6 @@ class PeoplePage extends React.Component {
 
   renderCard = (data, index) => {
     const { user } = this.props;
-    console.log(this.props);
     return <Card data={data} key={index} isChosen={data.uuid === user.uuid} />;
   };
 
@@ -55,7 +54,6 @@ class PeoplePage extends React.Component {
     const { users, inviteUser, user } = this.props;
     const { panding, list, inviteSuccess, error } = users;
     const { modalVisible } = this.state;
-    // console.log(users, this.state);
     return (
       <Wrapper>
         <Modal
@@ -69,7 +67,7 @@ class PeoplePage extends React.Component {
             <InviteForm action={inviteUser} panding={panding} error={error} />
           )}
         </Modal>
-        <Header title="People" buttons={[{ name: "add", action: this.openModal }]} />
+        <Header title="Members" buttons={[{ name: "add", action: this.openModal }]} />
         {!panding || list.length ? this.renderContent(list) : <Loading panding={panding} />}
       </Wrapper>
     );

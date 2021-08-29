@@ -2,17 +2,7 @@ import React from "react";
 import { withRouter } from "react-router";
 import assetsData from "../../assets/assetsData";
 // import "./styles.css";
-import {
-  Logo,
-  Row,
-  Wrapper,
-  Button,
-  Column,
-  Subtitle,
-  Title,
-  ImageWrapper,
-  Container,
-} from "./style";
+import { Logo, Row, Wrapper, Button, Column, Subtitle, Title, ImageWrapper, Container, Header } from "./style";
 
 class HomePage extends React.Component {
   handleOnClick = (route) => () => {
@@ -22,7 +12,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Row padding="15px 0" margin="15px 0" noColumnReverse>
+        <Header padding="15px 0" margin="15px 0" noColumnReverse>
           <Logo onClick={this.handleOnClick("/")}>
             <img src={assetsData.images.Logo} alt="Logo" />
             <p>Docwebapp</p>
@@ -33,28 +23,18 @@ class HomePage extends React.Component {
               Sign up
             </Button>
           </Row>
-        </Row>
-        <Container padding="60px 40px" height="70vh">
+        </Header>
+        <Container padding="60px 40px" height="60vh">
           <Row>
             <Column width="40%">
               <Subtitle>Easy and convenient</Subtitle>
-              <Title padding="10px 0">
-                Manager of your documents and signatures for your company
-              </Title>
-              <Button
-                primary
-                padding="10px 15px"
-                onClick={this.handleOnClick("/auth/registration")}
-              >
+              <Title padding="10px 0">Manager of your documents and signatures for your company</Title>
+              <Button primary padding="10px 15px" onClick={this.handleOnClick("/auth/registration")}>
                 Get started
               </Button>
             </Column>
             <ImageWrapper>
-              <img
-                style={{ width: "100%", height: "100%" }}
-                src={assetsData.images.Doc}
-                alt="Docs"
-              />
+              <img style={{ width: "100%", height: "100%" }} src={assetsData.images.Doc} alt="Docs" />
             </ImageWrapper>
           </Row>
         </Container>

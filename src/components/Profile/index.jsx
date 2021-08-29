@@ -14,7 +14,6 @@ export default function Profile({ user }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     // action(data);
   };
   const { firstName, secondName, email } = user;

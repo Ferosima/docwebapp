@@ -33,7 +33,7 @@ export const Container = styled.div`
   flex: 1;
 
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 
 export const Text = styled.div`

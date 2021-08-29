@@ -53,7 +53,7 @@ export const FileInfoTab = ({ data, file }) => {
           </Document>
         </Preview>
         <Title>{name}</Title>
-        {description && <Description>{description}</Description>}
+        {description !== "null" && <Description>{description}</Description>}
         <Label>Owner of the document:</Label>
         <User data={creator} />
         <Label>Creation Date:</Label>
@@ -90,7 +90,7 @@ export const SignaturesTab = ({ uuid }) => {
       </TimelineItem>
     );
   };
-  console.log("SIGNATURES", signatures[uuid]);
+  const userSignature = signatures[uuid]?.find((el) => el.signer.uuid === user.uuid);
   return (
     <Container style={{ padding: "15px 20px" }}>
       <Column>
@@ -100,7 +100,7 @@ export const SignaturesTab = ({ uuid }) => {
         </Container>
         <Column />
       </Column>
-      {signatures[uuid] && !signatures[uuid]?.find((el) => el.signer.uuid === user.uuid)?.completedStatus ? (
+      {signatures[uuid] && userSignature?.completedStatus === null ? (
         <Row>
           <Button
             text="Reject"
@@ -110,9 +110,7 @@ export const SignaturesTab = ({ uuid }) => {
           <Button text="Sign" theme="outline" onClick={() => dispatch(processDocument({ uuid, status: "signed" }))} />
         </Row>
       ) : (
-        signatures[uuid] && (
-          <Label>Document are {signatures[uuid]?.find((el) => el.signer.uuid === user.uuid)?.completedStatus}</Label>
-        )
+        signatures[uuid] && userSignature && <Label>Document are {userSignature?.completedStatus}</Label>
       )}
     </Container>
   );
@@ -123,7 +121,6 @@ const User = ({ data }) => {
   const {
     firstName, secondName, email, uuid,
   } = data;
-  console.log(user.uuid, uuid);
   return (
     <Item>
       <Avatar name={user.uuid === uuid ? "Y" : firstName} style={{ marginRight: "10px" }} />

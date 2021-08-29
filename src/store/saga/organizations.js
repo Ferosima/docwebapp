@@ -17,7 +17,6 @@ export function* fetchOrganizations() {
 export function* createOrganization({ payload }) {
   try {
     const response = yield client.post("/organizations", payload);
-    console.log("RESS", response.data);
     // yield put(userUpdate({ organization: response.data }));
     yield put(createOrganizationSuccess(response.data));
   } catch (e) {

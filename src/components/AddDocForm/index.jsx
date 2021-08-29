@@ -12,7 +12,7 @@ import Button from "../Button";
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required!"),
-  description: yup.string().required("Description is required!"),
+  description: yup.string(),
   expiresAt: yup
     .date()
     .required()

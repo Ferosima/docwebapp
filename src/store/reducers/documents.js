@@ -135,8 +135,8 @@ export default function reducer(state = initialState, action) {
         ...state,
         error: null,
         panding: false,
-        signing_documents: state.signing_documents.map((item) => (item.uuid === action.payload.uuid ? action.payload : { ...item })),
-        created_documents: state.created_documents.map((item) => (item.uuid === action.payload.uuid ? action.payload : { ...item })),
+        signing_documents: state.signing_documents.map((item) => (item.uuid === action.payload.uuid ? action.payload : item)),
+        created_documents: state.created_documents.map((item) => (item.uuid === action.payload.uuid ? action.payload : item)),
       };
     case DOCS_PROCESS_DOCUMENT_FAILED:
       return {

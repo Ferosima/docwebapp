@@ -36,7 +36,7 @@ export const Input = styled.input`
   padding: 10px 5px;
   font-size: 14px;
   max-width: 500px;
-  width: 100%;
+  width: 500px;
 
   :focus {
     border: 1px solid #2339c3;
@@ -45,6 +45,9 @@ export const Input = styled.input`
     font-family: Roboto;
     font-size: 16px;
     color: #939499;
+  }
+  @media (max-width: 700px) {
+    width: 100%;
   }
 `;
 

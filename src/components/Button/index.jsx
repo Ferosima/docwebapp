@@ -3,8 +3,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { Wrapper } from "./style";
 
 const buttonsTheme = {
-  main: { background: "#407BFF", color: "#fff" },
-  outline: { background: "transparent", color: "#407BFF", border: "2px solid #407BFF" },
+  main: { background: "#477BFF", color: "#fff" },
+  outline: { background: "transparent", color: "#477BFF", border: "2px solid #477BFF" },
   outlineRed: { background: "transparent", color: "#DF5753", border: "1px solid #DF5753" },
 };
 class Button extends React.Component {

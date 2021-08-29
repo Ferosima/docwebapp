@@ -4,7 +4,7 @@ import icon from "../Icon";
 import avatar from "../Avatar";
 
 export const Background = styled.div`
-  width: fit-content;
+  width: ${({ isOpen }) => (isOpen ? "fit-content" : "0px")};
   display: flex;
   justify-content: flex-end;
   overflow: hidden;
@@ -140,7 +140,7 @@ export const Item = styled.button`
   flex-direction: row;
   width: 100%;
   /* justify-content: space-between; */
-  background-color: ${({ isSelected }) => (isSelected ? "#407BFF" : "#fff")};
+  background-color: ${({ isSelected }) => (isSelected ? "#4481F6" : "#fff")};
   padding: 5px;
   align-items: center;
   cursor: pointer;

@@ -13,7 +13,6 @@ import client from "../client";
 export function* fetchUser() {
   try {
     const response = yield client.get("/users/current");
-    console.log("RES", response);
     yield put(getCurrentOrganization(response.data?.userWorkspace?.organization));
     yield put(fetchUserSuccess(response.data));
   } catch (e) {

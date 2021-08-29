@@ -19,7 +19,7 @@ const routers = [
     main: () => <Documents />,
   },
   {
-    name: "People",
+    name: "Members",
     icon: "people",
     path: "/app/people/",
     main: () => <People />,

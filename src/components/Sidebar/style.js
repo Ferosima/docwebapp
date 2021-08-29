@@ -57,7 +57,7 @@ export const Header = styled.div`
   p {
     font-family: Roboto-Medium;
     font-size: 16px;
-    color: #426ef3;
+    color: #477BFF;
     overflow: hidden;
     -webkit-transition-duration: 1s;
     max-width: ${({ isOpen }) => (isOpen ? "100%" : "0%")};

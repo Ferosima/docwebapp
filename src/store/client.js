@@ -32,7 +32,6 @@ client.interceptors.response.use(
         store.dispatch(setToken(response.data.accessToken));
         return client.request(originalRequest);
       } catch (e) {
-        console.log("НЕ АВТОРИЗОВАН");
         store.dispatch(authClear());
         store.dispatch(userClear());
       }

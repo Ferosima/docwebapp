@@ -5,5 +5,5 @@ export const Wrapper = styled.div`
   flex-direction: column;
   flex: 1;
   width: 100%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 `;
