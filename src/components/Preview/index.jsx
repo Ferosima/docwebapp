@@ -44,7 +44,7 @@ export default function DocumentPreview({
         name={icon}
         isOutline={state.tab !== name}
         size="18px"
-        color={state.tab !== name ? "#455A64" : "#477BFF"}
+        color={state.tab !== name ? "#455A64" : "#477bff"}
         onClick={setTab(name)}
       />
     );

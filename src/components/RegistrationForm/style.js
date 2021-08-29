@@ -19,7 +19,7 @@ export const Text = styled.p`
 export const Button = styled.div`
   display: flex;
   justify-content: center;
-  background: #477BFF;
+  background: #477bff;
   border-radius: 10px;
   color: white;
   border: none;

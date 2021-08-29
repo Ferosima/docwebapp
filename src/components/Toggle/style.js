@@ -6,15 +6,15 @@ export const Wrapper = styled.div`
 `;
 export const Button = styled.div`
   cursor: pointer;
-  /* border-bottom: ${({ isActive }) => isActive && " 3px solid #477BFF;"}}; */
+  /* border-bottom: ${({ isActive }) => isActive && " 3px solid #477bff;"}}; */
   pointer-events: ${({ isActive }) => isActive && "none"};
   padding: 0 5px;
   padding-bottom: 10px;
   position: relative;
   ::after {
     content: "";
-    border: ${({ isActive }) => isActive && "2px solid #477BFF"};
-    background-color: #477BFF;
+    border: ${({ isActive }) => isActive && "2px solid #477bff"};
+    background-color: #477bff;
     border-radius: 20px;
     height: 0px;
     font-size: 0px;

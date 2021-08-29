@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   flex-direction: ${({ reverse }) => (reverse ? "row-reverse" : "row")};
   font-size: 16px;
   font-family: Roboto-Light;
-  background-color: ${({ theme }) => theme.background || "#477BFF"};
+  background-color: ${({ theme }) => theme.background || "#477bff"};
   border: ${({ theme }) => theme.border || ""};
   color: ${({ theme }) => theme.color || "#fff"};
   padding: 10px 10px;

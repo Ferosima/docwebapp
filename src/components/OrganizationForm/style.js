@@ -18,7 +18,7 @@ export const Button = styled.div`
   display: flex;
   width: fit-content;
   justify-content: center;
-  background: ${({ theme }) => theme.bg || "#477BFF"};
+  background: ${({ theme }) => theme.bg || "#477bff"};
   border-radius: 10px;
   border: none;
   padding: 8px 15px;

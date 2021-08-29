@@ -121,8 +121,8 @@ export const Button = styled.button`
   /* padding: 5px 20px; */
   padding: ${(props) => props.padding || "5px 20px"};
   border-radius: 15px;
-  background: ${(props) => (props.primary ? "#477BFF" : "transparent")};
-  color: ${(props) => (props.primary ? "white" : "#477BFF")};
+  background: ${(props) => (props.primary ? "#477bff" : "transparent")};
+  color: ${(props) => (props.primary ? "white" : "#477bff")};
   font-size: 18px;
   white-space: nowrap;
   height: fit-content;

@@ -44,6 +44,6 @@ export const Rectangle = styled.div`
 
   @media (max-width: 1024px) {
     flex: 1;
-    background: ${({ isEmpty }) => (isEmpty ? "transparent" : "linear-gradient(157.42deg,#477BFF -7.47%,#0c2484 122.2%);")};
+    background: ${({ isEmpty }) => (isEmpty ? "transparent" : "linear-gradient(157.42deg,#477bff -7.47%,#0c2484 122.2%);")};
   }
 `;
