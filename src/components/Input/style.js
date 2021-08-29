@@ -30,6 +30,7 @@ export const Input = styled.input`
     border-bottom: 1px solid #acb7c5;
     border-radius: 0;
     background: transparent;
+    padding: 8px 0;
   }
 `;
 export const ErrorText = styled.p`

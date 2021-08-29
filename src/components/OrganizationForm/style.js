@@ -109,6 +109,7 @@ export const Wrapper = styled.div`
       border-bottom: 1px solid #acb7c5;
       border-radius: 0;
       background: transparent;
+      padding: 10px 0px;
     }
   }
   a {
