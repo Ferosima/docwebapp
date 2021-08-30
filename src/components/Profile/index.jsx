@@ -16,13 +16,15 @@ export default function Profile({ user }) {
   const onSubmit = (data) => {
     // action(data);
   };
-  const { firstName, secondName, email } = user;
+  const {
+    firstName, secondName, email, avatarColor,
+  } = user;
   return (
     <Wrapper>
       {/* <Header>
         <Text>Profile</Text>
       </Header> */}
-      <Avatar name={firstName} size="8em" textSize="60px" style={{ margin: "25px" }} />
+      <Avatar name={firstName} color={avatarColor} size="8em" textSize="60px" style={{ margin: "25px" }} />
       <form onSubmit={handleSubmit(onSubmit)}>
         <Row>
           <Input

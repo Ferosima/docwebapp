@@ -47,26 +47,20 @@ export default function SearchSelect({
 
   const renderUser = (props, { data }, { selected }) => {
     const {
-      firstName, secondName, email, uuid,
+      firstName, secondName, email, uuid, avatarColor,
     } = data;
     return (
       <Item onMouseDown={!selected ? props.onMouseDown : null} type="button" value={props.value}>
         <Row style={{ overflow: "hidden" }}>
-          <Avatar name={user.uuid === uuid ? "Y" : firstName} style={{ marginRight: "10px" }} />
+          <Avatar name={user.uuid === uuid ? "Y" : firstName} color={avatarColor} style={{ marginRight: "10px" }} />
           <Container>
-            <Title bold={user.uuid === uuid}>
-              {user.uuid === uuid ? "Your sign" : `${firstName} ${secondName}`}
-            </Title>
+            <Title bold={user.uuid === uuid}>{user.uuid === uuid ? "Your sign" : `${firstName} ${secondName}`}</Title>
             <Subtitle>{email}</Subtitle>
           </Container>
         </Row>
         {selected && (
           <button type="button" {...props}>
-            <Button
-              text="Remove"
-              theme="outlineRed"
-              style={{ padding: "2px 5px", borderRadius: "7px" }}
-            />
+            <Button text="Remove" theme="outlineRed" style={{ padding: "2px 5px", borderRadius: "7px" }} />
           </button>
         )}
       </Item>

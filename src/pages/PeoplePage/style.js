@@ -8,12 +8,13 @@ export const Wrapper = styled.div`
 `;
 export const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(210px, 210px));
   justify-items: center;
   grid-gap: 1vw;
   grid-row-gap: 2vw;
+  justify-content: space-between;
   @media (max-width: 800px) {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 140px));
     grid-gap: 2vw;
     grid-row-gap: 3vw;
   }

@@ -74,11 +74,13 @@ export function DocumentCard({
 
 export function PeopleCard(props) {
   const { data, style, isChosen } = props;
-  const { firstName, secondName, userWorkspace } = data;
+  const {
+    firstName, secondName, userWorkspace, avatarColor,
+  } = data;
   return (
     <Wrapper style={style}>
       <Container>
-        <Avatar name={firstName} size="5em" textSize="45px" style={{ margin: "25px 0" }} />
+        <Avatar name={firstName} color={avatarColor} size="5em" textSize="45px" style={{ margin: "25px 0" }} />
         <Title isChosen={isChosen}>{`${firstName} ${secondName}`}</Title>
         <Subtitle>{userWorkspace.accessLevel}</Subtitle>
       </Container>

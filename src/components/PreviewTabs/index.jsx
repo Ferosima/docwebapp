@@ -119,11 +119,11 @@ export const SignaturesTab = ({ uuid }) => {
 const User = ({ data }) => {
   const user = useSelector((state) => state.user);
   const {
-    firstName, secondName, email, uuid,
+    firstName, secondName, email, uuid, avatarColor,
   } = data;
   return (
     <Item>
-      <Avatar name={user.uuid === uuid ? "Y" : firstName} style={{ marginRight: "10px" }} />
+      <Avatar name={user.uuid === uuid ? "Y" : firstName} color={avatarColor} style={{ marginRight: "10px" }} />
       <Column>
         <Title bold={user.uuid === uuid}>{user.uuid === uuid ? "You" : `${firstName} ${secondName}`}</Title>
         <Subtitle>{email}</Subtitle>

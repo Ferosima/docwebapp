@@ -15,14 +15,15 @@ export const Wrapper = styled.div`
 export const Grid = styled.div`
   display: grid;
   width: -webkit-fill-available;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(210px, 210px));
   justify-items: center;
   grid-gap: 1vw;
   grid-row-gap: 2vw;
   padding: 0 25px 25px;
+  justify-content: space-between;
 
   @media (max-width: 800px) {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 140px));
     grid-gap: 2vw;
     grid-row-gap: 3vw;
   }

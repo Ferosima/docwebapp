@@ -18,16 +18,6 @@ class ProfilePage extends React.Component {
     const { firstName, secondName } = user;
     return (
       <Wrapper>
-        {/* <Header>
-          <Row> */}
-        {/* <Avatar name={firstName} /> */}
-        {/* <Text>{`${firstName} ${secondName}`}</Text>
-          </Row> */}
-        {/* <Button onClick={logout}>
-            <Icon name="logout" color="#D31818" size="1em" />
-            <Text>Log out</Text>
-          </Button> */}
-        {/* </Header> */}
         <Header title={`${firstName} ${secondName}`} />
         <Container>
           <Profile user={user} />
