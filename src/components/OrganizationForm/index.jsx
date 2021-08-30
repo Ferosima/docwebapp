@@ -48,7 +48,7 @@ export default function OrganizationnForm({
     <Wrapper>
       {!data ? <Text>You can create your own organization or wait for an invitation to the organization</Text> : null}
       <Image
-        src={data && assetsData.images.organization}
+        src={data ? assetsData.images.organization : assetsData.images.AddImage}
         alt="Add image"
         // onClick={() => {
         //   console.log("Add image");
