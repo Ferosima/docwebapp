@@ -4,7 +4,7 @@ import icon from "../Icon";
 import avatar from "../Avatar";
 
 export const Background = styled.div`
-  width: ${({ isOpen }) => (isOpen ? "fit-content" : "0px")};
+  /* width: ${({ isOpen }) => (isOpen ? "fit-content" : "10px")}; */
   display: flex;
   justify-content: flex-end;
   overflow: hidden;
@@ -26,14 +26,15 @@ export const Wrapper = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   overflow: hidden;
-  width: ${({ isOpen }) => (isOpen ? "350px" : "0")};
+  width: ${({ isOpen }) => (isOpen ? "350px" : "0px")};
   height: 100%;
-  border-left: 1px solid #c7c7cc;
+
+  /* border-left:${({ isOpen }) => (isOpen ? "1px solid #c7c7cc" : "0px")}; */
   box-sizing: border-box;
   background-color: #f8f9fb;
   @media (max-width: 850px) {
     height: 100%;
-    width: ${({ isOpen }) => (isOpen ? "270px" : "0")};
+    width: ${({ isOpen }) => (isOpen ? "270px" : "0px")};
   }
   @media (max-width: 700px) {
     height: 100%;
@@ -46,6 +47,7 @@ export const Nav = styled.div`
   width: fit-content;
   height: 100%;
   border-right: 1px solid #c7c7cc;
+  border-left: 1px solid #c7c7cc;
   align-items: center;
   padding: 5px 0;
 `;

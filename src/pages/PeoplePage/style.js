@@ -17,6 +17,7 @@ export const Grid = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(140px, 140px));
     grid-gap: 2vw;
     grid-row-gap: 3vw;
+    justify-content: center;
   }
 `;
 
