@@ -37,6 +37,9 @@ export default function DocumentPreview({
   const setTab = (tab) => () => {
     tab !== state.tab && setState({ tab });
   };
+  const handleChildClick = (e) => {
+    e.stopPropagation();
+  };
 
   const Tab = ({ name, icon }) => {
     return (
@@ -62,8 +65,8 @@ export default function DocumentPreview({
   };
 
   return (
-    <Background isOpen={isOpen}>
-      <Wrapper isOpen={isOpen}>
+    <Background isOpen={isOpen} onClick={onRequestClose}>
+      <Wrapper isOpen={isOpen} onClick={handleChildClick}>
         <Nav>
           <Icon name="arrowCollapse" size="24px" color="#455A64" onClick={onRequestClose} />
           <Column style={{ padding: "10px 0" }}>

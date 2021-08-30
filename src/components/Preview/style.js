@@ -28,8 +28,6 @@ export const Wrapper = styled.div`
   overflow: hidden;
   width: ${({ isOpen }) => (isOpen ? "350px" : "0px")};
   height: 100%;
-
-  /* border-left:${({ isOpen }) => (isOpen ? "1px solid #c7c7cc" : "0px")}; */
   box-sizing: border-box;
   background-color: #f8f9fb;
   @media (max-width: 850px) {
