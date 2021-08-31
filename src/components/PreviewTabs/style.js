@@ -122,6 +122,7 @@ export const Title = styled.p`
   font-family: Roboto-Bold;
   font-size: 20px;
   padding: 15px 0;
+  padding-bottom: ${({ withoutBottomPadding }) => withoutBottomPadding && "0"};
   color: #26395a;
   clear: both;
   display: inline-block;

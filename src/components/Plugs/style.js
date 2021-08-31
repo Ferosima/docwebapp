@@ -17,6 +17,7 @@ export const Wrapper = styled.div`
   flex: 1;
   justify-content: center;
   align-items: center;
+  padding: ${({ theme }) => theme.padding || "0"};
   ${Text} {
     color: ${({ theme }) => theme.color || "#939499"};
     font-family: ${({ theme }) => theme.fontFamily || "Roboto"};

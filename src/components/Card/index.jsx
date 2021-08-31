@@ -22,9 +22,10 @@ export function DocumentCard({
   data, style, file, onClick,
 }) {
   const {
-    uuid, name, createdAt, isReady,
+    uuid, name, createdAt, isReady, creator,
   } = data;
   const [anchorEl, setAnchorEl] = useState(null);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const getDate = (date) => moment(date).format("D.MM.YYYY");
@@ -62,11 +63,16 @@ export function DocumentCard({
         </Row>
         <Subtitle>{getDate(createdAt)}</Subtitle>
       </Container>
+
       <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-        <MenuItem onClick={onClickDelete}>
-          <Icon name="delete" size="20px" color="#DF5753" />
-          <Title>Delete</Title>
-        </MenuItem>
+        {creator.uuid === user.uuid ? (
+          <MenuItem onClick={onClickDelete}>
+            <Icon name="delete" size="20px" color="#DF5753" />
+            <Title>Delete</Title>
+          </MenuItem>
+        ) : (
+          <Subtitle style={{ padding: "10px" }}>No actions</Subtitle>
+        )}
       </Menu>
     </Wrapper>
   );

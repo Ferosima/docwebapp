@@ -19,6 +19,7 @@ const theme = {
     fontFamily: "Roboto-Bold",
     // paddingText: "",
     paddingIcon: "20px",
+    padding: "0 20px",
   },
 };
 
@@ -61,6 +62,7 @@ export function Success({ text = "Success!", buttonText = "Go back", onClick }) 
         text={buttonText}
         onClick={onClick}
         isImageRight
+        style={{ padding: "10px 10px 10px 20px" }}
       />
     </Wrapper>
   );

@@ -52,7 +52,7 @@ export const FileInfoTab = ({ data, file }) => {
             <Page pageNumber={1} renderMode="canvas" width={150} height={212} className="Page" />
           </Document>
         </Preview>
-        <Title>{name}</Title>
+        <Title withoutBottomPadding={description === "null"}>{name}</Title>
         {description !== "null" && <Description>{description}</Description>}
         <Label>Owner of the document:</Label>
         <User data={creator} />

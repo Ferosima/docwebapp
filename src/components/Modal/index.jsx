@@ -12,6 +12,7 @@ const themes = {
     width: "-webkit-fill-available",
     maxWidth: "510px",
   },
+  success: { rowPadding: "5px 0", containerPadding: "10px " },
 };
 
 export default function Modal({
