@@ -3,8 +3,8 @@ import Item from "@material-ui/core/MenuItem";
 import icon from "../Icon";
 
 export const Wrapper = styled.div`
-  border: 1px solid #dadce0;
-  background-color: #fff;
+  border: ${({ theme }) => theme.card.border};
+  background-color: ${({ theme }) => theme.card.background};
   border-radius: 3%;
   overflow: hidden;
   justify-content: center;
@@ -38,10 +38,10 @@ export const Wrapper = styled.div`
 
 export const Status = styled.span`
   font-family: Roboto, sans-serif;
-  border: 0.5px solid lightgrey;
+  /* border: 0.5px solid lightgrey; */
   border-radius: 15px;
-  background-color: ${({ isReady }) => (isReady ? "#C4F5BC" : "rgba(196, 196, 196, 0.76)")};
-  color: #455a64;
+  background-color: ${({ isReady }) => (isReady ? "#C4F5BC" : "#bdc4ea")};
+  color: #272f33;
   text-align: center;
   font-weight: 200;
   z-index: 5;
@@ -58,7 +58,7 @@ export const Status = styled.span`
 export const Preview = styled.div`
   height: 220px;
   width: 100%;
-  background-color: #dae0f7;
+  background-color: ${({ theme }) => theme.card.color_preview};
   justify-content: center;
   display: flex;
   justify-content: center;
@@ -122,12 +122,15 @@ export const Title = styled.div`
 export const Subtitle = styled.div`
   font-size: 14px;
   font-family: Roboto;
-  color: #455a64;
+  color: ${({ theme }) => theme.card.color_subtitle};
+
   @media (max-width: 800px) {
     font-size: 12px;
   }
 `;
-export const Icon = styled(icon)``;
+export const Icon = styled(icon)`
+  color: ${({ theme }) => theme.card.color_icon};
+`;
 
 export const MenuItem = styled(Item)`
   ${Title} {

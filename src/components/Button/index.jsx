@@ -17,7 +17,7 @@ class Button extends React.Component {
         className={className}
         onClick={!panding ? onClick : undefined}
         reverse={isImageRight}
-        theme={buttonsTheme[theme]}
+        // theme={buttonsTheme[theme]}
         // type="button"
         {...other}
       >

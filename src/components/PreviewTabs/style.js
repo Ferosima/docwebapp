@@ -69,7 +69,7 @@ export const Container = styled.div`
   width: 100%;
   flex: 1;
   height: 100%;
-  background: #fff;
+  background: ${({ theme }) => theme.background};
   box-sizing: border-box;
   overflow: hidden;
 
@@ -84,21 +84,25 @@ export const Container = styled.div`
   .MuiTimelineContent-root {
     overflow: hidden;
   }
-  .MuiTimelineDot-defaultGrey {
-    background-color: #c7c7cc;
+  .MuiTimelineConnector-root {
+    background-color: ${({ theme }) => theme.preview.dots.color_grey};
   }
+  .MuiTimelineDot-defaultGrey {
+    background-color: ${({ theme }) => theme.preview.dots.color_grey};
+  }
+
   .MuiTimelineDot-defaultPrimary {
-    background-color: #32e032;
+    background-color: ${({ theme }) => theme.preview.dots.color_primary};
   }
   .MuiTimelineDot-defaultSecondary {
-    background-color: #f4911d;
+    background-color: ${({ theme }) => theme.preview.dots.color_secondary};
   }
 `;
 
 export const Preview = styled.object`
   padding: 5px 10px;
   margin: 20px 0 0;
-  background-color: #f9fbff;
+  background-color: ${({ theme }) => theme.preview.color_preview};
   max-width: 500px;
   box-sizing: border-box;
   display: flex;
@@ -123,7 +127,6 @@ export const Title = styled.p`
   font-size: 20px;
   padding: 15px 0;
   padding-bottom: ${({ withoutBottomPadding }) => withoutBottomPadding && "0"};
-  color: #26395a;
   clear: both;
   display: inline-block;
   white-space: nowrap;
@@ -131,25 +134,24 @@ export const Title = styled.p`
 export const Subtitle = styled.p`
   font-family: Roboto-Medium;
   font-size: 18px;
-  color: #252733;
   width: 100%;
   text-align: center;
 `;
 export const Label = styled.p`
   font-family: Roboto;
   font-size: 14px;
-  color: #7f8587;
+  color: ${({ theme }) => theme.form.label};
   padding: 25px 0 0;
 `;
 export const Description = styled.p`
   font-family: Roboto-Light;
   font-size: 14px;
-  color: #455a64;
+  color: ${({ theme }) => theme.preview.color_description};
 `;
 export const Text = styled.p`
   font-family: Roboto-Medium;
   font-size: 14px;
-  color: #263238;
+  color: ${({ theme }) => theme.form.text};
   white-space: wrap;
 `;
 
@@ -160,7 +162,7 @@ export const Avatar = styled(avatar)``;
 
 export const Button = styled(button)`
   padding: 5px 10px;
-  border-radius: 20px;
+  border-radius: 20px; 
   font-size: 14px;
   margin: 10px 0 0;
 `;
@@ -169,23 +171,19 @@ export const Item = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  /* justify-content: space-between; */
-  background-color: ${({ isSelected }) => (isSelected ? "#477bff" : "#fff")};
   padding: 5px;
   align-items: center;
-  cursor: pointer;
 
   ${Title} {
     margin: 0;
     padding: 0;
     font-size: 14px;
     text-align: left;
-    color: #263238;
   }
   ${Subtitle} {
     font-size: 14px;
     font-family: Roboto-Light;
-    color: #acb7c5;
+    color: ${({ theme }) => theme.preview.color_description};
     text-align: left;
   }
 `;

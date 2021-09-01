@@ -34,16 +34,16 @@ export const Logo = styled.div`
   p {
     font-family: Roboto-Medium;
     font-size: 17px;
-    color: #477bff;
+    color: ${({ theme }) => theme.primary_text};
   }
 `;
 
 export const Rectangle = styled.div`
-  flex: ${({ isEmpty }) => (isEmpty ? "0" : "16")};
-  background: linear-gradient(157.42deg, #477bff -7.47%, #0c2484 122.2%);
+  flex: ${({ isEmpty }) => (isEmpty ? "0" : "18")};
+  background: linear-gradient(157.42deg, #4f76e2 -7.47%, #133187 122.2%);
 
   @media (max-width: 1024px) {
     flex: 1;
-    background: ${({ isEmpty }) => (isEmpty ? "transparent" : "linear-gradient(157.42deg,#477bff -7.47%,#0c2484 122.2%);")};
+    background: ${({ isEmpty }) => (isEmpty ? "transparent" : "linear-gradient(157.42deg, #4F76E2 -7.47%, #133187 122.2%)")};
   }
 `;

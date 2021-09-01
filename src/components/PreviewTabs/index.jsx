@@ -1,34 +1,29 @@
-import moment from "moment";
-import React, { useEffect, useState } from "react";
-import { Document, Page } from "react-pdf";
-import { useSelector, useDispatch } from "react-redux";
 import Timeline from "@material-ui/lab/Timeline";
-import TimelineItem from "@material-ui/lab/TimelineItem";
-import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
 import TimelineConnector from "@material-ui/lab/TimelineConnector";
 import TimelineContent from "@material-ui/lab/TimelineContent";
 import TimelineDot from "@material-ui/lab/TimelineDot";
+import TimelineItem from "@material-ui/lab/TimelineItem";
+import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
+import { Document, Page } from "react-pdf";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchSignatures, processDocument } from "../../store/actions/documents";
+import DocumentViewer from "../DocumentViewer";
 import {
-  Wrapper,
-  Nav,
-  Icon,
+  Avatar,
+  Button,
   Column,
   Container,
-  Preview,
-  Title,
-  Text,
-  Subtitle,
   Description,
-  Label,
-  Button,
-  Background,
   Item,
-  Avatar,
+  Label,
+  Preview,
   Row,
+  Subtitle,
+  Text,
+  Title,
 } from "./style";
-import DocumentViewer from "../DocumentViewer";
-import { signatures } from "../../mockData";
 
 export const FileInfoTab = ({ data, file }) => {
   const [state, setState] = useState({ isViewDoc: false });
@@ -63,7 +58,7 @@ export const FileInfoTab = ({ data, file }) => {
         <Label>Document ID:</Label>
         <Text>{uuid}</Text>
       </Column>
-      <Button text="View Document" theme="outline" onClick={openDocViewer} />
+      <Button text="View Document" type="outline" onClick={openDocViewer} />
       {state.isViewDoc && <DocumentViewer file={file} onRequestClose={closeDocViewer} name={name} />}
     </Container>
   );
@@ -104,10 +99,10 @@ export const SignaturesTab = ({ uuid }) => {
         <Row>
           <Button
             text="Reject"
-            theme="outlineRed"
+            type="outlineRed"
             onClick={() => dispatch(processDocument({ uuid, status: "rejected" }))}
           />
-          <Button text="Sign" theme="outline" onClick={() => dispatch(processDocument({ uuid, status: "signed" }))} />
+          <Button text="Sign" type="outline" onClick={() => dispatch(processDocument({ uuid, status: "signed" }))} />
         </Row>
       ) : (
         signatures[uuid] && userSignature && <Label>Document are {userSignature?.completedStatus}</Label>

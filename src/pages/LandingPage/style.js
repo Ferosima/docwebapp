@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   @media (max-width: 585px) {
     width: 100%;
     padding: 0 30px;
-  } ;
+  }
 `;
 export const Header = styled.div`
   display: flex;
@@ -45,7 +45,7 @@ export const Logo = styled.div`
   p {
     font-family: Roboto-Medium;
     font-size: 17px;
-    color: #477bff;
+    color: ${({ theme }) => theme.primary_text};
   }
 `;
 
@@ -122,7 +122,7 @@ export const Button = styled.button`
   padding: ${(props) => props.padding || "5px 20px"};
   border-radius: 15px;
   background: ${(props) => (props.primary ? "#477bff" : "transparent")};
-  color: ${(props) => (props.primary ? "white" : "#477bff")};
+  color: ${({ theme, primary }) => (primary ? "white" : theme.primary_text)};
   font-size: 18px;
   white-space: nowrap;
   height: fit-content;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import icon from "../Icon";
 
 export const Wrapper = styled.div`
-  border-bottom: 1px solid #c7c7cc;
+  border-bottom: ${({ theme }) => theme.border_line};
   display: flex;
   justify-content: space-between;
   align-items: center;

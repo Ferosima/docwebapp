@@ -8,26 +8,30 @@ export const Wrapper = styled.div`
 
 export const Label = styled.p`
   font-family: Roboto-Medium;
-  font-size: 18px;
-  color: #939499;
+  font-size: 15px;
+  color: ${({ theme }) => theme.form.label};
   padding: 0 0 10px;
 `;
 export const Input = styled.input`
   font-family: Roboto-Medium;
-  color: #263238;
+  color: ${({ theme }) => theme.color_text};
   outline: none;
   display: block;
   box-sizing: border-box;
   width: 100%;
   border-radius: 4px;
-  border: 1px solid #c7c7cc;
+  border: ${({ theme }) => theme.input.border_input};
   border-radius: 5px;
   padding: 8px 8px;
   font-size: 16px;
 
+  :-webkit-autofill {
+    -webkit-box-shadow: ${({ theme }) => `0 0 0px 1000px ${theme.background} inset`};
+    -webkit-text-fill-color: ${({ theme }) => theme.color_text};
+  }
   :disabled {
     border: 0;
-    border-bottom: 1px solid #acb7c5;
+    border-bottom: ${({ theme }) => theme.border_line};
     border-radius: 0;
     background: transparent;
     padding: 8px 0;
@@ -36,5 +40,5 @@ export const Input = styled.input`
 export const ErrorText = styled.p`
   font-family: Roboto-Medium;
   font-size: 13px;
-  color: #d80404;
+  color: ${({ theme }) => theme.color_error};
 `;

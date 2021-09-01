@@ -59,7 +59,7 @@ export function DocumentCard({
       <Container theme={theme.document}>
         <Row>
           <Title>{name}</Title>
-          <Icon name="dots" size="20px" color="#455A64" onClick={handleClick} />
+          <Icon name="dots" size="20px" onClick={handleClick} />
         </Row>
         <Subtitle>{getDate(createdAt)}</Subtitle>
       </Container>

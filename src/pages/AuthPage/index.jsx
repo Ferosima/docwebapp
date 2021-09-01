@@ -9,7 +9,8 @@ import LoginForm from "../../components/LoginForm";
 import RegistrationForm from "../../components/RegistrationForm";
 import { login, authClearError, registration } from "../../store/actions/auth";
 import { getAuthState } from "../../store/selectors/auth";
-
+import { getAppState } from "../../store/selectors/app";
+import { themes } from "../../themes";
 class AuthPage extends React.Component {
   componentDidMount() {
     this.props.authClearError();
@@ -20,10 +21,10 @@ class AuthPage extends React.Component {
   };
 
   render() {
-    const { login, registration, auth, match } = this.props;
+    const { login, registration, auth, match, app } = this.props;
     const { path, url } = match;
     return (
-      <Wrapper>
+      <Wrapper theme={themes[app.theme]}>
         <Rectangle isEmpty />
         <FormWrapper>
           <Logo onClick={this.handleOnClick("/")}>
@@ -49,6 +50,7 @@ class AuthPage extends React.Component {
 
 const mapStateToProps = (state) => ({
   auth: getAuthState(state),
+  app: getAppState(state),
 });
 const mapDispatchToProps = {
   login,

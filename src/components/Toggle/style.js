@@ -13,8 +13,8 @@ export const Button = styled.div`
   position: relative;
   ::after {
     content: "";
-    border: ${({ isActive }) => isActive && "2px solid #477bff"};
-    background-color: #477bff;
+    border: ${({ isActive, theme }) => isActive && `2px solid ${theme.primary_color}`};
+    background-color: ${({ theme }) => theme.primary_color};
     border-radius: 20px;
     height: 0px;
     font-size: 0px;
@@ -28,6 +28,6 @@ export const Button = styled.div`
 
 export const Text = styled.p`
   font-family: Roboto-Medium;
-  color: #263238;
+  color: ${({ theme }) => theme.color_text};
   font-size: 16px;
 `;

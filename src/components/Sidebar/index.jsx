@@ -35,7 +35,7 @@ class Sidebar extends React.Component {
 
   renderOrganizationItem = (name, theme) => {
     return (
-      <SidebarItem path="/app/organization/" name={name || `Create organization`} icon="organization" theme={theme} />
+      <SidebarItem path="/app/organization/" name={name || `Create organization`} icon="organization" type={"header"} />
     );
   };
 

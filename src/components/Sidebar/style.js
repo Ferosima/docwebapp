@@ -15,7 +15,7 @@ export const Background = styled.div`
   }
 `;
 export const Wrapper = styled.div`
-  transition: width 1s;
+  transition: all 1s;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -23,8 +23,8 @@ export const Wrapper = styled.div`
   overflow: hidden;
   width: ${({ isOpen }) => (isOpen ? "250px" : "70px")};
   height: 100%;
-  border-right: 1px solid #c7c7cc;
-  background-color: #f8f9fb;
+  border-right: ${({ theme }) => theme.border_line};
+  background-color: ${({ theme }) => theme.background};
   @media (max-width: 700px) {
     height: 100%;
     width: ${({ isOpen }) => (isOpen ? "250px" : "0px")};
@@ -57,7 +57,8 @@ export const Header = styled.div`
   p {
     font-family: Roboto-Medium;
     font-size: 16px;
-    color: #477bff;
+    color: ${({ theme }) => theme.primary_text};
+
     overflow: hidden;
     -webkit-transition-duration: 1s;
     max-width: ${({ isOpen }) => (isOpen ? "100%" : "0%")};

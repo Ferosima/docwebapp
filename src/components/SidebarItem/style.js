@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import icon from "../Icon";
+import { themes } from "../../themes";
 
 export const Item = styled(Link)`
   display: flex;
@@ -10,19 +11,18 @@ export const Item = styled(Link)`
   align-self: center;
   align-items: center;
   padding: 15px 5px;
-  margin: ${({ theme }) => theme.margin || "5px 0"};
-  color: ${({ isActive }) => (isActive ? "#F8F9FB" : "#939499")};
-  background-color: ${({ isActive }) => (isActive ? "#477bff" : "transparent")};
+  margin: ${({ theme, type }) => theme.sidebar[type].margin};
+  color: ${({ isActive, theme }) => (isActive ? "#F8F9FB" : theme.color_text_secondary)};
+  background-color: ${({ isActive, theme }) => (isActive ? theme.primary_color : "transparent")};
   text-decoration: inherit;
   border-radius: 10px;
-  font-family: Roboto;
-  font-family: ${({ theme }) => theme.fontFamily || "Roboto"};
-  font-size: ${({ theme }) => theme.fontSize || "16px"};
+  font-family: ${({ theme, type }) => theme.sidebar[type].fontFamily || "Roboto"};
+  font-size: ${({ theme, type }) => theme.sidebar[type].fontSize || "16px"};
   pointer-events: ${({ isActive }) => isActive && "none"};
 
   :hover {
-    background-color: ${({ isActive }) => (isActive ? "#477bff" : "#E4EBFA")};
-    color: ${({ isActive }) => (isActive ? "#F8F9FB" : "#678ABE")};
+    background-color: ${({ isActive, theme }) => (isActive ? theme.primary_color : theme.sidebar.hover.background)};
+    color: ${({ isActive, theme }) => (isActive ? theme.color_text_secondary : theme.sidebar.hover.color)};
   }
   p {
     font-size: 16px;
@@ -32,6 +32,7 @@ export const Item = styled(Link)`
     font-family: inherit;
     font-size: inherit;
     user-select: none;
+    font-family: inherit;
   }
 
   @media (max-width: 700px) {
