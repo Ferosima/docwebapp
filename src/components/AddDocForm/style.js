@@ -22,19 +22,19 @@ export const Wrapper = styled.div`
 
     /* Track */
     ::-webkit-scrollbar-track {
-      border: 1px solid #afb6c8;
+      border: ${({ theme }) => theme.scroll.border};
       border-radius: 10px;
     }
 
     /* Handle */
     ::-webkit-scrollbar-thumb {
-      background: #dee5f0;
+      background: ${({ theme }) => theme.scroll.color};
       border-radius: 10px;
     }
 
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
-      background: #9da9b9;
+      background: ${({ theme }) => theme.scroll.hover};
     }
   }
 `;
@@ -43,7 +43,7 @@ export const Label = styled.p`
   margin-top: 20px;
   margin-bottom: 0;
   padding: 5px 0;
-  color: #403e5c;
+  color: ${({ theme }) => theme.form.label};
   font-size: 16px;
   font-family: Roboto-Medium;
 
@@ -61,7 +61,7 @@ export const Input = styled.input`
   display: block;
   box-sizing: border-box;
   border-radius: 4px;
-  border: 1px solid rgba(2, 36, 122, 0.2);
+  border: ${({ theme }) => theme.input.border_input};
   border-radius: 5px;
   padding: 10px 5px;
   font-size: 14px;
@@ -69,22 +69,28 @@ export const Input = styled.input`
   width: 100%;
   font-size: 14px;
   font-family: Roboto-Medium;
-  color: #4d545b;
+  background: transparent;
+  color: ${({ theme }) => theme.color_text};
 
   :focus {
-    border: 1px solid #2339c3;
+    border: ${({ theme }) => theme.input.border_input_focus};
+  }
+  :-webkit-autofill {
+    -webkit-box-shadow: ${({ theme }) => `0 0 0px 1000px ${theme.background} inset`};
+    -webkit-text-fill-color: ${({ theme }) => theme.color_text};
   }
   ::placeholder {
     font-family: Roboto;
     font-size: 16px;
-    color: #939499;
+    color: ${({ theme }) => theme.color_text_secondary};
   }
-  ::-webkit-datetime-edit {
+  :-webkit-datetime-edit {
     font-size: 14px;
     font-family: Roboto-Medium;
+    color: ${({ theme }) => theme.color_text};
   }
   ::-webkit-calendar-picker-indicator {
-    color: #4d545b;
+    filter: ${({ theme }) => theme.form.filter};
   }
   margin-bottom: 10px;
 `;

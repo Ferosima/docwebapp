@@ -12,12 +12,14 @@ const light = {
     color_link: "#2f49fb",
   },
   sidebar: {
+    arrow: "#4D5F68",
     hover: { background: "#E4EBFA", color: "#678ABE" },
     header: { fontFamily: "Roboto-Medium", fontSize: "18px", margin: "20px 0 0" },
     default: { fontFamily: "Roboto", fontSize: "16px", margin: "5px 0" },
   },
   card: {
     background: "#fff",
+    hover: "#e4ebfa",
     border: "1px solid #dadce0",
     color_subtitle: "#455a64",
     color_icon: "#455A64",
@@ -35,13 +37,49 @@ const light = {
   },
   button: {
     main: { background: "#477bff", color: "#fff" },
-    outline: { background: "transparent", color: "#477bff", border: "2px solid #477bff" },
-    outlineRed: { background: "transparent", color: "#DF5753", border: "1px solid #DF5753" },
+    outline: {
+      background: "transparent",
+      color: "#3e6bdd",
+      color_border: "#4F76E2",
+    },
+    outlineRed: { background: "transparent", color: "#DF5753", color_border: "#DF5753" },
   },
   form: {
-    info: "#adaeb2",
+    info: "#a1a1a3",
     label: "#7f8587",
     text: "#263238",
+    filter: "invert(0)",
+  },
+  modal: {
+    backdrop: "blur(6px)",
+    allScreen: {
+      justifyContent: "flex-start",
+      containerPadding: "0",
+      rowPadding: " 20px 30px 0",
+      height: "-webkit-fill-available",
+      width: "-webkit-fill-available",
+      maxWidth: "510px",
+    },
+    success: { rowPadding: "5px 0", containerPadding: "10px " },
+  },
+  scroll: { color: "#dee5f0", border: "1px solid #afb6c8", hover: "#9da9b9" },
+  plugs: {
+    constuction: {
+      textSize: "22px",
+      color: "#455A64",
+      fontFamily: "Roboto-Bold",
+      paddingText: "0 0 125px",
+      paddingIcon: "0 0 20px",
+    },
+    success: {
+      textSize: "22px",
+      color: "#263238",
+      fontFamily: "Roboto-Bold",
+      // paddingText: "",
+      paddingIcon: "20px",
+      padding: "0 20px",
+    },
+    empty: { color: "#939499" },
   },
 };
 const dark = {
@@ -61,12 +99,14 @@ const dark = {
     color_link: "#5481ff",
   },
   sidebar: {
+    arrow: "#78839e",
     hover: { background: "#313543", color: "#95a0b9" },
     header: { fontFamily: "Roboto-Medium", fontSize: "18px", margin: "20px 0 0" },
     default: { fontFamily: "Roboto", fontSize: "16px", margin: "5px 0" },
   },
   card: {
     background: "#2a2d3a",
+    hover: "#477bff",
     border: "0",
     color_subtitle: "#8e97ab",
     color_icon: "#8e97ab",
@@ -84,13 +124,48 @@ const dark = {
   },
   button: {
     main: { background: "#477bff", color: "#fff" },
-    outline: { background: "transparent", color: "#4F76E2", color_border: "#477bff" },
+    outline: {
+      background: "transparent",
+      color: "#4F76E2",
+      color_border: "#477bff",
+    },
     outlineRed: { background: "transparent", color: "#e6615d", color_border: "#DF5753" },
   },
   form: {
     info: "#8a939d",
     label: "#a2acb8",
     text: "#d3dde7",
+    filter: "invert(1)",
+  },
+  modal: {
+    backdrop: "blur(6px) brightness(0.3)",
+    allScreen: {
+      justifyContent: "flex-start",
+      containerPadding: "0",
+      rowPadding: " 20px 30px 0",
+      height: "-webkit-fill-available",
+      width: "-webkit-fill-available",
+      maxWidth: "510px",
+    },
+    success: { rowPadding: "5px 0", containerPadding: "10px " },
+  },
+  scroll: { color: "#4d535c", border: "1px solid #4b5057", hover: "#636a75" },
+  plugs: {
+    constuction: {
+      textSize: "22px",
+      color: "#adb3b6",
+      fontFamily: "Roboto-Bold",
+      paddingText: "0 0 125px",
+      paddingIcon: "0 0 20px",
+    },
+    success: {
+      textSize: "22px",
+      fontFamily: "Roboto",
+      // paddingText: "",
+      paddingIcon: "20px",
+      padding: "0 20px",
+    },
+    empty: { color: "#8a939d" },
   },
 };
 export const themes = { light, dark };

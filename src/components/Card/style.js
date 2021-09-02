@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Item from "@material-ui/core/MenuItem";
+import menu from "@material-ui/core/Menu";
 import icon from "../Icon";
 
 export const Wrapper = styled.div`
@@ -26,14 +27,20 @@ export const Wrapper = styled.div`
   @media (max-width: 800px) {
     width: 140px;
   }
-  .MuiListItem-root {
-  }
+
   :hover {
     opacity: 0.9;
   }
   /* :active {
     opacity: 0.6;
   } */
+`;
+
+export const Menu = styled(menu)`
+  .ListStyle {
+    background-color: ${({ theme }) => theme.card.background};
+    color: ${({ theme }) => theme.color_text};
+  }
 `;
 
 export const Status = styled.span`

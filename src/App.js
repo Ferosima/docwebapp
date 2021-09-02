@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     matches && dispatch(setSidebarState(true));
-    dispatch(setTheme("dark"));
+    // dispatch(setTheme("dark"));
     // dispatch(setTheme("light"));
   });
 

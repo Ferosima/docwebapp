@@ -69,5 +69,6 @@ export const Arrow = styled(icon)`
   cursor: pointer;
   padding: 6px;
   width: 20px;
+  color: ${({ theme }) => theme.sidebar.arrow};
   transform: ${({ isOpen }) => (isOpen ? "rotate(360deg)" : "rotate(180deg)")};
 `;

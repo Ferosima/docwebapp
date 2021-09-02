@@ -5,7 +5,7 @@ import button from "../Button";
 export const Label = styled.p`
   margin: 0;
   padding: 5px 0;
-  color: #403e5c;
+  color: ${({ theme }) => theme.form.label};
   font-size: 16px;
   font-family: Roboto-Medium;
 
@@ -17,7 +17,7 @@ export const Text = styled.p`
   padding: 5px 0 0;
   font-family: Roboto;
   font-size: 14px;
-  color: #939499;
+  color: ${({ theme }) => theme.form.info};
 `;
 
 export const Form = styled.form`
@@ -31,20 +31,26 @@ export const Input = styled.input`
   display: block;
   box-sizing: border-box;
   border-radius: 4px;
-  border: 1px solid rgba(2, 36, 122, 0.2);
+  border: ${({ theme }) => theme.input.border_input};
   border-radius: 5px;
   padding: 10px 5px;
   font-size: 14px;
   max-width: 500px;
   width: 500px;
+  background: transparent;
+  color: ${({ theme }) => theme.color_text};
 
+  :-webkit-autofill {
+    -webkit-box-shadow: ${({ theme }) => `0 0 0px 1000px ${theme.background} inset`};
+    -webkit-text-fill-color: ${({ theme }) => theme.color_text};
+  }
   :focus {
-    border: 1px solid #2339c3;
+    border: ${({ theme }) => theme.input.border_input_focus};
   }
   ::placeholder {
     font-family: Roboto;
     font-size: 16px;
-    color: #939499;
+    color: ${({ theme }) => theme.color_text_secondary};
   }
   @media (max-width: 700px) {
     width: 100%;

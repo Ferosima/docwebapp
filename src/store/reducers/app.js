@@ -13,6 +13,7 @@ export default function reducer(state = initialState, action) {
         isSidebarOpen: action.payload,
       };
     case APP_SET_THEME:
+      console.log("ACTION", action.payload);
       return {
         ...state,
         theme: action.payload,

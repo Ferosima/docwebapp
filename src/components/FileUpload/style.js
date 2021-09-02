@@ -13,7 +13,7 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   margin-bottom: 10px;
-  border: 1px solid rgba(2,36,122,0.2);
+  border: ${({ theme }) => theme.input.border_input};
   border-radius: 5px;
 `;
 export const Input = styled.input`
@@ -28,13 +28,13 @@ export const Label = styled.label`
 export const Text = styled.p`
   font-size: 14px;
   font-family: Roboto-Light;
-  color: #939499;
+  color: ${({ theme }) => theme.form.info};
   text-align: center;
   letter-spacing: 0.03em;
   width: -webkit-fill-available;
 `;
 export const Title = styled.p`
-  color: #403e5c;
+  color: ${({ theme }) => theme.form.label};
   font-size: 14px;
   font-family: Roboto-Medium;
   width: 100%;
@@ -44,7 +44,7 @@ export const Title = styled.p`
 `;
 export const Preview = styled.object`
   padding: 5px 10px;
-  background-color: #f9fbff;
+  background-color: ${({ theme }) => theme.card.background};
   max-width: 500px;
   box-sizing: border-box;
   display: flex;
@@ -52,12 +52,12 @@ export const Preview = styled.object`
   justify-content: center;
   justify-items: center;
   align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: ${({ theme }) => theme.input.border_input};
   border-radius: 5px;
   overflow-x: hidden;
 
   .Document {
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: ${({ theme }) => theme.input.border_input};
     overflow-y: hidden;
   }
   .Page {

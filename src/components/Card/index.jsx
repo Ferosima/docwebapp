@@ -1,5 +1,5 @@
 import Divider from "@material-ui/core/Divider";
-import Menu from "@material-ui/core/Menu";
+
 import moment from "moment";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,7 +7,17 @@ import assetsData from "../../assets/assetsData";
 import { deleteDocument } from "../../store/actions/documents";
 import Avatar from "../Avatar";
 import {
-  Container, DocumentEmpty, Icon, MenuItem, Preview, Row, Status, Subtitle, Title, Wrapper,
+  Container,
+  DocumentEmpty,
+  Icon,
+  MenuItem,
+  Preview,
+  Row,
+  Status,
+  Subtitle,
+  Title,
+  Wrapper,
+  Menu,
 } from "./style";
 
 const theme = {
@@ -64,7 +74,13 @@ export function DocumentCard({
         <Subtitle>{getDate(createdAt)}</Subtitle>
       </Container>
 
-      <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
+      <Menu
+        classes={{ paper: "ListStyle" }}
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
         {creator.uuid === user.uuid ? (
           <MenuItem onClick={onClickDelete}>
             <Icon name="delete" size="20px" color="#DF5753" />

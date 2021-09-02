@@ -16,12 +16,12 @@ const themes = {
 };
 
 export default function Modal({
-  modalVisible, children, onRequestClose, title, theme,
+  modalVisible, children, onRequestClose, title, type,
 }) {
   return (
-    <Wrapper modalVisible={modalVisible} theme={themes[theme]}>
-      <Container theme={themes[theme]}>
-        <Row theme={themes[theme]}>
+    <Wrapper modalVisible={modalVisible} type={type}>
+      <Container>
+        <Row>
           <Title>{title}</Title>
           <Icon name="close" size="25px" color="#455A64" onClick={onRequestClose} />
         </Row>
