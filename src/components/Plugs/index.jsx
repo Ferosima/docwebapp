@@ -1,18 +1,20 @@
 import React from "react";
 import ClipLoader from "react-spinners/ClipLoader";
+import { withNamespaces } from "react-i18next";
 import {
   Wrapper, Text, Icon, Button,
 } from "./style";
 import assetsData from "../../assets/assetsData";
 
-export function Constuction() {
+export function ConstuctionPlug({ t }) {
   return (
     <Wrapper type="constuction">
       <Icon name="construct" size="125px" />
-      <Text>This page is under construction</Text>
+      <Text>{t(`plug.constuction.text`)}</Text>
     </Wrapper>
   );
 }
+export const Constuction = withNamespaces()(ConstuctionPlug);
 
 export function Empty({
   image, text, buttonText, onClick,
@@ -25,23 +27,26 @@ export function Empty({
   );
 }
 
-export function Loading({ panding }) {
+export function LoadingPlug({ panding, t }) {
   return (
     <Wrapper>
       <ClipLoader color="#477bff" loading={panding} size={20} />
-      <Text>Loading...</Text>
+      <Text>{t(`plug.loading.text`)}</Text>
     </Wrapper>
   );
 }
+export const Loading = withNamespaces()(LoadingPlug);
 
-export function Success({ text = "Success!", buttonText = "Go back", onClick }) {
+function SuccessPlug({
+  text = "Success!", buttonText, onClick, t,
+}) {
   return (
     <Wrapper type="success">
       <Icon name="done" size="125px" color="#00B5BD" />
       <Text>{text}</Text>
       <Button
         image={assetsData.images.ArrowRight}
-        text={buttonText}
+        text={buttonText || t(`modal.success.button`)}
         onClick={onClick}
         isImageRight
         style={{ padding: "10px 10px 10px 20px" }}
@@ -49,3 +54,4 @@ export function Success({ text = "Success!", buttonText = "Go back", onClick }) 
     </Wrapper>
   );
 }
+export const Success = withNamespaces()(SuccessPlug);

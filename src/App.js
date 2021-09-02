@@ -1,23 +1,31 @@
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { withNamespaces } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import "./App.css";
-import Router from "./router";
-import { setSidebarState, setTheme } from "./store/actions/app";
-import { themes } from "./themes";
+import i18n from "./assets/i18";
 import { GlobalStyles } from "./components/GlobalStyles";
 
-function App() {
+import Router from "./router";
+import { themes } from "./themes";
+
+function App({ t }) {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.app.theme);
   const matches = useMediaQuery("(min-width:700px)");
 
-  // useEffect(() => {
-  //   matches && dispatch(setSidebarState(true));
-  //   // dispatch(setTheme("dark"));
-  //   // dispatch(setTheme("light"));
-  // });
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
+  useEffect(() => {
+    // matches && dispatch(setSidebarState(true));
+    // dispatch(setTheme("dark"));
+    // dispatch(setTheme("light"));
+    // changeLanguage("ru");
+    // changeLanguage("en");
+  });
 
   return (
     <ThemeProvider theme={themes[theme]}>
@@ -27,4 +35,4 @@ function App() {
   );
 }
 
-export default App;
+export default withNamespaces()(App);

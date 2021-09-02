@@ -1,14 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { withNamespaces } from "react-i18next";
 import assetsData from "../../assets/assetsData";
 import { themes } from "../../themes";
+
 // import "./styles.css";
 import {
   Button, Column, Container, Header, ImageWrapper, Logo, Row, Subtitle, Title, Wrapper,
 } from "./style";
 
-export default function HomePage() {
+function HomePage({ t }) {
   const history = useHistory();
   const theme = useSelector((state) => state.app.theme);
 
@@ -23,19 +25,19 @@ export default function HomePage() {
           <p>Docwebapp</p>
         </Logo>
         <Row noColumnReverse>
-          <Button onClick={handleOnClick("/auth/login")}>Sign in</Button>
+          <Button onClick={handleOnClick("/auth/login")}>{t("landing.header.signin")}</Button>
           <Button primary onClick={handleOnClick("/auth/registration")}>
-            Sign up
+            {t("landing.header.signup")}
           </Button>
         </Row>
       </Header>
       <Container padding="60px 40px" height="60vh">
         <Row>
           <Column width="40%">
-            <Subtitle>Easy and convenient</Subtitle>
-            <Title padding="10px 0">Manager of your documents and signatures for your company</Title>
+            <Subtitle>{t("landing.home.subtitle")}</Subtitle>
+            <Title padding="10px 0">{t("landing.home.title")}</Title>
             <Button primary padding="10px 15px" onClick={handleOnClick("/auth/registration")}>
-              Get started
+              {t("landing.home.button")}
             </Button>
           </Column>
           <ImageWrapper>
@@ -46,3 +48,4 @@ export default function HomePage() {
     </Wrapper>
   );
 }
+export default withNamespaces()(HomePage);

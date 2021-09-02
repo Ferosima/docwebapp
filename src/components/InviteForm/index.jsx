@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useRouteMatch } from "react-router-dom";
 import * as yup from "yup";
 import ClipLoader from "react-spinners/ClipLoader";
+import { withNamespaces } from "react-i18next";
 import {
   Wrapper, ErrorText, Label, Text, Input, Form, Row,
 } from "./style";
@@ -14,7 +15,9 @@ const schema = yup.object().shape({
   email: yup.string().required("Email is a required"),
 });
 
-export default function LoginForm({ action, error, panding }) {
+function LoginForm({
+  action, error, panding, t,
+}) {
   const {
     register,
     handleSubmit,
@@ -26,17 +29,17 @@ export default function LoginForm({ action, error, panding }) {
 
   return (
     <Wrapper>
-      <Text>Enter the email of the person you want to invite</Text>
+      <Text>{t(`modal.invite.subtitle`)}</Text>
       <Form>
         <Label htmlFor="email">Email</Label>
-        <Input {...register("email")} placeholder="Type email" />
+        <Input {...register("email")} placeholder={t(`modal.invite.placeholder`)} />
         {(error || errors.email) && <ErrorText>{error || errors.email?.message}</ErrorText>}
       </Form>
       <Row>
         <div />
         <Button
           onClick={handleSubmit(onSubmit)}
-          text="Send Invite"
+          text={t(`modal.invite.button`)}
           image={assetsData.images.ArrowRight}
           isImageRight
           panding={panding}
@@ -45,3 +48,4 @@ export default function LoginForm({ action, error, panding }) {
     </Wrapper>
   );
 }
+export default withNamespaces()(LoginForm);

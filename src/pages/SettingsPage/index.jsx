@@ -1,6 +1,7 @@
 import React from "react";
 import Toggle from "react-toggle";
 import { useSelector, useDispatch } from "react-redux";
+import { withNamespaces } from "react-i18next";
 import Header from "../../components/Header";
 import { Constuction } from "../../components/Plugs";
 import {
@@ -9,7 +10,7 @@ import {
 import "react-toggle/style.css";
 import { setTheme } from "../../store/actions/app";
 
-export default function SettingsPage() {
+function SettingsPage({ t }) {
   const theme = useSelector((state) => state.app.theme);
   const dispatch = useDispatch();
 
@@ -20,12 +21,12 @@ export default function SettingsPage() {
 
   return (
     <Wrapper>
-      <Header title="Settings" />
+      <Header title={t(`sidebar.settings`)} />
       <Container>
         <Item>
           <Container>
-            <Title>Dark Theme</Title>
-            <Subtitle>Use dark theme as main</Subtitle>
+            <Title>{t(`settings.theme.title`)}</Title>
+            <Subtitle>{t(`settings.theme.subtitle`)}</Subtitle>
           </Container>
           <Toggle defaultChecked={theme === "dark"} icons={false} onChange={onChange} />
         </Item>
@@ -33,3 +34,4 @@ export default function SettingsPage() {
     </Wrapper>
   );
 }
+export default withNamespaces()(SettingsPage);

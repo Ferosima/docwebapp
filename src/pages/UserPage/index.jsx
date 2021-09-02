@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { compose } from "redux";
+import { withNamespaces } from "react-i18next";
 import {
   Wrapper, Button, Text, Row, Container,
 } from "./style";
@@ -14,7 +15,7 @@ import Header from "../../components/Header";
 
 class ProfilePage extends React.Component {
   render() {
-    const { user, logout } = this.props;
+    const { user, logout, t } = this.props;
     const { firstName, secondName } = user;
     return (
       <Wrapper>
@@ -35,4 +36,4 @@ const mapDispatchToProps = {
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-export default compose(withRouter, withConnect)(ProfilePage);
+export default withNamespaces()(compose(withRouter, withConnect)(ProfilePage));

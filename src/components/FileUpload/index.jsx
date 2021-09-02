@@ -1,10 +1,11 @@
 import React from "react";
+import { withNamespaces } from "react-i18next";
 import { Document, Page } from "react-pdf";
 import assetsData from "../../assets/assetsData";
 import Button from "../Button";
 import { Container, Input, Label, Preview, Text, Title, Wrapper } from "./style";
 
-export default class FileUploadPage extends React.Component {
+class FileUploadPage extends React.Component {
   state = {
     selectedFile: null,
     fileName: null,
@@ -20,11 +21,15 @@ export default class FileUploadPage extends React.Component {
 
   renderUploadButton = () => {
     const { selectedFile } = this.state;
-    const { register } = this.props;
+    const { register, t } = this.props;
     return (
       <Label selectedFile={selectedFile}>
         <Button
-          text={selectedFile ? "Change" : "Upload"}
+          text={
+            selectedFile
+              ? t("modal.create_doc.fileUpload.buttons.change")
+              : t("modal.create_doc.fileUpload.buttons.upload")
+          }
           image={selectedFile ? assetsData.images.ChangeBlue : assetsData.images.UploadBlue}
           type="outline"
           style={{ padding: "3px 10px", borderRadius: "15px" }}
@@ -42,16 +47,16 @@ export default class FileUploadPage extends React.Component {
 
   render() {
     const { selectedFile, fileName } = this.state;
+    const { t } = this.props;
     return (
       <Wrapper>
-        <Title>Document</Title>
-        <Container
-          style={{ padding: !selectedFile ? "30px 0 20px" : "5px 0 10px", height: "260px" }}
-        >
+        <Title>{t("modal.create_doc.fileUpload.title")}</Title>
+        <Container style={{ padding: !selectedFile ? "30px 0 20px" : "5px 0 10px", height: "260px" }}>
           {!selectedFile ? (
             <Text>
-              You don’t have document
-              <br /> You can upload only .pdf or .doc file
+              {t("modal.create_doc.fileUpload.first_part")}
+              <br />
+              {t("modal.create_doc.fileUpload.second_part")}
             </Text>
           ) : (
             <Preview>
@@ -67,3 +72,4 @@ export default class FileUploadPage extends React.Component {
     );
   }
 }
+export default withNamespaces()(FileUploadPage);

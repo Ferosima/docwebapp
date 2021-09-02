@@ -1,4 +1,5 @@
 import Timeline from "@material-ui/lab/Timeline";
+import { withNamespaces } from "react-i18next";
 import TimelineConnector from "@material-ui/lab/TimelineConnector";
 import TimelineContent from "@material-ui/lab/TimelineContent";
 import TimelineDot from "@material-ui/lab/TimelineDot";
@@ -25,7 +26,7 @@ import {
   Title,
 } from "./style";
 
-export const FileInfoTab = ({ data, file }) => {
+export const FileInfo = ({ data, file, t }) => {
   const [state, setState] = useState({ isViewDoc: false });
   const {
     name, description, createdAt, uuid, extiresAt, creator,
@@ -41,7 +42,7 @@ export const FileInfoTab = ({ data, file }) => {
   return (
     <Container style={{ padding: "15px 20px" }}>
       <Column>
-        <Subtitle>File Preview</Subtitle>
+        <Subtitle>{t("preview.doc.title")}</Subtitle>
         <Preview>
           <Document file={file} className="Document">
             <Page pageNumber={1} renderMode="canvas" width={150} height={212} className="Page" />
@@ -49,22 +50,23 @@ export const FileInfoTab = ({ data, file }) => {
         </Preview>
         <Title withoutBottomPadding={description === "null"}>{name}</Title>
         {description !== "null" && <Description>{description}</Description>}
-        <Label>Owner of the document:</Label>
+        <Label>{t("preview.doc.owner")}</Label>
         <User data={creator} />
-        <Label>Creation Date:</Label>
+        <Label>{t("preview.doc.creation")}</Label>
         <Text>{moment(createdAt).format("D MMMM YYYY, HH:mm")}</Text>
-        <Label>Expires At:</Label>
+        <Label>{t("preview.doc.expiries")}</Label>
         <Text>{moment(extiresAt).format("D MMMM YYYY, HH:mm")}</Text>
-        <Label>Document ID:</Label>
+        <Label>{t("preview.doc.id")}</Label>
         <Text>{uuid}</Text>
       </Column>
-      <Button text="View Document" type="outline" onClick={openDocViewer} />
+      <Button text={t("preview.doc.button")} type="outline" onClick={openDocViewer} />
       {state.isViewDoc && <DocumentViewer file={file} onRequestClose={closeDocViewer} name={name} />}
     </Container>
   );
 };
+export const FileInfoTab = withNamespaces()(FileInfo);
 
-export const SignaturesTab = ({ uuid }) => {
+const Signatures = ({ uuid, t }) => {
   const signatures = useSelector((state) => state.documents.signatures);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -89,7 +91,7 @@ export const SignaturesTab = ({ uuid }) => {
   return (
     <Container style={{ padding: "15px 20px" }}>
       <Column>
-        <Subtitle>Signatures</Subtitle>
+        <Subtitle>{t("preview.signatures.title")}</Subtitle>
         <Container>
           <Timeline>{signatures[uuid] && signatures[uuid].map(renderUser)}</Timeline>
         </Container>
@@ -98,31 +100,38 @@ export const SignaturesTab = ({ uuid }) => {
       {signatures[uuid] && userSignature?.completedStatus === null ? (
         <Row>
           <Button
-            text="Reject"
+            text={t("preview.signatures.buttons.reject")}
             type="outlineRed"
             onClick={() => dispatch(processDocument({ uuid, status: "rejected" }))}
           />
-          <Button text="Sign" type="outline" onClick={() => dispatch(processDocument({ uuid, status: "signed" }))} />
+          <Button
+            text={t("preview.signatures.buttons.sign")}
+            type="outline"
+            onClick={() => dispatch(processDocument({ uuid, status: "signed" }))}
+          />
         </Row>
       ) : (
-        signatures[uuid] && userSignature && <Label>Document are {userSignature?.completedStatus}</Label>
+        signatures[uuid] && userSignature && <Label>{t(`preview.signatures.${userSignature?.completedStatus}`)}</Label>
       )}
     </Container>
   );
 };
 
-const User = ({ data }) => {
+export const SignaturesTab = withNamespaces()(Signatures);
+
+const UserCustom = ({ data, t }) => {
   const user = useSelector((state) => state.user);
   const {
     firstName, secondName, email, uuid, avatarColor,
   } = data;
   return (
     <Item>
-      <Avatar name={user.uuid === uuid ? "Y" : firstName} color={avatarColor} style={{ marginRight: "10px" }} />
+      <Avatar name={user.uuid === uuid ? t("user.y") : firstName} color={avatarColor} style={{ marginRight: "10px" }} />
       <Column>
-        <Title bold={user.uuid === uuid}>{user.uuid === uuid ? "You" : `${firstName} ${secondName}`}</Title>
+        <Title bold={user.uuid === uuid}>{user.uuid === uuid ? t("user.your") : `${firstName} ${secondName}`}</Title>
         <Subtitle>{email}</Subtitle>
       </Column>
     </Item>
   );
 };
+const User = withNamespaces()(UserCustom);

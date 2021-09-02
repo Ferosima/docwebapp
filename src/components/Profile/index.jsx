@@ -1,12 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { withNamespaces } from "react-i18next";
 import { schema } from "./schema";
 import {
   Header, Icon, Text, Wrapper, Row, Separator, Container, Input,
 } from "./style";
 import Avatar from "../Avatar";
 
-export default function Profile({ user }) {
+function Profile({ user, t }) {
   const {
     register,
     formState: { errors },
@@ -29,6 +30,7 @@ export default function Profile({ user }) {
         <Row>
           <Input
             {...schema[schema.findIndex((el) => el.name === "firstName")]}
+            label={t("profile.firstName")}
             disabled // TODO remove disabled for update fields
             error={errors?.firstName}
             defaultValue={firstName}
@@ -37,6 +39,7 @@ export default function Profile({ user }) {
           <Separator />
           <Input
             {...schema[schema.findIndex((el) => el.name === "secondName")]}
+            label={t("profile.secondName")}
             disabled // TODO remove disabled for update fields
             error={errors?.secondName}
             defaultValue={secondName}
@@ -46,6 +49,7 @@ export default function Profile({ user }) {
         {schema.slice(2).map((data) => (
           <Input
             {...data}
+            label={t(`profile.${data.name}`)}
             disabled // TODO remove disabled for update fields
             error={errors[data.name]}
             defaultValue={user[data.name]}
@@ -56,3 +60,4 @@ export default function Profile({ user }) {
     </Wrapper>
   );
 }
+export default withNamespaces()(Profile);

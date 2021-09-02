@@ -1,4 +1,5 @@
 import React from "react";
+import { withNamespaces } from "react-i18next";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { compose } from "redux";
@@ -8,11 +9,10 @@ import Header from "../../components/Header";
 import InviteForm from "../../components/InviteForm";
 import Modal from "../../components/Modal";
 import { Empty, Loading, Success } from "../../components/Plugs";
-import { fetchUsers, inviteUser, inviteSuccessClear } from "../../store/actions/users";
-import { getUsersState } from "../../store/selectors/users";
+import { fetchUsers, inviteSuccessClear, inviteUser } from "../../store/actions/users";
 import { getUserState } from "../../store/selectors/user";
+import { getUsersState } from "../../store/selectors/users";
 import { Container, Grid, Wrapper } from "./style";
-import { fetchOrganizations } from "../../store/actions/organizations";
 class PeoplePage extends React.Component {
   state = {
     modalVisible: false,
@@ -51,24 +51,24 @@ class PeoplePage extends React.Component {
     );
 
   render() {
-    const { users, inviteUser, user } = this.props;
+    const { users, inviteUser, user, t } = this.props;
     const { panding, list, inviteSuccess, error } = users;
     const { modalVisible } = this.state;
     return (
       <Wrapper>
         <Modal
-          title={!inviteSuccess && "Invite People to organization"}
+          title={!inviteSuccess && t(`modal.invite.title`)}
           modalVisible={modalVisible}
           onRequestClose={() => this.setModalVisible(false)}
           type={inviteSuccess && "success"}
         >
           {inviteSuccess ? (
-            <Success text="Invite send success" onClick={() => this.setModalVisible(false)} />
+            <Success text={t(`modal.success.invite`)} onClick={() => this.setModalVisible(false)} />
           ) : (
             <InviteForm action={inviteUser} panding={panding} error={error} />
           )}
         </Modal>
-        <Header title="Members" buttons={[{ name: "add", action: this.openModal }]} />
+        <Header title={t(`sidebar.members`)} buttons={[{ name: "add", action: this.openModal }]} />
         {!panding || list.length ? this.renderContent(list) : <Loading panding={panding} />}
       </Wrapper>
     );
@@ -86,4 +86,4 @@ const mapDispatchToProps = {
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-export default compose(withRouter, withConnect)(PeoplePage);
+export default withNamespaces()(compose(withRouter, withConnect)(PeoplePage));
