@@ -15,6 +15,7 @@ export const Item = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+  align-items: center;
   justify-content: space-between;
   ${Container} {
     width: fit-content;
