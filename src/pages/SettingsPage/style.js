@@ -12,6 +12,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 30px 60px;
+  @media (max-width: 700px) {
+    padding: 20px 30px;
+  } ;
 `;
 export const Item = styled.div`
   display: flex;
