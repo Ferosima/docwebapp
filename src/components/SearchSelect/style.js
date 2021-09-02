@@ -5,11 +5,12 @@ export const Title = styled.p`
   font-size: 14px;
   text-align: left;
   margin-top: 20px;
+  color: ${({ theme }) => theme.form.label};
 `;
 export const Subtitle = styled.p`
   font-size: 14px;
   font-family: Roboto-Light;
-  color: #acb7c5;
+  color: ${({ theme }) => theme.form.info};
   text-align: ${({ textAlign }) => textAlign || "left"};
   padding: ${({ padding }) => padding || "0"};
 `;
@@ -36,7 +37,7 @@ export const Wrapper = styled.div`
     max-height: 20vh;
     height: 20vh;
     border-radius: 5px;
-    border: 1px solid #ccd3e4;
+    border: ${({ theme }) => theme.input.border_input};
     overflow: hidden;
   }
   .select-search__options {
@@ -78,6 +79,7 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  border: ${({ theme, withBorder }) => withBorder && theme.input.border_input};
 
   .select-search__select {
     /* border: 1px solid #afb6c8; */
@@ -119,25 +121,25 @@ export const Container = styled.div`
 export const Row = styled.div`
   display: flex;
   flex-direction: row;
- 
 `;
 export const Item = styled.button`
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
-  background-color: ${({ isSelected }) => (isSelected ? "#477bff" : "#fff")};
+  background-color: ${({ isSelected, theme }) => (isSelected ? "#477bff" : theme.card.background)};
   padding: 5px;
   align-items: center;
   cursor: pointer;
 
   :hover {
-    background-color: #e4ebfa;
+    background-color: ${({ theme }) => theme.card.color_preview};
   }
 
   ${Title} {
     margin: 0;
     font-size: 14px;
+    color: ${({ theme }) => theme.form.text};
   }
 `;
 
@@ -148,7 +150,7 @@ export const Input = styled.div`
 
   align-items: center;
   border-radius: 5px;
-  border: 1px solid #ccd3e4;
+  border: ${({ theme }) => theme.input.border_input};
 
   input {
     outline: none;
@@ -159,6 +161,8 @@ export const Input = styled.div`
     padding: 5px 5px;
     font-size: 14px;
     font-family: Roboto;
+    background: transparent;
+    color: ${({ theme }) => theme.color_text};
   }
 
   input:focus {
@@ -166,7 +170,7 @@ export const Input = styled.div`
   }
 
   input::placeholder {
-    color: #afb6c8;
+    color: ${({ theme }) => theme.color_text_secondary};
     font-size: 14px;
     font-family: Roboto;
   }

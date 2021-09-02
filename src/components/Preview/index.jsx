@@ -1,32 +1,7 @@
 import React, { useState } from "react";
-import moment from "moment";
-import { useSelector } from "react-redux";
-import { Document, Page } from "react-pdf";
-import Timeline from "@material-ui/lab/Timeline";
-import TimelineItem from "@material-ui/lab/TimelineItem";
-import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
-import TimelineConnector from "@material-ui/lab/TimelineConnector";
-import TimelineContent from "@material-ui/lab/TimelineContent";
-import TimelineDot from "@material-ui/lab/TimelineDot";
-import DocumentViewer from "../DocumentViewer";
 import { FileInfoTab, SignaturesTab } from "../PreviewTabs";
 import {
-  Wrapper,
-  Nav,
-  Icon,
-  Column,
-  Container,
-  Preview,
-  Title,
-  Text,
-  Subtitle,
-  Description,
-  Label,
-  Button,
-  Background,
-  Item,
-  Avatar,
-  Row,
+  Wrapper, Nav, Icon, Column, Background,
 } from "./style";
 
 export default function DocumentPreview({
@@ -47,7 +22,7 @@ export default function DocumentPreview({
         name={icon}
         isOutline={state.tab !== name}
         size="18px"
-        color={state.tab !== name ? "#455A64" : "#477bff"}
+        isMatch={state.tab === name}
         onClick={setTab(name)}
       />
     );
@@ -68,7 +43,7 @@ export default function DocumentPreview({
     <Background isOpen={isOpen} onClick={onRequestClose}>
       <Wrapper isOpen={isOpen} onClick={handleChildClick}>
         <Nav>
-          <Icon name="arrowCollapse" size="24px" color="#455A64" onClick={onRequestClose} />
+          <Icon name="arrowCollapse" size="24px" onClick={onRequestClose} />
           <Column style={{ padding: "10px 0" }}>
             <Tab icon="info" name="filePreview" />
             <Tab icon="pen" name="signatures" />

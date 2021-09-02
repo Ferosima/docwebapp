@@ -19,9 +19,12 @@ export const Wrapper = styled.div`
   align-items: center;
   padding: ${({ theme }) => theme.padding || "0"};
   ${Text} {
-    color: ${({ theme }) => theme.color || "#939499"};
-    font-family: ${({ theme }) => theme.fontFamily || "Roboto"};
-    font-size: ${({ theme }) => theme.textSize || "18px"};
-    padding: ${({ theme }) => theme.paddingText || "0"};
+    color: ${({ theme, type }) => theme.plugs[type]?.color || theme.color_text};
+    font-family: ${({ theme, type }) => theme.plugs[type]?.fontFamily || "Roboto"};
+    font-size: ${({ theme, type }) => theme.plugs[type]?.textSize || "18px"};
+    padding: ${({ theme, type }) => theme.plugs[type]?.paddingText || "0"};
+  }
+  ${Icon} {
+    color: ${({ theme, type }) => theme.plugs[type]?.color || theme.color_text};
   }
 `;

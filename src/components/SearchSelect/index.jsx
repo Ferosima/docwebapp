@@ -60,7 +60,7 @@ export default function SearchSelect({
         </Row>
         {selected && (
           <button type="button" {...props}>
-            <Button text="Remove" theme="outlineRed" style={{ padding: "2px 5px", borderRadius: "7px" }} />
+            <Button text="Remove" type="outlineRed" style={{ padding: "2px 5px", borderRadius: "7px" }} />
           </button>
         )}
       </Item>
@@ -110,12 +110,12 @@ export default function SearchSelect({
         />
       ) : (
         <Container
+          withBorder
           style={{
             height: "20vh",
             padding: "20px 0 10px",
             justifyContent: "center",
             borderRadius: "5px",
-            border: "1px solid #ccd3e4",
             margin: "5px 0 15px",
             "box-sizing": "border-box",
           }}

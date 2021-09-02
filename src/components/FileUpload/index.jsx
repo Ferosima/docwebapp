@@ -26,7 +26,7 @@ export default class FileUploadPage extends React.Component {
         <Button
           text={selectedFile ? "Change" : "Upload"}
           image={selectedFile ? assetsData.images.ChangeBlue : assetsData.images.UploadBlue}
-          theme="outline"
+          type="outline"
           style={{ padding: "3px 10px", borderRadius: "15px" }}
         />
         <Input

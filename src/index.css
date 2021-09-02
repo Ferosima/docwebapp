@@ -13,7 +13,8 @@ body {
   align-content: center;
   overflow-x: hidden;
   height: 100%;
-  color: #263238;
+  /* color: #263238; */
+  background-color: #0e0e0e;
 }
 
 /* code {
@@ -37,7 +38,7 @@ button {
 #root {
   display: flex;
   flex: 1;
-  background-color: #F8F9FB;
+
   overflow: hidden;
 }
 

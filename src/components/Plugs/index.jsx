@@ -5,28 +5,10 @@ import {
 } from "./style";
 import assetsData from "../../assets/assetsData";
 
-const theme = {
-  constuction: {
-    textSize: "22px",
-    color: "#455A64",
-    fontFamily: "Roboto-Bold",
-    paddingText: "0 0 125px",
-    paddingIcon: "0 0 20px",
-  },
-  success: {
-    textSize: "22px",
-    color: "#263238",
-    fontFamily: "Roboto-Bold",
-    // paddingText: "",
-    paddingIcon: "20px",
-    padding: "0 20px",
-  },
-};
-
 export function Constuction() {
   return (
-    <Wrapper theme={theme.constuction}>
-      <Icon name="construct" size="125px" color="#455A64" />
+    <Wrapper type="constuction">
+      <Icon name="construct" size="125px" />
       <Text>This page is under construction</Text>
     </Wrapper>
   );
@@ -36,7 +18,7 @@ export function Empty({
   image, text, buttonText, onClick,
 }) {
   return (
-    <Wrapper>
+    <Wrapper type="empty">
       <Text>{text}</Text>
       <Button image={image} text={buttonText} onClick={onClick} />
     </Wrapper>
@@ -54,7 +36,7 @@ export function Loading({ panding }) {
 
 export function Success({ text = "Success!", buttonText = "Go back", onClick }) {
   return (
-    <Wrapper theme={theme.success}>
+    <Wrapper type="success">
       <Icon name="done" size="125px" color="#00B5BD" />
       <Text>{text}</Text>
       <Button

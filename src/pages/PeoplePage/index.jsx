@@ -60,7 +60,7 @@ class PeoplePage extends React.Component {
           title={!inviteSuccess && "Invite People to organization"}
           modalVisible={modalVisible}
           onRequestClose={() => this.setModalVisible(false)}
-          theme={inviteSuccess && "success"}
+          type={inviteSuccess && "success"}
         >
           {inviteSuccess ? (
             <Success text="Invite send success" onClick={() => this.setModalVisible(false)} />

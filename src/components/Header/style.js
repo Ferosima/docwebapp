@@ -2,13 +2,14 @@ import styled from "styled-components";
 import icon from "../Icon";
 
 export const Wrapper = styled.div`
-  border-bottom: 1px solid #c7c7cc;
+  border-bottom: ${({ theme }) => theme.border_line};
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 17px 20px;
   max-width: 100%;
   align-items: center;
+  transition: border 1s;
 `;
 
 export const Row = styled.div`
@@ -47,7 +48,7 @@ export const Buttons = styled.div`
 export const Icon = styled(icon)`
   padding: 0 10px 0 0;
   display: none;
-  @media (max-width: 700px){
-   display: flex;
-  };
+  @media (max-width: 700px) {
+    display: flex;
+  } ;
 `;

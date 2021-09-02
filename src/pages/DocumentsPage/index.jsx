@@ -94,7 +94,7 @@ class DocumentsPage extends React.Component {
           title={!isSuccess && "Create Document"}
           modalVisible={modalVisible}
           onRequestClose={() => this.setModalVisible(false)}
-          theme={isSuccess ? "success" : "allScreen"}
+          type={isSuccess ? "success" : "allScreen"}
         >
           {this.renderForm()}
         </Modal>

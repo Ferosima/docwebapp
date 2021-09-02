@@ -3,8 +3,7 @@ import styled from "styled-components";
 export const Label = styled.p`
   margin: 0;
   padding: 5px 0;
-  color: #263238;
-  font-size: 16px;
+  font-size: 15px;
   font-family: Roboto;
   @media (max-width: 1440px) {
     font-size: 14px;
@@ -19,11 +18,11 @@ export const Text = styled.p`
 export const Button = styled.div`
   display: flex;
   justify-content: center;
-  background: #477bff;
-  border-radius: 10px;
+  background: ${({ theme }) => theme.primary_color};
+  border-radius: 5px;
   color: white;
   border: none;
-  padding: 15px;
+  padding: 10px 15px;;
   margin: 5px 10px;
   font-size: 20px;
   font-family: Roboto;
@@ -63,23 +62,22 @@ export const Wrapper = styled.div`
   flex: 1;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
+  max-width: 500px;
   width: -webkit-fill-available;
 
   h1 {
     font-family: Roboto-Black;
-    font-size: 48px;
+    font-size: 36px;
     align-self: end;
-    color: #263238;
     margin: 0;
-    padding: 0 0 60px 0;
+    padding: 0 0 45px 0;
   }
-  @media (max-width: 1440px) {
-    max-width: 600px;
+  @media (max-width: 1366px) {
+    max-width: 400px;
 
     h1 {
       padding: 30px 0;
-      font-size: 40px;
+      font-size: 30px;
     }
   }
 
@@ -106,27 +104,33 @@ export const Wrapper = styled.div`
       box-sizing: border-box;
       width: 100%;
       border-radius: 4px;
-      border: 1px solid #acb7c5;
+      border: ${({ theme }) => theme.input.border_input};
       border-radius: 5px;
       padding: 15px 15px;
       font-size: 16px;
+      background: transparent;
+      color: ${({ theme }) => theme.color_text};
     }
 
     input:focus {
-      border: 1px solid #2339c3;
+      border: ${({ theme }) => theme.input.border_input_focus};
+    }
+    input:-webkit-autofill {
+      -webkit-box-shadow: ${({ theme }) => `0 0 0px 1000px ${theme.background} inset`};
+      -webkit-text-fill-color: ${({ theme }) => theme.color_text};
     }
   }
   a {
     padding: 5px 0 5px 0;
     font-family: Roboto-Medium;
     font-size: 13px;
-    color: #2f49fb;
+    color: ${({ theme }) => theme.page_auth.color_link};
   }
 `;
 export const ErrorText = styled.p`
   padding: 5px 0 15px 0;
   font-family: Roboto-Medium;
   font-size: 13px;
-  color: #d80404;
+  color: ${({ theme }) => theme.page_auth.color_error};
   align-self: self-end;
 `;

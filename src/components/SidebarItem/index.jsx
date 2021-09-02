@@ -10,7 +10,7 @@ const themes = {
 };
 
 export function SidebarItem({
-  path, icon, image, name, isNonActive, theme, ...other
+  path, icon, image, name, isNonActive, type, ...other
 }) {
   const matches = useMediaQuery("(max-width:700px)");
   const sidebarState = useSelector((state) => state.app);
@@ -22,7 +22,7 @@ export function SidebarItem({
 
   const isMatch = !isNonActive && useRouteMatch(path);
   return (
-    <Item to={path} onClick={handleClick} isActive={isMatch} theme={theme && themes[theme]} {...other}>
+    <Item to={path} onClick={handleClick} isActive={isMatch} type={type || "default"} {...other}>
       {icon && <Icon {...other} name={icon} color={isMatch ? "#F8F9FB" : null} size="20px" isOutline={!isMatch} />}
       <p>{name}</p>
     </Item>

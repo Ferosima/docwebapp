@@ -4,10 +4,11 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: ${({ reverse }) => (reverse ? "row-reverse" : "row")};
   font-size: 16px;
-  font-family: Roboto-Light;
-  background-color: ${({ theme }) => theme.background || "#477bff"};
-  border: ${({ theme }) => theme.border || ""};
-  color: ${({ theme }) => theme.color || "#fff"};
+  font-family: Roboto;
+  background-color: ${({ theme, type }) => theme.button[type]?.background || theme.primary_text};
+  border: 1px solid transparent;
+  border-color: ${({ theme, type }) => theme.button[type]?.color_border || ""};
+  color: ${({ theme, type }) => theme.button[type]?.color || "#fff"};
   padding: 10px 10px;
   border-radius: 10px;
   align-items: center;

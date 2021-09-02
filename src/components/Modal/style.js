@@ -4,7 +4,7 @@ import icon from "../Icon";
 export const Container = styled.div`
   /* padding: 20px 30px; */
   border-radius: 10px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.card.background};
   display: flex;
   flex-direction: column;
   /* max-height: -webkit-fill-available; */
@@ -33,28 +33,28 @@ export const Wrapper = styled.div`
   align-items: center;
   position: fixed;
   background: rgba(195, 203, 221, 0.28);
-  backdrop-filter: blur(6px);
+  backdrop-filter: ${({ theme }) => theme.modal.backdrop};
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
   z-index: 100;
   visibility: ${({ modalVisible }) => modalVisible || "hidden"};
-  justify-content: ${({ theme }) => theme.justifyContent || "center"};
+  justify-content: ${({ theme, type }) => theme.modal[type]?.justifyContent || "center"};
 
   ${Container} {
-    height: ${({ theme }) => theme.height || "fit-content"};
-    padding: ${({ theme }) => theme.containerPadding || " 0 20px 20px"};
-    width: ${({ theme }) => theme.width || "fit-content"};
-    max-width: ${({ theme }) => theme.maxWidth};
+    height: ${({ theme, type }) => theme.modal[type]?.height || "fit-content"};
+    padding: ${({ theme, type }) => theme.modal[type]?.containerPadding || " 0 20px 20px"};
+    width: ${({ theme, type }) => theme.modal[type]?.width || "fit-content"};
+    max-width: ${({ theme, type }) => theme.modal[type]?.maxWidth};
   }
 
   ${Row} {
-    padding: ${({ theme }) => theme.rowPadding || "20px 0 0"};
+    padding: ${({ theme, type }) => theme.modal[type]?.rowPadding || "20px 0 0"};
   }
 `;
 export const Title = styled.p`
-  color: #263238;
+  color: ${({ theme }) => theme.color_text};
   font-family: Roboto-Medium;
   font-size: 22px;
 `;

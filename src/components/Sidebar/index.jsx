@@ -35,7 +35,7 @@ class Sidebar extends React.Component {
 
   renderOrganizationItem = (name, theme) => {
     return (
-      <SidebarItem path="/app/organization/" name={name || `Create organization`} icon="organization" theme={theme} />
+      <SidebarItem path="/app/organization/" name={name || `Create organization`} icon="organization" type={"header"} />
     );
   };
 
@@ -49,7 +49,7 @@ class Sidebar extends React.Component {
             {currentOrganization
               ? this.renderOrganizationItem(currentOrganization.name, "header")
               : this.renderHeader(isSidebarOpen)}
-            <Arrow name="arrowLeft" size="20px" color="#4D5F68" onClick={this.handleClick} isOpen={isSidebarOpen} />
+            <Arrow name="arrowLeft" size="20px" onClick={this.handleClick} isOpen={isSidebarOpen} />
             {currentOrganization ? <>{routers.map(this.renderItem)}</> : this.renderOrganizationItem()}
             {default_routers.map(this.renderItem)}
           </Container>
