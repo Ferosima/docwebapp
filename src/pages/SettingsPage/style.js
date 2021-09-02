@@ -5,6 +5,8 @@ export const Wrapper = styled.div`
   flex-direction: column;
   flex: 1;
   width: 100%;
+  background: ${({ theme }) => theme.background};
+  transition: background-color 1s, color 1s;
 `;
 export const Container = styled.div`
   display: flex;

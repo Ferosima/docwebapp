@@ -1,5 +1,6 @@
 import { push } from "connected-react-router";
 import { call, put } from "redux-saga/effects";
+import { appClear } from "../actions/app";
 import {
   loginFailed,
   loginSuccess,
@@ -42,6 +43,7 @@ export function* registration({ payload }) {
 }
 export function* logout() {
   try {
+    // yield put(appClear());
     yield put(authClear());
     yield put(userClear());
     yield put(usersClear());
