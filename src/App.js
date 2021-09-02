@@ -13,11 +13,11 @@ function App() {
   const theme = useSelector((state) => state.app.theme);
   const matches = useMediaQuery("(min-width:700px)");
 
-  useEffect(() => {
-    matches && dispatch(setSidebarState(true));
-    // dispatch(setTheme("dark"));
-    // dispatch(setTheme("light"));
-  });
+  // useEffect(() => {
+  //   matches && dispatch(setSidebarState(true));
+  //   // dispatch(setTheme("dark"));
+  //   // dispatch(setTheme("light"));
+  // });
 
   return (
     <ThemeProvider theme={themes[theme]}>
