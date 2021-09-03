@@ -19,7 +19,7 @@ export const Header = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.background};
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
@@ -60,7 +60,7 @@ export const Container = styled.div`
   }
 `;
 export const Title = styled.p`
-  color: #403e5c;
+  color: ${({ theme }) => theme.color_text};
   font-size: 18px;
   font-family: Roboto-Medium;
   width: 100%;
@@ -76,6 +76,7 @@ export const Text = styled.p`
   padding: 10px 0;
 `;
 export const Icon = styled(icon)`
+  color: ${({ theme }) => theme.card.color_icon};
   :active {
     opacity: 0.6;
   }

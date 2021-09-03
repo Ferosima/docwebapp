@@ -1,4 +1,5 @@
 import React from "react";
+import { withNamespaces } from "react-i18next";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { compose } from "redux";
@@ -9,7 +10,7 @@ import { getSidebarState } from "../../store/selectors/app";
 import { getCurrentOrganizationState } from "../../store/selectors/organizations";
 import { getUserState } from "../../store/selectors/user";
 import { SidebarItem } from "../SidebarItem";
-import { Arrow, Container, Header, Wrapper, Background } from "./style";
+import { Arrow, Background, Container, Header, Wrapper } from "./style";
 class Sidebar extends React.Component {
   handleClick = () => {
     const { isSidebarOpen, setSidebarState } = this.props;
@@ -23,7 +24,8 @@ class Sidebar extends React.Component {
   isMatch = (path) => this.props.location.pathname.includes(path);
 
   renderItem = ({ path, icon, name }, index) => {
-    return <SidebarItem key={index} path={path} name={name} icon={icon} />;
+    const { t } = this.props;
+    return <SidebarItem key={index} path={path} name={t(`sidebar.${name}`)} icon={icon} />;
   };
 
   renderHeader = (isOpen) => (
@@ -34,13 +36,19 @@ class Sidebar extends React.Component {
   );
 
   renderOrganizationItem = (name, theme) => {
+    const { t } = this.props;
     return (
-      <SidebarItem path="/app/organization/" name={name || `Create organization`} icon="organization" type={"header"} />
+      <SidebarItem
+        path="/app/organization/"
+        name={name || t(`sidebar.create_org`)}
+        icon="organization"
+        type={"header"}
+      />
     );
   };
 
   render() {
-    const { user, logout, currentOrganization, routers, default_routers, isSidebarOpen } = this.props;
+    const { user, logout, currentOrganization, routers, default_routers, isSidebarOpen, t } = this.props;
     const { firstName, secondName } = user;
     return (
       <Background isOpen={isSidebarOpen} onClick={this.handleClick}>
@@ -55,7 +63,7 @@ class Sidebar extends React.Component {
           </Container>
           <Container padding="0 0 20px 0">
             <SidebarItem path="/app/user/" name={`${firstName} ${secondName}`} icon="user" />
-            <SidebarItem onClick={logout} name="Log out" icon="logout" isNonActive />
+            <SidebarItem onClick={logout} name={t(`sidebar.logout`)} icon="logout" isNonActive />
           </Container>
         </Wrapper>
       </Background>
@@ -75,4 +83,4 @@ const mapDispatchToProps = {
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-export default compose(withRouter, withConnect)(Sidebar);
+export default withNamespaces()(compose(withRouter, withConnect)(Sidebar));

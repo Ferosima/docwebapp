@@ -8,10 +8,11 @@ const ToggleButton = ({ text, action, isActive }) => (
 );
 
 export const Toggle = ({
-  buttons, active, onClick, className,
+  buttons, active, onClick, className, name,
 }) => {
-  const renderButton = ({ text, action }) => (
-    <ToggleButton text={text} action={() => onClick(text, action)} isActive={text === active} />
+  console.log(active, name);
+  const renderButton = ({ text, action, name }) => (
+    <ToggleButton text={text} action={() => onClick(name, action)} isActive={name === active} />
   );
 
   return <Wrapper className={className}>{buttons.map(renderButton)}</Wrapper>;

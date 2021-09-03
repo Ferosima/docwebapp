@@ -1,0 +1,172 @@
+{
+    "landing": {
+        "header": {
+            "signup": "Sign Up",
+            "signin": "Sign In"
+        },
+        "home": {
+            "title": "Manager of your documents and signatures for your company",
+            "subtitle": "Easy and convenient",
+            "button": "Get started"
+        }
+    },
+    "auth": {
+        "login": {
+            "title": "Wellcome back!",
+            "email": "Email",
+            "password": "Password",
+            "button": "Log in",
+            "forgot": "Forgot password?",
+            "link": {
+                "text": "Not registered yet?",
+                "link": "Create account"
+            }
+        },
+        "registration": {
+            "title": "Getting started!",
+            "firstName": "First Name",
+            "secondName": "Second Name",
+            "email": "Email",
+            "password": "Password",
+            "button": "Sign up",
+            "link": {
+                "text": "Do you have account?",
+                "link": "Log in"
+            }
+        }
+    },
+    "sidebar": {
+        "create_org": "Create organization",
+        "documents": "Documents",
+        "members": "Members",
+        "notifications": "Notifications",
+        "settings": "Settings",
+        "logout": "Log out"
+    },
+    "toggle": {
+        "created": "Created",
+        "signing": "Signing"
+    },
+    "settings": {
+        "theme": {
+            "title": "Dark Theme",
+            "subtitle": "Use dark theme as main"
+        },
+        "language": {
+            "title": "Language",
+            "subtitle": "Select language as main"
+        }
+    },
+    "modal": {
+        "invite": {
+            "title": "Invite People to organization",
+            "subtitle": "Enter the email of the person you want to invite",
+            "placeholder": "Type email",
+            "button": "Send invite"
+        },
+        "success": {
+            "create_doc": "Create document success",
+            "invite": "Invite send success",
+            "button": "Go back"
+        },
+        "create_doc": {
+            "title": "Create Document",
+            "name": {
+                "text": "Name",
+                "placeholder": "Type file name"
+            },
+            "description": {
+                "text": "Description",
+                "placeholder": "Type something about this document"
+            },
+            "expiredAt": {
+                "text": "Expired at"
+            },
+            "fileUpload": {
+                "title": "Document",
+                "first_part": "You don’t have document",
+                "second_part": "You can upload only .pdf or .doc file",
+                "buttons": {
+                    "upload": "Upload",
+                    "change": "Change"
+                }
+            },
+            "searchSelect": {
+                "title": "Signatures",
+                "subtitle": "Enter the email of the person who must sign this document",
+                "placeholder": "Search team members",
+                "empty": "You don`t have signatures"
+            },
+            "button": "Create"
+        }
+    },
+    "plug": {
+        "loading": {
+            "text": "Loading..."
+        },
+        "constuction": {
+            "text": "This page is under construction"
+        },
+        "empty": {
+            "documents": {
+                "Created": "You don't have a Created Documents",
+                "Signing": "You don't have a Signing Documents",
+                "button": "Add document"
+            }
+        }
+    },
+    "profile": {
+        "secondName": "Second Name",
+        "firstName": "First Name",
+        "email": "Email"
+    },
+    "user": {
+        "your": "Your sign",
+        "y": "Y",
+        "remove": "Remove"
+    },
+    "preview": {
+        "doc": {
+            "title": "File Preview",
+            "owner": "Owner of the document:",
+            "creation": "Creation Date:",
+            "expires": "Expires At:",
+            "id": "Document ID:",
+            "button": "View Document"
+        },
+        "signatures": {
+            "title": "Signatures",
+            "signed": "Document are signed",
+            "rejected": "Document are rejected",
+            "buttons": {
+                "reject": "Reject",
+                "sign": "Sign"
+            }
+        }
+    },
+    "orgaization": {
+        "subtitle": "You can create your own organization or wait for an invitation to the organization",
+        "name": "Organization Name",
+        "buttons": {
+            "clear": "Clear",
+            "create": "Create"
+        }
+    },
+    "card": {
+        "document": {
+            "status": {
+                "ready": "Ready",
+                "process": "In process"
+            },
+            "menu": {
+                "delete": "Delete",
+                "noActions": "No actions"
+            }
+        }
+    },
+    "docViewer": {
+        "page": "Page",
+        "of": "of"
+    },
+    "noMatch": "Oops, seems like the page doesn't exist or the link broken"
+}

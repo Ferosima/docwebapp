@@ -1,4 +1,5 @@
 import Fuse from "fuse.js";
+import { withNamespaces } from "react-i18next";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SelectSearch from "react-select-search";
@@ -10,8 +11,8 @@ import {
   Container, Input, Item, Row, Subtitle, Title, Wrapper,
 } from "./style";
 
-export default function SearchSelect({
-  action, error, getValues, setValue, register,
+function SearchSelect({
+  action, error, getValues, setValue, register, t,
 }) {
   const [selectedList, setSelectedList] = useState([]);
   const { panding, list } = useSelector((state) => state.users);
@@ -52,15 +53,21 @@ export default function SearchSelect({
     return (
       <Item onMouseDown={!selected ? props.onMouseDown : null} type="button" value={props.value}>
         <Row style={{ overflow: "hidden" }}>
-          <Avatar name={user.uuid === uuid ? "Y" : firstName} color={avatarColor} style={{ marginRight: "10px" }} />
+          <Avatar
+            name={user.uuid === uuid ? t("user.y") : firstName}
+            color={avatarColor}
+            style={{ marginRight: "10px" }}
+          />
           <Container>
-            <Title bold={user.uuid === uuid}>{user.uuid === uuid ? "Your sign" : `${firstName} ${secondName}`}</Title>
+            <Title bold={user.uuid === uuid}>
+              {user.uuid === uuid ? t("user.your") : `${firstName} ${secondName}`}
+            </Title>
             <Subtitle>{email}</Subtitle>
           </Container>
         </Row>
         {selected && (
           <button type="button" {...props}>
-            <Button text="Remove" type="outlineRed" style={{ padding: "2px 5px", borderRadius: "7px" }} />
+            <Button text={t("user.remove")} type="outlineRed" style={{ padding: "2px 5px", borderRadius: "7px" }} />
           </button>
         )}
       </Item>
@@ -71,16 +78,16 @@ export default function SearchSelect({
     return (
       <Input>
         <Icon name="search" color="#afb6c8" />
-        <input {...valueProps} placeholder="Search team members" />
+        <input {...valueProps} placeholder={t("modal.create_doc.searchSelect.placeholder")} />
       </Input>
     );
   };
 
   return (
     <Wrapper>
-      <Title>Signatures</Title>
+      <Title>{t("modal.create_doc.searchSelect.title")}</Title>
       <Subtitle textAlign="center" padding="10px 0">
-        Enter the email of the person who must sign this document
+        {t("modal.create_doc.searchSelect.subtitle")}
       </Subtitle>
       <Container>
         <SelectSearch
@@ -120,9 +127,10 @@ export default function SearchSelect({
             "box-sizing": "border-box",
           }}
         >
-          <Subtitle textAlign="center">You don`t have signatures</Subtitle>
+          <Subtitle textAlign="center">{t("modal.create_doc.searchSelect.empty")}</Subtitle>
         </Container>
       )}
     </Wrapper>
   );
 }
+export default withNamespaces()(SearchSelect);

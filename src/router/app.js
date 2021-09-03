@@ -13,13 +13,13 @@ import { getCurrentOrganizationState } from "../store/selectors/organizations";
 
 const routers = [
   {
-    name: "Documents",
+    name: "documents",
     icon: "documents",
     path: "/app/documents/",
     main: () => <Documents />,
   },
   {
-    name: "Members",
+    name: "members",
     icon: "people",
     path: "/app/people/",
     main: () => <People />,
@@ -28,13 +28,13 @@ const routers = [
 
 const default_routers = [
   {
-    name: "Notifications",
+    name: "notifications",
     icon: "notifications",
     path: "/app/notifications/",
     main: () => <Notifications />,
   },
   {
-    name: "Settings",
+    name: "settings",
     icon: "settings",
     path: "/app/settings/",
     main: () => <Settings />,

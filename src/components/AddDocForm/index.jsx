@@ -1,5 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import React, { useEffect } from "react";
+import { withNamespaces } from "react-i18next";
 import { get, useForm } from "react-hook-form";
 import * as yup from "yup";
 import moment from "moment";
@@ -40,7 +41,7 @@ const schema = yup.object().shape({
 });
 schema.isValid(new Date());
 
-export default function AddDocForm({ action, error }) {
+function AddDocForm({ action, error, t }) {
   const {
     register,
     getValues,
@@ -58,21 +59,16 @@ export default function AddDocForm({ action, error }) {
   return (
     <Wrapper>
       <form>
-        <Label htmlFor="name">Name</Label>
-        <Input {...register("name")} placeholder="Type file name" />
+        <Label htmlFor="name">{t("modal.create_doc.name.text")}</Label>
+        <Input {...register("name")} placeholder={t("modal.create_doc.name.placeholder")} />
         <ErrorText>{errors.name?.message}</ErrorText>
-        <Label htmlFor="description">Description</Label>
-        <Input {...register("description")} placeholder="Type something about this document" />
+        <Label htmlFor="description">{t("modal.create_doc.description.text")}</Label>
+        <Input {...register("description")} placeholder={t("modal.create_doc.description.placeholder")} />
         <ErrorText>{errors.description?.message}</ErrorText>
-        <Label htmlFor="expiredAt">Expired at</Label>
-        <Input
-          {...register("expiresAt")}
-          type="datetime-local"
-          min={moment(new Date()).format("YYYY-MM-DDTHH:mm")}
-        />
+        <Label htmlFor="expiredAt">{t("modal.create_doc.expiredAt.text")}</Label>
+        <Input {...register("expiresAt")} type="datetime-local" min={moment(new Date()).format("YYYY-MM-DDTHH:mm")} />
         <ErrorText>
-          {errors.expiredAt
-            && (errors.expiredAt.type === "min" ? errors.expiredAt.message : "Enter date")}
+          {errors.expiredAt && (errors.expiredAt.type === "min" ? errors.expiredAt.message : "Enter date")}
         </ErrorText>
         <FileUpload register={register} getValues={getValues} setValue={setValue} />
         <ErrorText>{errors.file?.message}</ErrorText>
@@ -80,8 +76,10 @@ export default function AddDocForm({ action, error }) {
         <ErrorText>{errors.signerIds?.message}</ErrorText>
       </form>
       <Container>
-        <Button text="Create" onClick={handleSubmit(onSubmit)} />
+        <Button text={t("modal.create_doc.button")} onClick={handleSubmit(onSubmit)} />
       </Container>
     </Wrapper>
   );
 }
+
+export default withNamespaces()(AddDocForm);

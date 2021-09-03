@@ -23,6 +23,7 @@ export const Wrapper = styled.div`
     font-family: ${({ theme, type }) => theme.plugs[type]?.fontFamily || "Roboto"};
     font-size: ${({ theme, type }) => theme.plugs[type]?.textSize || "18px"};
     padding: ${({ theme, type }) => theme.plugs[type]?.paddingText || "0"};
+    text-align: center;
   }
   ${Icon} {
     color: ${({ theme, type }) => theme.plugs[type]?.color || theme.color_text};

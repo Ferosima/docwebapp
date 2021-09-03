@@ -1,11 +1,13 @@
 import React from "react";
+import { withNamespaces } from "react-i18next";
 import { Title, Wrapper, Text } from "./style";
 
-export default function NoMatch() {
+function NoMatch({ t }) {
   return (
     <Wrapper>
       <Title>404</Title>
-      <Text>Oops, seems like the page doesn&apos;t exist or the link broken</Text>
+      <Text>{t("noMatch")}</Text>
     </Wrapper>
   );
 }
+export default withNamespaces()(NoMatch);

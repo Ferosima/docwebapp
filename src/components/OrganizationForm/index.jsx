@@ -1,4 +1,5 @@
 import React from "react";
+import { withNamespaces } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { Link, useRouteMatch } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -15,8 +16,8 @@ const theme = {
   },
 };
 
-export default function OrganizationnForm({
-  action, error, panding = false, data,
+function OrganizationnForm({
+  action, error, panding = false, data, t,
 }) {
   const {
     register,
@@ -33,7 +34,7 @@ export default function OrganizationnForm({
     name, label, type, validation,
   }, index) => (
     <Column key={index}>
-      <Label htmlFor={name}>{label}</Label>
+      <Label htmlFor={name}>{t(`orgaization.${name}`)}</Label>
       <input type={type} {...register(name, validation)} disabled={data} value={data?.[name]} />
       <ErrorText>{errors[name] ? errors[name].message || `${label} is required` : null}</ErrorText>
     </Column>
@@ -46,7 +47,7 @@ export default function OrganizationnForm({
 
   return (
     <Wrapper>
-      {!data ? <Text>You can create your own organization or wait for an invitation to the organization</Text> : null}
+      {!data ? <Text>{t("orgaization.subtitle")}</Text> : null}
       <Image
         src={data ? assetsData.images.organization : assetsData.images.AddImage}
         alt="Add image"
@@ -58,8 +59,8 @@ export default function OrganizationnForm({
         {form_data.map(renderInput)}
         {action && (
           <Row>
-            <CustomButton text="Clear" action={() => reset()} theme={theme.second} />
-            <CustomButton text="Create" action={handleSubmit(onSubmit)} />
+            <CustomButton text={t("orgaization.buttons.clear")} action={() => reset()} theme={theme.second} />
+            <CustomButton text={t("orgaization.buttons.create")} action={handleSubmit(onSubmit)} />
           </Row>
         )}
       </form>
@@ -67,3 +68,4 @@ export default function OrganizationnForm({
     </Wrapper>
   );
 }
+export default withNamespaces()(OrganizationnForm);
