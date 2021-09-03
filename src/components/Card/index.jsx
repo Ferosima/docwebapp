@@ -1,5 +1,5 @@
 import Divider from "@material-ui/core/Divider";
-
+import { withNamespaces } from "react-i18next";
 import moment from "moment";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -28,8 +28,8 @@ const theme = {
     alignItems: "center",
   },
 };
-export function DocumentCard({
-  data, style, file, onClick,
+export function Document({
+  data, style, file, onClick, t,
 }) {
   const {
     uuid, name, createdAt, isReady, creator,
@@ -60,7 +60,7 @@ export function DocumentCard({
         onClick(file);
       }}
     >
-      <Status isReady={isReady}>{isReady ? "Ready" : "In process"}</Status>
+      <Status isReady={isReady}>{isReady ? t("card.document.status.ready") : t("card.document.status.process")}</Status>
       <Preview>
         <DocumentEmpty>
           <img src={assetsData.images.pdf} alt="pdf" />
@@ -84,15 +84,16 @@ export function DocumentCard({
         {creator.uuid === user.uuid ? (
           <MenuItem onClick={onClickDelete}>
             <Icon name="delete" size="20px" color="#DF5753" />
-            <Title>Delete</Title>
+            <Title>{t("card.document.menu.delete")}</Title>
           </MenuItem>
         ) : (
-          <Subtitle style={{ padding: "10px" }}>No actions</Subtitle>
+          <Subtitle style={{ padding: "10px" }}>{t("card.document.menu.noActions")}</Subtitle>
         )}
       </Menu>
     </Wrapper>
   );
 }
+export const DocumentCard = withNamespaces()(Document);
 
 export function PeopleCard(props) {
   const { data, style, isChosen } = props;

@@ -1,8 +1,11 @@
-import { APP_SET_SIDEBAR_STATE, APP_SET_THEME, APP_CLEAR } from "../types/app";
+import {
+  APP_SET_SIDEBAR_STATE, APP_SET_THEME, APP_SET_LANGUAGE, APP_CLEAR,
+} from "../types/app";
 
 const initialState = {
   isSidebarOpen: false,
   theme: "light",
+  language: "en",
 };
 
 export default function reducer(state = initialState, action) {
@@ -16,6 +19,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         theme: action.payload,
+      };
+    case APP_SET_LANGUAGE:
+      return {
+        ...state,
+        language: action.payload,
       };
     case APP_CLEAR:
       return {

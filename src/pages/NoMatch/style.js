@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-  color: #263238;
+  color: ${({ theme }) => theme.color_text};
 `;
 
 export const Title = styled.h1`

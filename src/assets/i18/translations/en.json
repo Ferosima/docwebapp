@@ -51,6 +51,10 @@
         "theme": {
             "title": "Dark Theme",
             "subtitle": "Use dark theme as main"
+        },
+        "language": {
+            "title": "Language",
+            "subtitle": "Select language as main"
         }
     },
     "modal": {
@@ -147,5 +151,22 @@
             "clear": "Clear",
             "create": "Create"
         }
-    }
+    },
+    "card": {
+        "document": {
+            "status": {
+                "ready": "Ready",
+                "process": "In process"
+            },
+            "menu": {
+                "delete": "Delete",
+                "noActions": "No actions"
+            }
+        }
+    },
+    "docViewer": {
+        "page": "Page",
+        "of": "of"
+    },
+    "noMatch": "Oops, seems like the page doesn't exist or the link broken"
 }
