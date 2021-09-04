@@ -44,7 +44,7 @@ function SettingsPage({ t }) {
             <Subtitle>{t(`settings.language.subtitle`)}</Subtitle>
           </Container>
           <FormControl variant="outlined">
-            <Select classes={{ selectMenu: "Menu" }} defaultValue={app.language} onChange={changeLanguage}>
+            <Select defaultValue={app.language} onChange={changeLanguage}>
               <MenuItem value="en">English</MenuItem>
               <MenuItem value="ru">Russian</MenuItem>
               <MenuItem value="ua">Ukrainian</MenuItem>

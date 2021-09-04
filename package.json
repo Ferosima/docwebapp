@@ -53,7 +53,8 @@
     "start": "set PORT=3006 && react-scripts start",
     "build": "set PORT=3006 && serve -s build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --fix --ext .js,.jsx ."
   },
   "eslintConfig": {
     "extends": [

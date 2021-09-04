@@ -33,11 +33,11 @@ export const Select = styled(select)`
   .MuiSelect-root {
     color: ${({ theme }) => theme.color_text};
     border: ${({ theme }) => theme.border_line};
-    border-radius: 7px;
+    background-color: ${({ theme }) => `${theme.background}!imporant`};
+    border-radius: 7px !important ;
     overflow: hidden;
   }
   .MuiSelect-outlined {
-    background-color: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.color_text};
   }
   .MuiSelect-icon {

@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { withNamespaces } from "react-i18next";
 import assetsData from "../../assets/assetsData";
-import { themes } from "../../themes";
 
 // import "./styles.css";
 import {
@@ -18,7 +17,7 @@ function HomePage({ t }) {
     history.push(route);
   };
   return (
-    <Wrapper theme={themes[theme]}>
+    <Wrapper>
       <Header padding="15px 0" margin="15px 0" noColumnReverse>
         <Logo onClick={handleOnClick("/")}>
           <img src={assetsData.images.Logo} alt="Logo" />
