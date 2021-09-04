@@ -22,7 +22,7 @@ export const Button = styled.div`
   border-radius: 5px;
   color: white;
   border: none;
-  padding: 10px 15px;;
+  padding: 10px 15px;
   margin: 5px 10px;
   font-size: 20px;
   font-family: Roboto;
@@ -71,6 +71,7 @@ export const Wrapper = styled.div`
     align-self: end;
     margin: 0;
     padding: 0 0 45px 0;
+    width: 100%;
   }
   @media (max-width: 1366px) {
     max-width: 400px;
@@ -133,4 +134,5 @@ export const ErrorText = styled.p`
   font-size: 13px;
   color: ${({ theme }) => theme.page_auth.color_error};
   align-self: self-end;
+  width: 100%;
 `;

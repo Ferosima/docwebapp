@@ -124,7 +124,7 @@ function SearchSelect({
             justifyContent: "center",
             borderRadius: "5px",
             margin: "5px 0 15px",
-            "box-sizing": "border-box",
+            boxSizing: "border-box",
           }}
         >
           <Subtitle textAlign="center">{t("modal.create_doc.searchSelect.empty")}</Subtitle>

@@ -63,7 +63,7 @@ class Sidebar extends React.Component {
           </Container>
           <Container padding="0 0 20px 0">
             <SidebarItem path="/app/user/" name={`${firstName} ${secondName}`} icon="user" />
-            <SidebarItem onClick={logout} name={t(`sidebar.logout`)} icon="logout" isNonActive />
+            <SidebarItem path="#" onClick={logout} name={t(`sidebar.logout`)} icon="logout" isNonActive />
           </Container>
         </Wrapper>
       </Background>

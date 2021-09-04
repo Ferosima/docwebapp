@@ -34,10 +34,10 @@ function LoginForm({
         <input {...register("email")} />
         <ErrorText>{errors.email?.message}</ErrorText>
         <Label htmlFor="password">{t("auth.login.password")}</Label>
-        <input type="password" {...register("password")} />
+        <input type="password" {...register("password")} autoComplete="on" />
         <Row>
           <ErrorText>{errors.password?.message}</ErrorText>
-          <a onClick={() => console.log("Посилання було натиснуте.")}>{t("auth.login.forgot")}</a>
+          {/* <a>{t("auth.login.forgot")}</a> */}
         </Row>
         <Button onClick={!panding ? handleSubmit(onSubmit) : undefined}>
           {panding ? <ClipLoader color="#fff" loading={panding} size={20} /> : <p>{t("auth.login.button")}</p>}

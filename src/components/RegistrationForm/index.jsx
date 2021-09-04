@@ -24,7 +24,7 @@ function RegistrationForm({
   const renderInput = ({
     name, label, type, validation,
   }, index) => (
-    <Column>
+    <Column key={index}>
       <Label htmlFor={name}>{t(`auth.registration.${name}`)}</Label>
       <input type={type} {...register(name, validation)} />
       <ErrorText>{errors[name] ? errors[name].message || `${label} is required` : null}</ErrorText>

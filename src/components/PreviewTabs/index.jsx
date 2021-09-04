@@ -76,7 +76,7 @@ const Signatures = ({ uuid, t }) => {
 
   const renderUser = ({ signer, completedStatus }, index) => {
     return (
-      <TimelineItem key={index}>
+      <TimelineItem key={index} style={{ alignItems: signatures[uuid]?.length === 1 && "center" }}>
         <TimelineSeparator>
           <TimelineDot color={status[completedStatus] ?? "grey"} />
           {index + 1 !== signatures[uuid]?.length && <TimelineConnector />}

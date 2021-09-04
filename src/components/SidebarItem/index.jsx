@@ -3,7 +3,9 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useRouteMatch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setSidebarState } from "../../store/actions/app";
-import { Wrapper, Icon, Item } from "./style";
+import {
+  Wrapper, Icon, Item, Text,
+} from "./style";
 
 const themes = {
   header: { fontFamily: "Roboto-Medium", fontSize: "18px", margin: "20px 0 0" },
@@ -17,14 +19,15 @@ export function SidebarItem({
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    matches && dispatch(setSidebarState(!sidebarState.isSidebarOpen));
+    if (matches) dispatch(setSidebarState(!sidebarState.isSidebarOpen));
   };
 
-  const isMatch = !isNonActive && useRouteMatch(path);
+  const isMatch = !!(!isNonActive && useRouteMatch(path));
+
   return (
-    <Item to={path} onClick={handleClick} isActive={isMatch} type={type || "default"} {...other}>
+    <Item to={path} onClick={handleClick} active={isMatch ? 1 : 0} type={type || "default"} {...other}>
       {icon && <Icon {...other} name={icon} color={isMatch ? "#F8F9FB" : null} size="20px" isOutline={!isMatch} />}
-      <p>{name}</p>
+      <Text>{name}</Text>
     </Item>
   );
 }

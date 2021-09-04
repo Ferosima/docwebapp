@@ -61,6 +61,7 @@
         "invite": {
             "title": "Invite People to organization",
             "subtitle": "Enter the email of the person you want to invite",
+            "email": "Email",
             "placeholder": "Type email",
             "button": "Send invite"
         },

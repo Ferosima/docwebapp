@@ -1,8 +1,6 @@
 import React from "react";
-import { useForm } from "react-hook-form";
-import { Link, useRouteMatch } from "react-router-dom";
 import {
-  Wrapper, Label, Input, ErrorText,
+  ErrorText, Input, Label, Wrapper,
 } from "./style";
 
 export default function MyInput({

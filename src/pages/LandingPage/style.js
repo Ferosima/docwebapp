@@ -25,6 +25,7 @@ export const Header = styled.div`
   left: 0;
   padding: 30px 50px;
   align-items: center;
+  background-color: ${({ theme }) => theme.background};
   @media (max-width: 585px) {
     padding: 15px 25px;
   } ;

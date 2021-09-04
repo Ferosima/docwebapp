@@ -1,18 +1,18 @@
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import React, { useEffect, useState } from "react";
-import { withNamespaces } from "react-i18next";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import "./App.css";
 import i18n from "./assets/i18";
 import { GlobalStyles } from "./components/GlobalStyles";
-
 import Router from "./router";
+import { setSidebarState } from "./store/actions/app";
 import { themes } from "./themes";
 
-function App({ t }) {
+export default function App() {
   const dispatch = useDispatch();
-  const theme = useSelector((state) => state.app.theme);
+  const app = useSelector((state) => state.app);
+  const { language, theme } = app;
   const matches = useMediaQuery("(min-width:700px)");
 
   const changeLanguage = (lng) => {
@@ -20,12 +20,12 @@ function App({ t }) {
   };
 
   useEffect(() => {
-    // matches && dispatch(setSidebarState(true));
-    // dispatch(setTheme("dark"));
-    // dispatch(setTheme("light"));
-    // changeLanguage("ru");
-    // changeLanguage("en");
-  });
+    if (matches) dispatch(setSidebarState(true));
+  }, [matches]);
+
+  useEffect(() => {
+    changeLanguage(language);
+  }, [language]);
 
   return (
     <ThemeProvider theme={themes[theme]}>
@@ -34,5 +34,3 @@ function App({ t }) {
     </ThemeProvider>
   );
 }
-
-export default withNamespaces()(App);

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Document as doc, Page as page } from "react-pdf";
 import icon from "../Icon";
 
 export const Wrapper = styled.div`
@@ -8,7 +7,8 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: end;
+  justify-content: start;
+  align-items: center;
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;

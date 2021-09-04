@@ -17,7 +17,6 @@ class OrganizationPage extends React.Component {
   render() {
     const { organizations, createOrganization } = this.props;
     const { currentOrganization, panding } = organizations;
-    console.log(organizations);
     return (
       <Wrapper>
         <Header title={`${currentOrganization?.name || "Create Organization"}`} />

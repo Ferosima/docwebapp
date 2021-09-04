@@ -13,20 +13,20 @@ import {
 } from "./style";
 import "react-toggle/style.css";
 import i18n from "../../assets/i18";
-import { setTheme } from "../../store/actions/app";
+import { setTheme, setLanguage } from "../../store/actions/app";
 
 function SettingsPage({ t }) {
   const app = useSelector((state) => state.app);
   const dispatch = useDispatch();
 
   const onChange = (e) => {
-    console.log("HI", e.target.checked);
     dispatch(setTheme(e.target.checked ? "dark" : "light"));
   };
+
   const changeLanguage = (event) => {
-    i18n.changeLanguage(event.target.value);
+    dispatch(setLanguage(event.target.value));
   };
-  console.log(app, app.language);
+
   return (
     <Wrapper>
       <Header title={t(`sidebar.settings`)} />
@@ -47,6 +47,7 @@ function SettingsPage({ t }) {
             <Select classes={{ selectMenu: "Menu" }} defaultValue={app.language} onChange={changeLanguage}>
               <MenuItem value="en">English</MenuItem>
               <MenuItem value="ru">Russian</MenuItem>
+              <MenuItem value="ua">Ukrainian</MenuItem>
             </Select>
           </FormControl>
         </Item>

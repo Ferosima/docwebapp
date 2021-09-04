@@ -1,13 +1,12 @@
 import React from "react";
-import { withNamespaces } from "react-i18next";
 import { useForm } from "react-hook-form";
-import { Link, useRouteMatch } from "react-router-dom";
+import { withNamespaces } from "react-i18next";
 import ClipLoader from "react-spinners/ClipLoader";
-import {
-  Wrapper, ErrorText, Button, Label, Row, Text, Column, Image,
-} from "./style";
-import { form_data } from "./forms";
 import assetsData from "../../assets/assetsData";
+import { form_data } from "./forms";
+import {
+  Button, Column, ErrorText, Image, Label, Row, Text, Wrapper,
+} from "./style";
 
 const theme = {
   second: {
@@ -51,9 +50,6 @@ function OrganizationnForm({
       <Image
         src={data ? assetsData.images.organization : assetsData.images.AddImage}
         alt="Add image"
-        // onClick={() => {
-        //   console.log("Add image");
-        // }}
       />
       <form>
         {form_data.map(renderInput)}

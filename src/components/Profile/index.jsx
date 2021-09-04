@@ -1,11 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { withNamespaces } from "react-i18next";
+import Avatar from "../Avatar";
 import { schema } from "./schema";
 import {
-  Header, Icon, Text, Wrapper, Row, Separator, Container, Input,
+  Input, Row, Separator, Wrapper,
 } from "./style";
-import Avatar from "../Avatar";
 
 function Profile({ user, t }) {
   const {
@@ -17,14 +17,9 @@ function Profile({ user, t }) {
   const onSubmit = (data) => {
     // action(data);
   };
-  const {
-    firstName, secondName, email, avatarColor,
-  } = user;
+  const { firstName, secondName, avatarColor } = user;
   return (
     <Wrapper>
-      {/* <Header>
-        <Text>Profile</Text>
-      </Header> */}
       <Avatar name={firstName} color={avatarColor} size="8em" textSize="60px" style={{ margin: "25px" }} />
       <form onSubmit={handleSubmit(onSubmit)}>
         <Row>
@@ -46,9 +41,10 @@ function Profile({ user, t }) {
             register={register}
           />
         </Row>
-        {schema.slice(2).map((data) => (
+        {schema.slice(2).map((data, index) => (
           <Input
             {...data}
+            key={index}
             label={t(`profile.${data.name}`)}
             disabled // TODO remove disabled for update fields
             error={errors[data.name]}

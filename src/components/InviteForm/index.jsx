@@ -31,7 +31,7 @@ function LoginForm({
     <Wrapper>
       <Text>{t(`modal.invite.subtitle`)}</Text>
       <Form>
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">{t(`modal.invite.email`)}</Label>
         <Input {...register("email")} placeholder={t(`modal.invite.placeholder`)} />
         {(error || errors.email) && <ErrorText>{error || errors.email?.message}</ErrorText>}
       </Form>

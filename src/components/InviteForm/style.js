@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { Link, useRouteMatch } from "react-router-dom";
-import button from "../Button";
 
 export const Label = styled.p`
   margin: 0;
