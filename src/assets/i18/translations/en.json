@@ -169,5 +169,8 @@
         "page": "Page",
         "of": "of"
     },
-    "noMatch": "Oops, seems like the page doesn't exist or the link broken"
+    "noMatch": "Oops, seems like the page doesn't exist or the link broken",
+    "toast": {
+        "expired": "You've been away for too long"
+    }
 }

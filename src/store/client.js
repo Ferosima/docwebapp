@@ -1,6 +1,8 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { setToken, authClear } from "./actions/auth";
 import { userClear } from "./actions/user";
+import Toast from "../components/Toast";
 
 export const API_URL = "http://192.168.0.105:3000/api";
 
@@ -34,6 +36,7 @@ client.interceptors.response.use(
       } catch (e) {
         store.dispatch(authClear());
         store.dispatch(userClear());
+        toast.error(<Toast message="expired" />, {});
       }
     }
     throw error;
