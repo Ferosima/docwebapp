@@ -1,31 +1,38 @@
 import React from "react";
-import Toggle from "react-toggle";
-import { useSelector, useDispatch } from "react-redux";
 import { withNamespaces } from "react-i18next";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-
-import Header from "../../components/Header";
-import { Constuction } from "../../components/Plugs";
-import {
-  Wrapper, Container, Item, Title, Subtitle, Select,
-} from "./style";
+import { useDispatch, useSelector } from "react-redux";
+import Toggle from "react-toggle";
 import "react-toggle/style.css";
-import i18n from "../../assets/i18";
-import { setTheme, setLanguage } from "../../store/actions/app";
+import Header from "../../components/Header";
+import { setLanguage, setTheme } from "../../store/actions/app";
+import { options } from "./option";
+import {
+  Container, Item, Option, Select, Subtitle, Title, Wrapper,
+} from "./style";
 
 function SettingsPage({ t }) {
   const app = useSelector((state) => state.app);
   const dispatch = useDispatch();
 
-  const onChange = (e) => {
+  const onChangeTheme = (e) => {
     dispatch(setTheme(e.target.checked ? "dark" : "light"));
   };
 
-  const changeLanguage = (event) => {
-    dispatch(setLanguage(event.target.value));
+  const onChangeLanguage = (data) => {
+    dispatch(setLanguage(data.value));
   };
+
+  const CustomOption = ({
+    data, innerRef, innerProps, ...other
+  }) => {
+    return (
+      <Option ref={innerRef} {...innerProps}>
+        <Title>{t(`select.language.${data.value}`)}</Title>
+        <Subtitle>{data.label}</Subtitle>
+      </Option>
+    );
+  };
+  const ValueContainer = (props) => <Title {...props}>{t(`select.language.${props.getValue()[0].value}`)}</Title>;
 
   return (
     <Wrapper>
@@ -36,20 +43,21 @@ function SettingsPage({ t }) {
             <Title>{t(`settings.theme.title`)}</Title>
             <Subtitle>{t(`settings.theme.subtitle`)}</Subtitle>
           </Container>
-          <Toggle defaultChecked={app.theme === "dark"} icons={false} onChange={onChange} />
+          <Toggle defaultChecked={app.theme === "dark"} icons={false} onChange={onChangeTheme} />
         </Item>
         <Item>
           <Container>
             <Title>{t(`settings.language.title`)}</Title>
             <Subtitle>{t(`settings.language.subtitle`)}</Subtitle>
           </Container>
-          <FormControl variant="outlined">
-            <Select defaultValue={app.language} onChange={changeLanguage}>
-              <MenuItem value="en">English</MenuItem>
-              <MenuItem value="ru">Russian</MenuItem>
-              <MenuItem value="ua">Ukrainian</MenuItem>
-            </Select>
-          </FormControl>
+          <Select
+            defaultValue={options.find((el) => el.value === app.language)}
+            onChange={onChangeLanguage}
+            options={options}
+            components={{ Option: CustomOption, ValueContainer }}
+            // styles={SelectStyles}
+            isFocused
+          />
         </Item>
       </Container>
     </Wrapper>
