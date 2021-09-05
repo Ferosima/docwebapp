@@ -28,7 +28,8 @@ button {
   background-color: unset;
   border: unset;
   outline: none;
-  font-family: 'Roboto'
+  font-family: 'Roboto';
+  text-overflow: ellipsis;
 }
 
 button {

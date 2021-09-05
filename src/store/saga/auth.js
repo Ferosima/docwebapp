@@ -43,6 +43,7 @@ export function* registration({ payload }) {
 }
 export function* logout() {
   try {
+    yield client.post("auth/logout");
     // yield put(appClear());
     yield put(authClear());
     yield put(userClear());
@@ -50,7 +51,6 @@ export function* logout() {
     yield put(workspacesClear());
     yield put(documentsClear());
     yield put(organizationsClear());
-    yield client.post("auth/logout");
   } catch (e) {
     console.log("LOGOUT ERROR", e.response.data);
   }

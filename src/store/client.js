@@ -35,8 +35,7 @@ client.interceptors.response.use(
         return client.request(originalRequest);
       } catch (e) {
         store.dispatch(authClear());
-        store.dispatch(userClear());
-        toast.error(<Toast message="expired" />, {});
+        toast.error(<Toast message="expired" />);
       }
     }
     throw error;

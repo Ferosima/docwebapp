@@ -2,7 +2,7 @@ import React from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { withNamespaces } from "react-i18next";
 import {
-  Wrapper, Text, Icon, Button,
+  Wrapper, Text, Icon, Button, Logo,
 } from "./style";
 import assetsData from "../../assets/assetsData";
 
@@ -36,6 +36,14 @@ export function LoadingPlug({ panding, t }) {
   );
 }
 export const Loading = withNamespaces()(LoadingPlug);
+
+export function LazzyLoader() {
+  return (
+    <Wrapper>
+      <Logo src={assetsData.images.Logo} alt="Logo" />
+    </Wrapper>
+  );
+}
 
 function SuccessPlug({
   text = "Success!", buttonText, onClick, t,

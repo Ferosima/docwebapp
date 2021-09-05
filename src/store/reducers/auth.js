@@ -59,7 +59,7 @@ export default function reducer(state = initialState, action) {
       };
     case AUTH_LOGOUT:
       return {
-        state,
+        ...state,
       };
     case AUTH_SET_TOKEN:
       return {

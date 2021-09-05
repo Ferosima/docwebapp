@@ -82,7 +82,7 @@ const Signatures = ({ uuid, t }) => {
           {index + 1 !== signatures[uuid]?.length && <TimelineConnector />}
         </TimelineSeparator>
         <TimelineContent>
-          <User data={signer} />
+          <User data={signer} isSign />
         </TimelineContent>
       </TimelineItem>
     );
@@ -119,7 +119,7 @@ const Signatures = ({ uuid, t }) => {
 
 export const SignaturesTab = withNamespaces()(Signatures);
 
-const UserCustom = ({ data, t }) => {
+const UserCustom = ({ data, isSign, t }) => {
   const user = useSelector((state) => state.user);
   const {
     firstName, secondName, email, uuid, avatarColor,
@@ -128,7 +128,9 @@ const UserCustom = ({ data, t }) => {
     <Item>
       <Avatar name={user.uuid === uuid ? t("user.y") : firstName} color={avatarColor} style={{ marginRight: "10px" }} />
       <Column>
-        <Title bold={user.uuid === uuid}>{user.uuid === uuid ? t("user.your") : `${firstName} ${secondName}`}</Title>
+        <Title bold={user.uuid === uuid}>
+          {user.uuid === uuid ? t(`user.${isSign ? "your" : "you"}`) : `${firstName} ${secondName}`}
+        </Title>
         <Subtitle>{email}</Subtitle>
       </Column>
     </Item>

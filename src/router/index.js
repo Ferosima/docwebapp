@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import { PrivateRoute } from "../components/PrivateRoute";
 import { PublicRoute } from "../components/PublicRoute";
-import Loading from "../pages/Loading";
+import { LazzyLoader } from "../components/Plugs";
 
 const Landing = React.lazy(() => import("../pages/LandingPage"));
 const Auth = React.lazy(() => import("../pages/AuthPage"));
@@ -29,7 +29,7 @@ const app_routers = [
 
 export default function AppRouter() {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<LazzyLoader />}>
       <Switch>
         {app_routers.map((route, index) => (
           <Route key={index} path={route.path} exact={route.exact} children={<route.main />} />

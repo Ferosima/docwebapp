@@ -31,6 +31,7 @@
     "react-hook-form": "^7.10.1",
     "react-i18next": "^9.0.10",
     "react-icons": "^4.2.0",
+    "react-loading-dot": "^1.0.6",
     "react-pdf": "^5.3.2",
     "react-pdf-to-image": "^1.0.2",
     "react-redux": "^7.2.4",
