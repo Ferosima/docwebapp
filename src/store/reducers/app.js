@@ -3,7 +3,6 @@ import {
 } from "../types/app";
 
 const initialState = {
-  isSidebarOpen: false,
   theme: "light",
   language: "en",
 };
@@ -13,7 +12,6 @@ export default function reducer(state = initialState, action) {
     case APP_SET_SIDEBAR_STATE:
       return {
         ...state,
-        isSidebarOpen: action.payload,
       };
     case APP_SET_THEME:
       return {

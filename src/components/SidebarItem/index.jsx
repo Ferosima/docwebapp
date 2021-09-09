@@ -12,14 +12,15 @@ const themes = {
 };
 
 export function SidebarItem({
-  path, icon, image, name, isNonActive, type, ...other
+  path, icon, image, name, isNonActive, type, onCloseRequest, ...other
 }) {
   const matches = useMediaQuery("(max-width:700px)");
   const sidebarState = useSelector((state) => state.app);
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    if (matches) dispatch(setSidebarState(!sidebarState.isSidebarOpen));
+    if (matches) onCloseRequest();
+    // dispatch(setSidebarState(!sidebarState.isSidebarOpen))
   };
 
   const isMatch = !!(!isNonActive && useRouteMatch(path));
