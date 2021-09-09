@@ -21,9 +21,9 @@ export default function App() {
     i18n.changeLanguage(lng);
   };
 
-  // useEffect(() => {
-  //   if (matches) dispatch(setSidebarState(true));
-  // }, [matches]);
+  useEffect(() => {
+    if (matches) dispatch(setSidebarState(true));
+  }, [matches]);
 
   useEffect(() => {
     changeLanguage(language);
