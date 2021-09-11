@@ -20,21 +20,13 @@ export const Background = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  transition: width 1s;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
+  flex-direction: column;
   overflow: hidden;
-  width: ${({ isOpen }) => (isOpen ? "350px" : "0")};
   height: 100%;
-  border-left: 1px solid #c7c7cc;
-  /* background: #fff; */
-  background-color: #f8f9fb;
-  @media (max-width: 700px) {
-    height: 100%;
-    width: ${({ isOpen }) => (isOpen ? "300px" : "0")};
-  }
+  padding: 10px 0;
+  box-sizing: border-box;
+  justify-content: space-between;
 `;
 export const Nav = styled.div`
   display: flex;
@@ -48,10 +40,8 @@ export const Nav = styled.div`
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
-  width: fit-content;
   overflow: auto;
   overflow-x: hidden;
-  width: inherit;
 `;
 export const Row = styled.div`
   display: flex;
@@ -162,9 +152,10 @@ export const Avatar = styled(avatar)``;
 
 export const Button = styled(button)`
   padding: 5px 10px;
-  border-radius: 20px; 
+  border-radius: 20px;
   font-size: 14px;
   margin: 10px 0 0;
+  align-self: center;
 `;
 
 export const Item = styled.div`

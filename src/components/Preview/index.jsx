@@ -40,7 +40,7 @@ export default function DocumentPreview({
   };
 
   return (
-    <Background isOpen={isOpen} onClick={onRequestClose}>
+    <>
       <Wrapper isOpen={isOpen} onClick={handleChildClick}>
         <Nav>
           <Icon name="arrowCollapse" size="24px" onClick={onRequestClose} />
@@ -51,6 +51,7 @@ export default function DocumentPreview({
         </Nav>
         {data && renderPreview()}
       </Wrapper>
-    </Background>
+      <Background isOpen={isOpen} onClick={onRequestClose} />
+    </>
   );
 }

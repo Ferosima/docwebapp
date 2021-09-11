@@ -2,8 +2,11 @@ import styled from "styled-components";
 import icon from "../Icon";
 
 export const Background = styled.div`
+  /* transition: all 1s; */
+  overflow: hidden;
   width: fit-content;
   @media (max-width: 700px) {
+    overflow: hidden;
     position: absolute;
     z-index: 120;
     /* transition: backdrop-filter 1s; */
@@ -22,15 +25,29 @@ export const Wrapper = styled.div`
   overflow: hidden;
   width: ${({ isOpen }) => (isOpen ? "250px" : "70px")};
   height: 100%;
-  border-right: ${({ theme }) => theme.border_line};
-  background-color: ${({ theme }) => theme.background};
+  /* border-right: ${({ theme }) => theme.border_line}; */
+
+  z-index: 122;
   @media (max-width: 700px) {
+    position: absolute;
     height: 100%;
     width: ${({ isOpen }) => (isOpen ? "250px" : "0px")};
   }
 `;
-
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  transition: all 1s;
+  border-right: ${({ theme }) => theme.border_line};
+  background-color: ${({ theme }) => theme.background};
+`;
+
+export const Column = styled.div`
   display: flex;
   flex-direction: column;
   align-items: inherit;

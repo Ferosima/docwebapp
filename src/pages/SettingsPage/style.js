@@ -14,7 +14,7 @@ export const Container = styled.div`
   flex-direction: column;
   padding: 30px 60px;
   @media (max-width: 700px) {
-    padding: 20px 30px;
+    padding: 20px 25px;
   } ;
 `;
 export const Item = styled.div`
@@ -27,27 +27,52 @@ export const Item = styled.div`
   ${Container} {
     width: fit-content;
     padding: 0;
+    align-items: flex-end;
+    @media (max-width: 700px) {
+      width: 35%;
+      /* overflow: hidden; */
+    }
+  }
+`;
+export const ItemInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding-right: 10px;
+  @media (max-width: 700px) {
+    width: 65%;
   }
 `;
 
 export const Title = styled.p`
   color: ${({ theme }) => theme.color_text};
   font-size: 18px;
+  @media (max-width: 700px) {
+    font-size: 16px;
+  }
 `;
 export const Subtitle = styled.p`
   color: ${({ theme }) => theme.form.info};
   font-size: 16px;
+  @media (max-width: 700px) {
+    font-size: 14px;
+  }
 `;
 export const StyledSelect = styled(select)`
   width: 150px;
+
   .react-select__control {
     background: ${({ theme }) => theme.background};
     border: ${({ theme }) => theme.border_line};
     transition: all 1s;
+    width: inherit;
+    display: flex;
+    flex-wrap: nowrap;
     ${Title} {
       color: ${({ theme }) => theme.color_text};
       font-size: 16px;
       padding: 0 5px;
+      overflow: hidden;
     }
   }
   .react-select__control--is-focused {
@@ -61,6 +86,20 @@ export const StyledSelect = styled(select)`
   }
   .react-select__menuPortal {
     padding: 0;
+  }
+
+  @media (max-width: 700px) {
+    width: min-content;
+    width: -webkit-fill-available;
+    .react-select__control {
+      min-height: 35px;
+      ${Title} {
+        font-size: 15px;
+      }
+    }
+    .react-select__indicator {
+      padding: 2px;
+    }
   }
 `;
 export const Select = (props) => <StyledSelect classNamePrefix="react-select" {...props} />;
@@ -78,6 +117,3 @@ export const Option = styled.div`
     font-size: 14px;
   }
 `;
-export const SelectStyles = {
-  menuList: (provided, state) => ({ ...provided, background: "red" }),
-};

@@ -23,8 +23,8 @@ export const Grid = styled.div`
   justify-content: space-between;
 
   @media (max-width: 800px) {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 140px));
-    grid-gap: 2vw;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 4vw;
     grid-row-gap: 3vw;
     justify-content: center;
   }

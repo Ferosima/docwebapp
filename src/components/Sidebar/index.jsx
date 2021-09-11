@@ -10,8 +10,12 @@ import { getSidebarState } from "../../store/selectors/app";
 import { getCurrentOrganizationState } from "../../store/selectors/organizations";
 import { getUserState } from "../../store/selectors/user";
 import { SidebarItem } from "../SidebarItem";
-import { Arrow, Background, Container, Header, Wrapper } from "./style";
+import { Arrow, Background, Container, Column, Header, Wrapper } from "./style";
 class Sidebar extends React.Component {
+  componentWillUnmount = () => {
+    if (window.innerWidth <= 700) this.props.setSidebarState(false);
+  };
+
   handleClick = () => {
     const { isSidebarOpen, setSidebarState } = this.props;
     setSidebarState(!isSidebarOpen);
@@ -51,22 +55,26 @@ class Sidebar extends React.Component {
     const { user, logout, currentOrganization, routers, default_routers, isSidebarOpen, t } = this.props;
     const { firstName, secondName } = user;
     return (
-      <Background isOpen={isSidebarOpen} onClick={this.handleClick}>
+      <>
         <Wrapper isOpen={isSidebarOpen} onClick={this.handleChildClick}>
           <Container>
-            {currentOrganization
-              ? this.renderOrganizationItem(currentOrganization.name, "header")
-              : this.renderHeader(isSidebarOpen)}
-            <Arrow name="arrowLeft" size="20px" onClick={this.handleClick} isOpen={isSidebarOpen} />
-            {currentOrganization ? <>{routers.map(this.renderItem)}</> : this.renderOrganizationItem()}
-            {default_routers.map(this.renderItem)}
-          </Container>
-          <Container padding="0 0 20px 0">
-            <SidebarItem path="/app/user/" name={`${firstName} ${secondName}`} icon="user" />
-            <SidebarItem path="#" onClick={logout} name={t(`sidebar.logout`)} icon="logout" isNonActive />
+            <Column>
+              {currentOrganization
+                ? this.renderOrganizationItem(currentOrganization.name, "header")
+                : this.renderHeader(isSidebarOpen)}
+              <Arrow name="arrowLeft" size="20px" onClick={this.handleClick} isOpen={isSidebarOpen} />
+              {currentOrganization ? <>{routers.map(this.renderItem)}</> : this.renderOrganizationItem()}
+              {default_routers.map(this.renderItem)}
+            </Column>
+            <Column padding="0 0 20px 0">
+              <SidebarItem path="/app/user/" name={`${firstName} ${secondName}`} icon="user" />
+              <SidebarItem path="#" onClick={logout} name={t(`sidebar.logout`)} icon="logout" isNonActive />
+            </Column>
           </Container>
         </Wrapper>
-      </Background>
+        <Background isOpen={isSidebarOpen} onClick={this.handleClick} />
+      </>
+      // </Background>
     );
   }
 }

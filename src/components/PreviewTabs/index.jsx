@@ -24,6 +24,7 @@ import {
   Subtitle,
   Text,
   Title,
+  Wrapper,
 } from "./style";
 
 export const FileInfo = ({ data, file, t }) => {
@@ -40,8 +41,8 @@ export const FileInfo = ({ data, file, t }) => {
   };
 
   return (
-    <Container style={{ padding: "15px 20px" }}>
-      <Column>
+    <Wrapper>
+      <Column style={{ padding: "10px 20px 15px" }}>
         <Subtitle>{t("preview.doc.title")}</Subtitle>
         <Preview>
           <Document file={file} className="Document">
@@ -61,7 +62,7 @@ export const FileInfo = ({ data, file, t }) => {
       </Column>
       <Button text={t("preview.doc.button")} type="outline" onClick={openDocViewer} />
       {state.isViewDoc && <DocumentViewer file={file} onRequestClose={closeDocViewer} name={name} />}
-    </Container>
+    </Wrapper>
   );
 };
 export const FileInfoTab = withNamespaces()(FileInfo);
@@ -89,8 +90,8 @@ const Signatures = ({ uuid, t }) => {
   };
   const userSignature = signatures[uuid]?.find((el) => el.signer.uuid === user.uuid);
   return (
-    <Container style={{ padding: "15px 20px" }}>
-      <Column>
+    <Wrapper>
+      <Column style={{ padding: "10px 20px 15px" }}>
         <Subtitle>{t("preview.signatures.title")}</Subtitle>
         <Container>
           <Timeline>{signatures[uuid] && signatures[uuid].map(renderUser)}</Timeline>
@@ -113,7 +114,7 @@ const Signatures = ({ uuid, t }) => {
       ) : (
         signatures[uuid] && userSignature && <Label>{t(`preview.signatures.${userSignature?.completedStatus}`)}</Label>
       )}
-    </Container>
+    </Wrapper>
   );
 };
 

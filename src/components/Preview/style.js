@@ -12,7 +12,7 @@ export const Background = styled.div`
   @media (max-width: 700px) {
     position: absolute;
     z-index: 125;
-    transition: width 1s;
+    /* transition: width 1s; */
     background: rgba(0, 0, 0, 0.5);
     height: 100%;
     width: ${({ isOpen }) => (isOpen ? "100%" : "0px")};
@@ -20,6 +20,8 @@ export const Background = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  z-index: 126;
+  right: 0;
   transition: width 1s;
   display: flex;
   flex-direction: row;
@@ -35,6 +37,7 @@ export const Wrapper = styled.div`
     width: ${({ isOpen }) => (isOpen ? "270px" : "0px")};
   }
   @media (max-width: 700px) {
+    position: absolute;
     height: 100%;
     width: ${({ isOpen }) => (isOpen ? "300px" : "0")};
   }
