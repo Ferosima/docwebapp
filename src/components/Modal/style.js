@@ -38,7 +38,7 @@ export const Wrapper = styled.div`
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: 100;
+  z-index: 150;
   visibility: ${({ modalVisible }) => modalVisible || "hidden"};
   justify-content: ${({ theme, type }) => theme.modal[type]?.justifyContent || "center"};
 
