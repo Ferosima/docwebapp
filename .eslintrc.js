@@ -58,6 +58,7 @@ module.exports = {
     "consistent-return": 1,
     "max-len": [1, { code: 120 }],
     "function-paren-newline": 1,
+    "react/jsx-no-bind":0,
     indent: 1,
     quotes: 0,
     camelcase: 0,

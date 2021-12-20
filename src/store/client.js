@@ -4,7 +4,7 @@ import { setToken, authClear } from "./actions/auth";
 import { userClear } from "./actions/user";
 import Toast from "../components/Toast";
 
-export const API_URL = "http://localhost:3000/api";
+export const API_URL = "https://docwebapp-beta.herokuapp.com/api";
 
 let store;
 
